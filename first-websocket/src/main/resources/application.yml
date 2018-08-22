@@ -1,0 +1,99 @@
+server:
+  port: 80
+spring:
+  application:
+    name: first-websocket
+
+
+
+
+#####################################################################################################
+# mysql 属性配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/websocket?characterEncoding=utf8&useSSL=false
+    username: user01
+    password: user01
+#####################################################################################################
+
+#################redis基础配置########################################################################
+#  redis:
+#    host: 127.0.0.1
+##    password: admin
+#    port: 6379
+##    host: 192.168.1.128
+##    password: 123456
+##    port: 6379
+##    host: 192.168.1.159
+##    password: 123456
+##    port: 6379
+##    timeout: 3000
+#######################################################################################################
+###################redis线程池设置#######################################################################
+##    pool:
+##      # 连接池中的最大空闲连接，默认值也是8。
+##      max-idle: 500
+##      # 连接池中的最小空闲连接，默认值也是0。
+##      min-idle: 50
+##      # 如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
+##      max-active: 2000
+##      # 等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException
+##      max-wait: 1000
+#  thymeleaf:
+#    cache: false
+
+#  devtools:
+#    livereload:
+#      enabled: true
+#    restart:
+#      enabled: true
+#####################################################################################################
+###############kafka消息配置##########################################################################
+#  cloud:
+#    stream:
+#      binders:
+#        kafka:
+#          binder:
+#            brokers: 192.168.1.159
+#            defaultBrokerPort: 9092
+#            zkNodes: 192.168.1.159
+#            defaultZkPort: 2181
+#            minPartitionCount: 1
+#            autoCreateTopics: true
+#            autoAddPartitions: true
+#      bindings:
+#        production-input:
+#          destination: production.service.queue
+#          group: xijian.changping.production.service.queue
+#          consumer:
+#            concurrency: 3
+#        production-output:
+#          destination: production.service.queue
+#          producer:
+#            partitionCount: 1
+
+#####################################################################################################
+#####################################################################################################
+# mybatis mapper xml 配置
+mybatis:
+  # mybatis.type-aliases-package：指定domain类的基包，即指定其在*Mapper.xml文件中可以使用简名来代替全类名（看后边的UserMapper.xml介绍）
+  mapper-locations: classpath:mapper/*.xml
+#####################################################################################################
+
+
+
+
+#####################################################################################################
+# 打印日志
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.springms: DEBUG
+    com.first.demo.websocket: DEBUG
+#####################################################################################################
+
+
+#jcmes:
+#    production:
+#        url : http://127.0.0.1:8087/

@@ -1,0 +1,9219 @@
+/*通用*/
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft YaHei", SimSun, '\5b8b\4f53', sans-serif;
+	/*font-size: 12px;*/
+}
+/*20171103 1.0优化标准-6 杨红 start*/
+div.tooltipModal{
+	top:0px;
+}
+div.tooltipModal-dialog{
+	position: absolute;
+    top: 0;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 196px;
+}
+div.tooltipInfoModal-dialog{
+	position: absolute;
+    top: 0;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 80px;
+}
+/*20171103 1.0优化标准-6 杨红 end*/
+/*20171107 1.0优化标准-13 杨红 start*/
+td.tableTrTdTextLeft{
+	text-align: left;
+}
+/*20171107 1.0优化标准-13 杨红 end*/
+
+body {
+	min-width: 1000px;
+	overflow: auto;
+	/*文字大小-why*/
+	font-size: 12px;
+	/*20170629 wanghy bug-369 start*/
+	padding-right: 0 !important;
+	/*20170629 wanghy bug-369 end*/
+}
+/*20170628 wanghy bug-359 start*/
+
+body.modal-open{
+	padding-right: 0 !important;
+} 
+.modal.modal-open{
+	padding-right: 0 !important;
+}
+/*20170628 wanghy bug-359 end*/
+h1,h2,h3,h4,h5 {
+	margin: 0;
+	font-weight: normal;
+}
+h1 {
+	font-size: 18px;
+}
+h2 {
+	font-size: 1.6em;
+}
+h3 {
+	color: #7f7f7f;
+	font-size: 1.4em;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+a:focus {
+	outline: none;
+	text-decoration: none;
+	color: #000;
+}
+th {
+	font-weight: normal;
+	font-size: 14px;
+}
+/*20171031 YH-8 zhangyj start*/
+input[type=checkbox] {
+	position: relative;
+	top: 3px;
+	margin: 0 4px;
+	cursor:pointer;
+}
+
+input[type=radio] {
+	position: relative;
+	top: 3px;
+	margin: 0 4px;
+	cursor: pointer;
+}
+/*20171031 YH-8 zhangyj end*/
+textarea {
+	resize: none;
+}
+
+.table>thead>tr>th {
+	vertical-align: middle;
+	border: 0;
+}
+.table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,
+.table>thead>tr>td,.table>thead>tr>th {
+	border-bottom: 1px solid #ddd;
+	border-top: 0;
+	padding: 4px;
+	vertical-align: middle;
+}
+/* 20170622 wanghy 需求变更-37 start */
+.table.table-striped>tbody>tr:hover {
+	/* background: #edf3f6; */
+	background: #CCCCCC;
+}
+/* 20170622 wanghy 需求变更-37 end */
+.table>thead {
+	/* 20170622 wanghy 需求变更-37 start */
+	/* background: #ececec; */
+	background: #4472C4;
+	color:white;
+	/* 20170622 wanghy 需求变更-37 end */
+}
+/* 20170622 wanghy 需求变更-37 start */
+.table-striped>tbody>tr:nth-of-type(odd){
+	background:#D9E1F2;
+}
+/* 20170622 wanghy 需求变更-37 end */
+.btn.focus,.btn:focus,.btn:hover {
+	outline: none;
+}
+label,dt {
+	font-weight: normal;
+	/*max-width: none;*/
+}
+input[type="file"] {
+	display: inline-block;
+}
+
+/*table操作icon*/
+/*20171031 YH-8 zhangyj start*/
+.table a.glyphicon {
+	font-size: 16px;
+	cursor:pointer;
+}
+/*20171031 YH-8 zhangyj end*/
+.table a.glyphicon:hover {
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+}
+#tools {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 2px 10px 0 10px;
+	margin: -3px 10px 0;
+	display: none;
+}
+#tools a {
+	display: inline;
+	padding: 0;
+	font-size: 15px;
+}
+#tools a:hover {
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+}
+
+/*浮动*/
+.ov {
+	overflow: hidden;
+}
+.fl-l {
+	float: left;
+}
+.fl-r {
+	float: right;
+}
+
+.float-right{
+	float: right;
+	
+}
+.vertical-middle{
+	vertical-align: middle;
+}
+/* 20171106 杨红 Bug-351 start */
+#makecard #readCard{
+	margin-top: 8px;
+}
+/* 20171106 杨红 Bug-351 end */
+/*header*/
+.header-bg {
+	/*20170626 需求变更-48 wanghy start*/
+	/*background: #3f9fd9;*/
+	background: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+	color: #fff;
+    padding-right: 35px;
+        /*20170920 dongyunlong start*/
+    height: 35px;
+    /*20170920 dongyunlong end*/
+}
+.left-logo {
+	width: 233px;
+	font-size: 14px;
+	margin: 5px;
+	margin-top: 10px;
+}
+.userinfo {
+	margin-top: 15px;
+}
+.userinfo li {
+	margin-right: 15px;
+	float: left;
+}
+.userinfo li a {
+	color: #fff;
+}
+.userinfo .user-name .glyphicon {
+	margin-left: 5px;
+}
+.userinfo .email {
+	position: relative;
+}
+.userinfo .email i {
+	font-size: 18px;
+}
+.userinfo .email span {
+	background: red;
+	border-radius: 100%;
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	top: -6px;
+	left: 10px;
+}
+.userinfo .line {
+	border-right: 1px solid #fff;
+	height: 20px;
+}
+
+/*页面布局*/
+
+.index-sec {
+	margin-top: 20px;
+}
+/*.right-content {
+	min-width: 820px;
+}*/
+/*.sidebar-box {
+	width: 225px;
+	height: 100%;
+}*/
+
+#index-wrap #aside {
+	background: #fafafa;
+}
+.sidebar a,.sidebar .glyphicon {
+	font-size: 14px;
+}
+.sidebar .navlist .glyphicon {
+	font-size: 16px;
+}
+.sidebar .navlist .item .sub-title {
+	font-size: 14px;
+}
+.sidebar .bigbox .navlist li.first {
+	/*20170626 需求变更-48 wanghy start*/
+	/*background: #3f9fd9;*/
+	background: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+	color: #fff;
+	margin-top: 10px;
+}
+.sidebar .bigbox .navlist li.first a {
+	color: #fff;
+}
+.sidebar .bigbox .navlist li a {
+	display: block;
+	padding: 7px 0 6px 10px;
+}
+.sidebar .bigbox .navlist li.item {
+	border-top: 1px solid #eee;
+}
+.sidebar .bigbox .navlist li .sub-title i,em {
+	color: #ccc;
+}
+.sidebar .bigbox .navlist i {
+	margin-right: 4px;
+}
+.sidebar .bigbox .navlist li.item .sonlist {
+	display: none;
+}
+.sidebar .bigbox .navlist li.item .sonlist a {
+	padding-left: 40px;
+}
+.sidebar .bigbox .navlist li .sonlist a:hover {
+	background: #ECF5FF;
+}
+.sidebar .bigbox .navlist li .sonlist a:focus {
+	background: #D2E9FF;
+}
+
+/*重写bootstrap*/
+/*20171031 YH-8 zhangyj start*/
+.form-control {
+	display: inline-block;
+	height: 30px;
+	font-size: 12px;
+	max-width: 180px;
+	/*min-width:172px;-why*/
+}
+
+.select {
+	padding: 2px;
+	cursor:pointer;
+}
+/*20171031 YH-8 zhangyj end*/
+.select option {
+	padding: 5px 10px;
+}
+textarea.form-control {
+	height: 80px;
+}
+
+/*清除浮动*/
+.clearfix:after {
+	height: 0;
+	content: "";
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+
+/*模态框基本样式*/
+
+.modal {
+	top: 10%;
+}
+.modal-body {
+	padding: 30px 0px;
+}
+.modal.fade.bs-example-modal-lg.in .wid-auto {
+	width: 100%;
+}
+
+/*居中  nx start*/
+
+.z_index_999 {
+	z-index: 999;
+}
+
+.lin_hei_25 {
+	line-height: 25px;
+}
+
+.lin_hei_35 {
+	line-height: 35px;
+}
+
+/*居中  nx end*/
+
+/*宽高*/
+.wid-16{
+    width: 16px;
+}
+.wid-45{
+	width: 45px;
+}
+.wid-110{
+	width: 110px;
+}
+.wid_120{
+	width: 120px;
+}
+
+.wid-130{
+	width: 130px;
+}
+.wid-135{
+	width: 135px;
+}
+.wid-114{
+	width: 114px;
+}
+.wid-427{
+	width: 427px;
+	max-width: none;
+}
+
+.wid-238{
+	width: 238px;
+	max-width: none;
+}
+
+.wid-240 {
+	width: 240px;
+}
+
+.wid_225 {
+	width: 225px;
+}
+
+.wid_280 {
+	width: 280px;
+}
+
+.wid_300 {
+	width: 300px;
+}
+
+.wid_322 {
+	width: 322px;
+}
+
+.wid_325 {
+	width: 325px;
+}
+
+.wid-180 {
+	width: 180px;
+}
+.wid-100 {
+	width: 100px;
+}
+.wid-88 {
+	width: 88px;
+}
+.wid-60 {
+	width: 60px;
+}
+.wid-50 {
+	width: 50px;
+}
+.wid-40 {
+	width: 40px;
+}
+
+.wid-140 {
+	width: 140px;
+}
+.wid-404{
+	width: 404px;
+	max-width: none;
+}
+.wid-160{
+	width: 160px;
+}
+
+.wid_165{
+	width: 165px;
+}
+.wid-65{
+	width: 65px;
+	max-width: none;
+}
+.wid-500{
+	width: 500px;
+}
+.wid-600{
+	width: 600px;
+}
+/*需求变更 wanghy 20170614 start*/
+.wid-155{
+	width: 155px;
+	max-width: none;
+}
+/*需求变更 wanghy 20170614 end*/
+.wid-97p {width: 97%;}
+.wid-90p{width: 90%;}
+.wid-100p{width: 100%;}
+.wid-80p{width: 80%;}
+.wid-75p{width: 75%;}
+.wid-72p{width: 72%;}
+.wid_70p{width: 70%;}
+.wid-60p{width: 60%;}
+.wid_50p{width: 50%;}
+.wid_48p{width: 48%;}
+.wid-45p{width: 45%;}
+.wid-55p{width: 55%;}
+.wid-42p{width: 42%;}
+.wid-44p{width: 44%;}
+.wid-40p{width: 40%;}
+.wid-30p{width: 30%;}
+.wid-28p{width: 28%;}
+.wid-20p{width: 20%;}
+.wid-max{max-width: 100%;}
+.wid-max-100{max-width:100px;}
+.wid-max-250{max-width:250px;}
+.wid-max-170{max-width:170px;}
+.max-wid-48{max-width:48%;}
+.wid_100v {width: 100vw;}
+/*高度nx  20170901--start*/
+
+.hei-100{
+	height: 100px;
+}
+
+.hei-250{
+	height: 250px;
+}
+
+.hei_22 {
+	height: 22px;
+}
+.hei_20 {
+	height: 20px;
+}
+
+.hei_30 {
+	height: 30px;
+}
+
+.hei_35 {
+	height: 35px;
+}
+.hei_34 {
+	height: 34px;
+}
+
+.hei_40 {
+	height: 40px;
+}
+
+.hei_100p {
+	height: 100%;
+}
+
+.hei_80v {
+	height: 80vh;
+}
+
+.hei_92v {
+	height: 92vh;
+}
+
+.hei_96v {
+	height: 96vh;
+}
+
+.hei_100v {
+	height: 100vh;
+}
+/*高度nx  20170901--end*/
+
+/*文字大小  20170906 nx  --start*/
+.font-size-0{
+    font-size: 0;
+}
+.font_size_14 {
+	font-size: 14px;
+}
+
+.font_size_16 {
+	font-size: 16px;
+}
+
+.font_size_18 {
+	font-size: 18px;
+}
+
+.font_size_22 {
+	font-size: 22px;
+}
+
+.font_size_26 {
+	font-size: 26px;
+}
+
+.font_size_30 {
+	font-size: 30px;
+}
+
+.font_size_38 {
+	font-size: 38px;
+}
+
+/*文字大小  20170906 nx --end*/
+
+/*显示滚动条  20170909 nx --start*/
+
+.ove_scr_auto_y {
+	overflow-y: auto;
+}
+
+/*显示滚动条  20170909 nx --end*/
+
+/*背景颜色  20170906 nx  --start*/
+
+.bac_col_white {
+	background-color: white;
+}
+
+.bac_col_white_1 {
+	background-color: #fffefe;
+}
+
+.bac_col_red {
+	background-color: red;
+}
+
+.bac_col_blue {
+	background-color: #4472c4;	
+}
+
+.bac_col_dark_blue {
+	background-color: #436194;
+}
+
+.bac_col_dark_blue_2 {
+	background-color: #59676b;
+}
+
+.bac_col_gray {
+	background-color: #AAAAAA;
+}
+
+/*背景颜色  20170906 nx  --end*/
+
+/*字体颜色 20170907 nx --start*/
+
+.col_white {
+	color: white;
+}
+
+.col_blue {
+	color: #4472c4;
+}
+
+.col_gray {
+	color: #AAAAAA;
+}
+
+.col_gray_cf {
+	color: #CFCFCF;
+}
+
+.col_red {
+	color: #fb6014;
+}
+
+.col_gray_333 {
+	color: #333333;
+}
+
+/*字体颜色 20170907 nx --end*/
+
+/*隐藏  20170909  nx  --start*/
+
+.dis_none {
+	display: none;
+}
+
+/*隐藏  20170909  nx  --end*/
+
+/*边距*/
+
+.mar-0 {
+	margin: 0;
+}
+
+.mar-2 {
+	margin:2px;
+}
+
+.mar-5 {
+	margin:5px;
+}
+
+.mar-10 {
+	margin: 10px
+}
+
+.mar-12 {
+	margin: 12px;	
+}
+
+.mar-15 {
+	margin: 15px;
+}
+.mar-top-5 {
+	margin-top: 5px;
+}
+.mar-top-8 {
+	margin-top: 8px;
+}
+
+.mar-top-10{
+	margin-top: 10px;
+	
+}
+.mar-le-ri-to-bo{
+	margin: 10px 12px;
+}
+.mar-top-12 {
+	margin-top: 12px;
+}
+.mar-top-15 {
+	margin-top: 15px;
+}
+
+.mar-top-20{
+	margin-top: 20px;
+}
+
+.mar-top-40 {
+	margin-top: 40px;
+}
+
+.mar-top-45{
+	margin-top: 45px;
+}
+.mar-left-3 {
+	margin-left: 3px;
+}
+
+.mar_left_5 {
+	margin-left: 5px;
+}
+
+.mar-left-6 {
+	margin-left: 6px;
+}
+
+.mar-left--3 {
+	margin-left: -3px;
+}
+
+.mar-left--4 {
+	margin-left: -4px;
+}
+
+.mar-left-8 {
+	margin-left: 8px;
+}
+
+.mar_left_10 {
+	margin-left: 10px;
+}
+
+.mar-left-18 {
+	margin-left: 18px;
+}
+
+.mar-left-10p{
+	margin-left: 12%;
+}
+
+.mar-right-28{
+	margin-right: 28px;
+}
+
+.mar-left-25 {
+	margin-left: 25px;
+}
+
+.mar-left-20 {
+	margin-left: 20px;
+}
+.mar-right-5{
+	margin-right: 5px;
+}
+.mar-right-9{
+	margin-right: 9px;
+}
+.mar-right-12{
+	margin-right: 12px;
+}
+.mar-right-8 {
+	margin-right: 8px;
+}
+.mar-right-10 {
+	margin-right: 10px;
+}
+.mar-right-3 {
+	margin-right: 3px;
+}
+.mar-right-4 {
+	margin-right: 4px;
+}
+.mar-bottom-10 {
+	margin-bottom: 10px;
+}
+
+.mar-bottom-3 {
+	margin-bottom: 3px;
+}
+
+.mar_bottom_8 {
+	margin-bottom: 8px;
+}
+
+.mar_bottom_10 {
+	margin-bottom: 10px;
+}
+
+.pad-15 {
+	padding: 15px;
+}
+.pad-tb-12 {
+	padding: 12px 0;
+}
+.pad-12 {
+	padding: 12px;
+}
+.pad-10 {
+	padding: 10px;
+}
+
+.pad_8 {
+	padding: 8px;
+}
+
+.pad_3 {
+	padding: 3px;
+}
+
+.pad_top_12 {
+	padding-top: 12px;
+}
+
+.pad_left_6 {
+	padding-left: 6px;
+}
+
+.pad_rigth_16 {
+	padding-right: 16px;
+}
+.pad_rigth_20 {
+    padding-right: 20px;
+}
+
+.pad_top_bottom_3 {
+	padding: 3px 6px;
+}
+.pad-0-15 {
+    padding: 0 15px;
+}
+.pad_top_bottom {
+	padding: 5px 0;
+}
+
+.pad_top_bottom_10 {
+	padding: 10px 0;
+}
+
+.pad_top_bottom_6 {
+	padding: 6px 3px;
+}
+
+.pad_bot_10 {
+	padding-bottom: 10px;
+}
+
+/*相对定位值  nx  20170921  start*/
+
+.abs_t_r_12_2 {
+	right: 2px;
+	top: 0px;
+	bottom: 0px;
+}
+
+.abs_l_r_0 {
+	left: 0;
+	right: 0;
+}
+
+.abs_top_40 {
+	top: 40px;
+}
+
+
+
+/*相对定位值  nx  20170921  end*/
+
+/*边框线  20170908  nx ---start*/
+
+.bor_sol_1_aaa {
+	border: 1px solid #AAAAAA;
+}
+
+.bor_sol_1_cfc {
+	border: 1px solid #CFCFCF;
+}
+.bor_sol_2_cfc {
+	border: 2px solid #CFCFCF;
+}
+.bor_dashed_2_D1 {
+	border: 2px dashed #D1D1D1;
+	color: #D1D1D1;
+	pointer-events: none;
+}
+.bor_sol_1_white {
+	border: 1px solid white;
+}
+
+.bor_sol_2_white {
+	border: 2px solid white;
+}
+
+.bor_bot_1_gray {
+	border-bottom: 1px solid #59676b;
+}
+
+.bor_rig_1_gray {
+	border-right: 1px solid #606d71;
+}
+.bor_sol_1_blue_b4c {
+	border: 1px solid #b4cef8;
+}
+
+/*边框线  20170908  nx ---end*/
+
+/*边框角  20170908  nx ---start*/
+
+.bor_rad_4 {
+	border-radius: 4px;
+}
+
+.bor_rad_6 {
+	border-radius: 6px;
+}
+
+/*边框角  20170908  nx ---end*/
+
+/*why*/
+.pad-5 {
+	padding: 5px;
+}
+/*蓝色边框*/
+.base-line {
+	/*20170626 需求变更-48 wanghy start*/
+	border: 1px solid #b4cef8;
+	/*border: 1px solid #4472C4;*/
+	/*20170626 需求变更-48 wanghy end*/
+}
+
+.line-title {
+	background: #fff;
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+	position: absolute;
+	top: -8px;
+	left: 22px;
+	padding: 0 5px;
+	font-size: 13px;
+}
+
+/*等级星星颜色*/
+.col-star {
+	color: #f3f305;
+}
+
+/*
+ * 通用页面样式
+ * 注:上边查询，下边表格 
+ * */
+
+/*查询框-查询内容样式*/
+.search{
+	display: flex;
+	flex-wrap: wrap;
+	width: 78%;
+}
+.search ul {
+	/*20170628 wanghy bug-359 start*/
+	/*display: -webkit-flex;*/
+	display: flex;
+	/*20170628 wanghy bug-359 end*/
+	align-items: center;
+	width: 33%;
+	margin-right: 2px;
+	overflow: hidden;
+	clear: both;
+}
+.search ul li {
+	float: left;
+	flex: 1;
+}
+/*20170704 wanghy 需求变更-1 start*/
+.border-PI .pull-left.search ul{
+	display: flex;
+	align-items: center;
+	width: 33%;
+	margin-right: 2px;
+	overflow: hidden;
+	clear: both;
+}
+.border-PI .pull-right{
+	width: 22%;
+}
+.border-PI .btn.btn-blue.float-right{
+	width: 100px;
+}
+/*20170704 wanghy 需求变更-1 end*/
+/*查询框-按钮组样式*/
+.btn-query-group {
+	width: 20%;
+	text-align: center;
+}
+.btn.btn-blue {
+	display: inline-block;
+	max-width: 100px;
+	width: 45%;
+	color: #fff;
+	/*20170626 需求变更-48 wanghy start*/
+	/*background: #3f9fd9;*/
+	background: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+}
+/*20170626 需求变更-48 wanghy start*/
+.btn.btn-primary{
+	background: #4472C4;
+}
+/*20170626 需求变更-48 wanghy end*/
+.btn-query-group .btn.btn-blue {
+	float: left;
+}
+/*20171102 1.0优化标准-3 杨红 start*/
+.materialInfo #downBtn{
+	width:60px;
+	height: 30px;
+	line-height: 15px; 
+	padding: 5px;
+}
+#materialInfoNameModal .modal-header{
+	text-align: center;
+}
+#materialInfoNameModal table>tbody td{
+	cursor: pointer;
+}
+/* 20171102 1.0优化标准-3 杨红 start */
+.btn.btn-blue:hover {
+	color: #fff;
+	background-color: #286090;
+	border-color: #204d74;
+}
+.btn-blue:focus {
+	color: #fff;
+}
+
+/*分页样式*/
+.pageCorlor a:hover {
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+}
+
+/*模态框样式(普遍的新增和修改模态)*/
+.modal-search {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.modal-search ul {
+	/*20170628 wanghy bug-359 start*/
+	/*display: -webkit-flex;*/
+	display: flex;
+	/*20170628 wanghy bug-359 end*/
+	align-items: center;
+	width: 45%;
+	margin-right: 1px;
+	/*overflow: hidden;*/
+	clear: both;
+}
+.modal-search ul li {
+	float: left;
+	flex: 1;
+}
+.modal-search ul .redstar {
+	flex: 0.2;
+	-ms-flex:0.2;
+	color: red;
+	text-align: center;
+}
+
+/*关闭图标字体大小*/
+.fontsize-16 {
+	font-size: 16px;
+}
+
+/*备注框样式设置*/
+.remarkbox {
+	display: flex;
+	width: 94%;
+}
+.remark {
+	width: 90%;
+}
+
+.flex0-4 {
+	flex: 0.4;
+}
+
+.flex0-6 {
+	flex: 0.6;
+}
+
+.flex1 {
+	flex: 1;
+}
+
+.flex_center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.flex_just-end{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.flex_just-start{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+.flex_left{
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+.flex1_5 {
+	flex: 1.5;
+}
+
+.flex2 {
+	flex: 2;
+}
+
+.flex3 {
+	flex: 3;
+}
+
+.flex4 {
+	flex: 4;
+}
+
+.flex5 {
+	flex: 5;
+}
+
+.flex6 {
+	flex: 6;
+}
+
+/*字体排列*/
+.txt-l {
+	text-align: left;
+}
+
+.txt-r {
+	text-align: right;
+}
+.border-bottom-D8D8D8{
+	border-bottom: 1px solid #D8D8D8;
+}
+.txt-c {
+	text-align: center;
+}
+
+.modal-footer{
+	text-align: center;
+}
+
+/*非input框的元素在ul-li模式下的样式（类似于form-control）*/
+.form-text {
+	display: inline-block;
+	font-size: 12px;
+	width: 180px;
+}
+
+/*小的输入框-eg:计划量等*/
+.mini-input {
+	width: 80px;
+	margin-right: 8px;
+}
+
+/*validate验证样式*/
+.error {
+	/* 20171206 dongyunlong bug-442 start */
+    /*display: inline-block;*/
+	/* 20171204 dongyunlong bug-442 end   */
+	background: url(../img/false26.png) no-repeat 0px 0px;
+	font-weight: bold;
+	/*20170814 wanghy 根据需求修改 start*/
+	padding: 5px 8px;
+	/*20170814 wanghy 根据需求修改 end*/
+	padding-left: 28px;
+	margin-left: 20px;
+	color: #EA5200;
+	background-color: white;
+	position: absolute;
+	border-radius: 6%;
+	margin-left: 4px;
+	margin-top: -2px;
+	/* 20170807  排产规则 dongyunlong start */
+	/* border: 1px solid #d40213; */
+	/* 20170807  排产规则 dongyunlong end */
+}
+.checked {
+	background: url("../img/true20.png") no-repeat 3px 3px;
+	padding: 4px 8px;
+	padding-left: 28px;
+	margin-left: 20px;
+	color: green;
+	background-color: white;
+	position: absolute;
+	border-radius: 6%;
+	margin-left: 4px;
+	margin-top: -2px;
+	/*border: 1px solid green;*/
+	border: none;
+	height: 30px;
+}
+.redstar {
+	flex: 0.2;
+	color: red;
+}
+.redstar span {
+	margin-left: 4px;
+	line-height: 26px;
+}
+
+/*大表格滚动条*/
+.div-scroll {
+	overflow: auto;
+}
+
+/*时间控件背景改成白色*/
+
+/*.Wdate {
+	background: #ffffff !important;
+}*/
+.timeReadonly[readonly]{
+	background: #ffffff;
+}
+.Wdate.timeReadonly[disabled]{
+	background: #eeeeee;
+}
+/*原材-模态样式*/
+.outer-frame ul li:hover {
+	background: #D2E9FF;
+}
+.outer-frame ul li:hover .remove-icon {
+	visibility: visible;
+}
+.materialBox {
+	display: flex;
+	width: 72.5%;
+	margin: 12px auto 0;
+}
+.outer-frame {
+	width: 62%;
+}
+.outer-frame>ul {
+	height: 120px;
+	overflow: auto;
+}
+.outer-frame>ul>li {
+	padding: 4px;
+}
+.resultBox {
+	width: 70%;
+	margin-top: 12px;
+}
+.resultBox ul {
+	display: flex;
+}
+.resultBox ul li {
+	float: left;
+}
+.result-title {
+	flex: 1.1;
+}
+.result {
+	flex: 2.5;
+	padding-right: 6px;
+}
+
+
+/*相对于新增原材模态，修改模态宽度调整*/
+.materialBox.wid-68p {
+	width: 68.5%;
+}
+.resultBox.wid-74p {
+	width: 74%;
+}
+
+/*新增原材的小红星*/
+
+.input-add .redstar {
+	margin-top: 13px;
+	margin-left: 4px;
+}
+/*某些通用样式*/
+.hid {
+	display: none;
+	height: 34px;
+}
+.display-none{display: none;}
+.inline-block{display: inline-block;}
+.dis-flex{display:flex;}
+.flex{display: flex;}
+.intoRow {display: flex;}
+.organization {display: flex;}
+.row {display: flex;}
+.jus-con{justify-content: space-between;}
+.jus-c{justify-content: center;}
+.jus-con-star{justify-content: flex-start;}
+.fle-dir{flex-direction: column;}
+.ali_item {align-items: center;}  
+.dis-blo{display:block;}
+.fle-wrap {flex-wrap: wrap;}
+.fle-no-wrap {flex-wrap: nowrap;}
+
+/*相对定位*/
+.relative {
+	position: relative;
+}
+
+/*绝对定位*/
+.absolute {
+	position: absolute;
+	z-index: 1000;
+}
+/*input输入框左侧文字*/
+.lineheight-26 {
+	line-height: 26px;
+}
+/*模态样式-组织机构单行输入模态*/
+
+.intoRow ul {
+	margin-left: 20%;
+}
+.intoRow li {
+	flex: 1;
+	float: left;
+}
+.lin-hei-2 {
+	line-height: 2;
+}
+.lin-hei-2-5 {
+	line-height: 2.5;
+}
+.lin-hei-34{
+	line-height:34px;
+}
+/*
+ * 组织机构
+ * */
+
+#organization .search ul .text-right {
+	flex: 1.5;
+}
+.highlight{
+	background: #ECECEC;
+}
+/*四个列表框*/
+#organization .common-ul li {
+	position: relative;
+}
+#organization .common-ul li #tools {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
+#organization .common-ul li #tools .glyphicon {
+	top: 2px;
+}
+
+/*用户列表框*/
+.organization .user-list li:hover #tools {
+	float: right;
+}
+.organization .user-list li.queryUserLi {
+	padding: 0;
+    margin-right: 4px;
+}
+.organization .user-list li:hover #tools {
+	display: inline-block;
+}
+.organization .user-list .module {
+	height: 320px;
+	margin-top: 15px;
+	overflow: auto;
+}
+.organization .user-list .mp0 {
+	margin: 0;
+	padding: 0;
+}
+.organization .user-list {
+	flex: 5;
+	position: relative;
+	margin-right: 15px;
+}
+.organization .user-list ul.common-ul li:hover {
+	background: #D2E9FF;
+}
+.organization .user-list ul.common-ul li::selection {
+	color: #ff0000;
+}
+.organization .user-list li {
+	padding: 10px 10px;
+	padding-right: 0px;
+	position: relative;
+}
+.organization .user-list li a {
+	display: inline-block;
+	width: 70%;
+}
+.organization .user-list-last {
+	flex: 6;
+	margin: 0;
+}
+.organization .userpart-list {
+	flex: 5;
+	position: relative;
+	overflow: hidden;
+}
+.organization .user-list .module-user table {
+	border: 0;
+}
+.organization .user-list .module-user table th,td {
+	padding: 5px 20px;
+	border: 0;
+	border-right: 1px solid #ddd;
+}
+#organization .changeUserIcon {
+	width: 49%;
+	display: inline-block;
+	padding: 6px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 4px;
+	margin-top: 4px;
+}
+#organization .modal-search ul{
+	width: 43%;
+}
+#organization .mar-30p{
+	margin: 30px 30%;
+}
+
+#organization .table{
+    /*20171016 wanghy 修改布局 start*/
+	width: 100%;
+    max-width: 100%;
+    /*20171016 wanghy 修改布局 end*/
+    margin-bottom: 20px;
+}
+/*蓝线*/
+.organization .base-line.module.mar-top-45 {
+	margin-top: 45px;
+}
+#organization .base-line .height-36 {
+	height: 36px;
+}
+/*表格样式*/
+#organization .table tbody {
+	overflow: hidden;
+}
+.organization .table thead {
+	cursor: default;
+}
+.organization .table tbody tr {
+	cursor: pointer;
+}
+.organization .table tr td {
+	text-align: center;
+}
+.organization .table tr:hover #tools {
+	display: inline-block;
+}
+
+/*宽度100%的添加按钮*/
+.btn.btn-default.wid-auto.base-line {
+	width: 100%;
+}
+
+/*公司、部门、职务查询输入框宽度*/
+
+.organization .wid-136 {
+    /*max-width: 136px;*/
+    width: 136px;
+}
+/*用户查询输入框宽度*/
+.organization .wid-150 {
+	max-width: 150px;
+}
+#organization .col-md-3{width: 28.333333%;}
+/*所在位置导航*/
+.currentPosition {
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+	font-size: 13px;
+}
+
+/*重置、查询按钮样式*/
+.mini-btn {
+	display: inline-block;
+	padding: 3px 6px;
+	margin-bottom: 3px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+/*用户管理*/
+
+.btn .wid-51p{width: 51%;}
+/*
+ * 权限管理
+ * **/
+.display-none {
+	display: none;
+}
+.button-sane {
+	width: 100px;
+	float: right;
+	font-size: 14px;
+	margin: 10px 30px;
+}
+#powermanger .user-list .module {
+	height: 400px;
+	margin-top: 15px;
+	overflow: auto;
+}
+
+#powermanger .user-list .item {
+	cursor: pointer;
+	
+}
+
+#powermanger .user-list .item.tree-ui{
+	padding: 0;
+	position: relative;
+}
+
+
+.the-secon{
+	margin-top: 10px;
+}
+.activePower{
+	background: #ececec;
+}
+
+/*制卡*/
+
+
+/*较大的模态框不要top*/
+.no-top {
+	top: 0;
+}
+
+/*
+ * 采购计划
+ * */
+
+.mar-auto {
+	margin: 0 auto;
+}
+p {
+	margin: 0;
+}
+
+/*采购合同-为了防止气泡挡字，重写模态通用样式*/
+.purchasecontract .modal-search ul {
+	/*20170628 wanghy bug-359 start*/
+	/*display: -webkit-flex;*/
+	display: flex;
+	/*20170628 wanghy bug-359 end*/
+	align-items: center;
+	width: 43%;
+	margin-right: 36px;
+	overflow: hidden;
+	clear: both;
+}
+.purchasecontract .glyphicon-ok{
+	line-height: 28px;
+}
+
+/*
+ * 采购计划
+ * */
+.purchaseplan .wid-100p {
+	width: 100%;
+}
+.purchaseplan .wid-84p {
+	width: 84%;
+}
+.purchaseplan .flex4 {
+	flex: 4;
+}
+.purchaseplan .modal-search ul{
+	margin-right: 10px;
+}
+/*
+ * 暗扣
+ * */
+/*.anKouParameter .col-md-8 {
+	width: 66.66666667%;
+}
+.anKouParameter .col-md-4 {
+	width: 33.33333333%;
+}*/
+/*.anKouParameter .ankou-percent ul {
+	display: -webkit-flex;
+	align-items: center;
+	overflow: hidden;
+	margin-left: 250px;
+	clear: both;
+	text-align: center;
+}*/
+.anKouParameter .ankou-btn{
+    margin-left: 20%;
+    width: 30%;}
+
+/*暗扣模态表格高度*/
+.hei-300 {
+    max-height: 300px;
+    overflow: auto;
+}
+#anKouParameter .wid-90p{
+	width: 90%;
+}
+/*
+ * 原材信息
+ * */
+.btn.btn-blue.inline-block {
+	display: inline-block;
+}
+
+.totalview {
+	/*width: 36%;*/
+	width: 32%;
+	position: absolute;
+	border: 1px solid palevioletred;
+	/*right: 22%;*/
+	right: 20%;
+	margin-top: -2px;
+	padding: 4px 6px;
+	border: 1px solid lightgrey;
+	box-shadow: 1px 1px 1px lightgrey;
+}
+
+.purchaseplan .table{margin-bottom: 0;}
+
+/*
+ * 日计划 
+ * */
+#dailyplan .modal-search ul{
+	width: 43%;
+}
+#dailyplan .modal-search ul.linkage {
+	/*20170628 wanghy bug-359 start*/
+    /*display: -webkit-flex;*/
+    display: flex;
+    /*20170628 wanghy bug-359 end*/
+    align-items: center;
+    width: 86%;
+    margin-right: 2px;
+    overflow: hidden;
+    clear: both;
+}
+#dailyplan .modal-search ul.linkage li{
+	flex: 3.2;
+    text-align: left;
+}
+#dailyplan .modal-search ul.linkage li.text-right{
+    flex: 0.97;
+    text-align: right;
+}
+#dailyplan .modal-search ul.linkage li.text-right.flex1{
+    flex: 1;
+    text-align: right;
+}
+.mar-right-7{
+	margin-right: 7px;
+}
+#dailyplan .modal-search ul.linkage li.redstar{
+    flex:0.2;
+    text-align: center;
+}
+
+#dailyplan .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#dailyplan .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+
+.writingwidth{
+	width: 155px;
+}
+.writingwidth2{
+	width: 160px;
+}
+.wid68{
+	width: 68%;
+}
+.border-none{
+	border: none;
+	box-shadow: none;
+}
+.ICON-dl{
+	visibility: hidden;
+}
+/*采购计划*/
+#purchaseplan .search.Sales>ul{
+	margin:5px 0px;
+}
+
+#purchaseplan .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#purchaseplan .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#assignPlanForm .row {
+	padding: 20px 57px 2px;
+	/*width:100%;*/
+	margin: 0;
+}
+#assignPlanForm .row>p {
+	width: 70px;
+}
+#assignPlanForm .modal-form.border-PI {
+	padding: 5px 7px;
+	border: 1px solid #b4cef8;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin:0 auto;
+}
+#assignPlanForm .modal-form .model-linetitle {
+	margin-left:15px;
+}
+#assignPlanForm .demand{
+	width:145px;
+}
+#assignPlanForm .text-right.uldemand{
+	flex:1.6;
+}
+#assignPlanForm table .contractsNumbers{
+	width:60px;
+}
+
+/*原材入库信息*/
+#materialInStore .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#materialInStore .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+/*
+ * 登录 
+ * */
+
+.login-ul{
+    margin: 0 auto;
+    display: flex;
+}
+
+.login-title{
+    line-height: 27px;
+    text-align: right;
+    margin-right: 14px;
+}
+.login-btn{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.login-info{
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    padding: 2em;
+    background: white;
+    position: absolute;
+    top: 19%;
+    left: 35%;
+    right: 35%;
+    max-width: 400px;
+}
+.login-info .form-control{
+	font-size: 14px;
+}
+
+.btn .wid-80p{
+	width: 80%;
+}
+.logo-text{
+	text-align: center;
+    margin-bottom: 30px;
+    color: gray;
+    font-size: 2em;
+}
+.logo{
+	width: 100px;
+	height: 100px;
+}
+.bg-img{
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 80em;
+}
+#login-body{
+	overflow: hidden;
+	position: relative;
+}
+.footer{
+    position: absolute;
+    left: 10%;
+    bottom: 2em;
+    text-align: center;
+    left: 22%;
+    min-width: 20px;
+    right: 22%;
+}
+.w-100{width: 100%;}
+.modal-form .model-linetitle{
+	display: inline-block;
+	background: #fff;
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+    position: relative;
+    top: -15px;
+    left: -10px;
+    padding: 0 5px;
+    font-size: 13px;
+    height: 17px;
+}
+/*原材入库信息*/
+
+/*原材信息*/
+#dropdownMenu {
+    left: 0;
+    top: 18px;
+    max-height: 150px;
+    overflow: auto;
+    width: 160px;
+}
+#dropdownMenu li,#dropdownMenu li a{
+	width: 100%;
+}
+#dropdownMenu li a:hover{
+	cursor: pointer;
+}
+/*权限管理*/
+.button-sane.display-none{display: none;}
+/*用户管理特别模态框ul样式-nx*/
+#usermanger .modal-search ul {
+	width: 43%;
+}
+#usermanger .remark {
+	width: 84%;
+}
+
+/*过磅-nx*/
+/*#ponderation .btn.btn-blue {
+	display:inline-block;
+}*/
+
+/*采购合同-nx*/
+#purchasecontract .modal-search ul {
+	width: 41%;
+}
+
+.mar-ri-8 {
+	margin-left: 8px;
+}
+
+
+/*****************过磅记录*********************/
+#ponderation .modal{
+	top:0%;
+}
+#ponderation .modal-form.border-PI {
+    padding:20px 7px;
+    border: 1px solid #b4cef8;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+}
+/**
+* 2017-05-13 王宏宇 bug对应 start
+ **/
+#ponderation .modal-search ul{
+	width: 45%;
+	margin-right: 5px;
+}
+/**
+ * 2017-05-13 王宏宇 bug对应 end
+ **/
+
+.wid-80-left-15{
+	width: 80px;
+	margin-left: 15px;
+}
+.wid-120-left-10{
+	width: 120px;
+	margin-left: 10px;
+}
+.input-left-radius{
+    float: left;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.btn-right-radius{
+    float: left;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+a.btn-right-radius{
+	height: 30px;
+	width: 60px;
+	line-height: 15px;
+}
+.btn-right-normal{
+	height: 30px;
+	width: 60px;
+	line-height: 15px;
+}
+#ponderation .modal-body{
+	padding: 15px;
+	
+}
+/*20171016 wanghy 调整布局 start*/
+/*#ponderation #chooseContract .modal-footer{
+	border: none;
+}*/
+/*20171016 wanghy 调整布局 end*/
+/*#ponderation .modal-content{
+	display: flex;
+	flex-wrap: wrap;
+}*/
+/*#ponderation .modal-content ul{
+	display:flex;
+	align-items: center;
+	width: 43%;
+	margin-right: 1px;
+	clear: both;
+}
+#ponderation .modal-content ul li{
+	flex: 1;
+}*/
+/*#ponderation #myForm1 .left{
+	float:right;
+	margin-top:-23px;
+	position:relative;
+	left:-70px;
+	top:-10px;
+}
+#ponderation #myForm1 .right{
+	float:left;
+	margin-left:40px;
+}
+#ponderation #myForm1 #weighUpdate{
+	position: relative;
+	left: 20px;
+	width: 50px;
+	line-height: 15px;
+}
+#ponderation #myForm1 .text-right.li-title.readInfo{
+	margin-left:-20px;
+}
+#ponderation #myForm1 .writeInfo .select{
+	width:240px;
+}
+#ponderation #myForm1 .specialInput input{
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+	width:120px;
+}
+#ponderation #myForm1 .specialInput button{
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+}
+#ponderation #myForm1 .writeInfo .ie-li{
+	display:flex;
+	align-items: center;
+}
+#ponderation #myForm1 .bottomBtn{
+	margin: 25px auto;
+}
+#ponderation button.btn.btn-primary.mar-right-10.wid-100.save {
+    line-height: 16px;
+    width: 60px;
+}
+#ponderation .volume{
+	display: inline-block;
+    position: relative;
+    width:80px;
+}
+#ponderation #chooseContract .modal-body{
+	padding:15px 10px;
+}
+#ponderation #chooseContract .search ul{
+	width:45%;
+}
+#ponderation #myForm1 #myModal1,#ponderation #chooseContract{
+	padding-left:0px;
+}
+#ponderation #myForm1 .redstar .error{
+	padding:0px 5px 0px 26px;
+}
+#ponderation #myForm1 .specialInput .redstar span{
+	margin-left: -20px;
+}
+#ponderation #myForm1 .modal-footer .weigh{
+	margin-left:-40px;
+}
+.printOrder{
+	position: relative;
+	left: 55%;
+	top: -49px;
+}
+#ponderation #myForm1 .redstar span {
+	margin-left: 0px;
+}
+#ponderation #chooseContract .modal-body{
+	max-height:500px;
+	overflow:auto;
+}
+#ponderation #myForm1 #mingkou-error{
+	width:88px;
+	margin-top:-16px;
+}
+#ponderation #chooseMaterialinfo ul li,#ponderation #chooseSpace ul li{
+	height:25px;
+}*/
+/*#ponderation #chooseContract */
+/*******************快检项目********************/
+#quickCheck .modal{
+	top:0%;
+}
+#quickCheck .modal-form.border-PI {
+    padding:5px 7px 20px 7px;
+    border: 1px solid #b4cef8;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+}
+#quickCheck #topSearch button{
+	display:inline-block;
+}
+#quickCheck #createQuickCheck{
+	overflow:hidden;
+}
+#quickCheck .modal-form.border-PI {
+	padding:5px 7px;
+	border: 1px solid #b4cef8;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin:0 auto;
+}
+#quickCheck #myForm1 .modal-body .modal-search ul li.text-right{
+	flex:inherit;
+}
+#quickCheck #myForm1 .modal-body .modal-search ul li.materialWrite{
+	text-align: left;
+	display:flex;
+}
+#quickCheck #myForm1 .modal-body .modal-search ul.outSide{
+	margin-left:10%;
+}
+#quickCheck #myForm1 a.downBtn.btn.btn-blue.inline-block.dropdown-toggle.out-choose {
+    height: 30px;
+    align-items: center;
+}
+#quickCheck #myForm1 .form-control{
+	max-width:inherit;
+}
+#quickCheck #myForm1 #material {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#quickCheck #myForm1 #chooseMaterial{
+	border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    line-height:22px;
+}
+#quickCheck #myForm1 .modal-search ul.outSide,#quickCheck #myForm1 .modal-search ul.outSide .inSide{
+	width:90%;
+}
+#quickCheck #myForm1 .modal-search ul.outSide .inSide a{
+	margin-bottom:20%;                                                                                                                                                   
+}
+#quickCheck #myForm1 .table{
+	width:69%;
+	margin-left:146px;
+}
+#quickCheck #myForm1 .imgNorm img{
+	width:120px;
+	height: 120px;
+	display: inline-block;
+	margin-right: 12.5px;
+}
+#quickCheck #myForm2 .modal-body ul{
+	display:block;
+	width:100%;
+}
+#quickCheck #myForm2 .modal-body ul li{
+	display:block;
+	float:left;
+	width:33.333%;
+}
+#quickCheck #myForm1 .imgBtn{
+	width: 25%;
+    margin-left: 102%;
+    margin-top: -25%;
+}
+/*单位管理*/
+#unitManagement .display-flex{
+	display: flex;
+}
+#unitManagement .display-flex label{
+	flex: 1;
+	margin: 0;
+}
+#unitManagement .redstar span{
+	line-height: 16px;
+}
+
+
+
+/*通用加载动画样式*/
+.sk-circle {
+  margin: 160px auto;
+  width: 50px;
+  height: 50px;
+  position: relative; 
+}
+.single-sk{
+  margin: 2px auto;
+  width: 15px;
+  height: 15px;
+}
+ .loadUp{
+ 	margin: 50px auto;
+ }
+  .sk-circle .sk-child {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0; }
+  .sk-circle .sk-child:before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    height: 15%;
+    /*20170626 需求变更-48 wanghy start*/
+	/*background: #3f9fd9;*/
+	background: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+    border-radius: 100%;
+    -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+            animation: sk-circleBounceDelay 1.2s infinite ease-in-out both; }
+  .sk-circle .sk-circle2 {
+    -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+            transform: rotate(30deg); }
+  .sk-circle .sk-circle3 {
+    -webkit-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+            transform: rotate(60deg); }
+  .sk-circle .sk-circle4 {
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg); }
+  .sk-circle .sk-circle5 {
+    -webkit-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+            transform: rotate(120deg); }
+  .sk-circle .sk-circle6 {
+    -webkit-transform: rotate(150deg);
+        -ms-transform: rotate(150deg);
+            transform: rotate(150deg); }
+  .sk-circle .sk-circle7 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg); }
+  .sk-circle .sk-circle8 {
+    -webkit-transform: rotate(210deg);
+        -ms-transform: rotate(210deg);
+            transform: rotate(210deg); }
+  .sk-circle .sk-circle9 {
+    -webkit-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+            transform: rotate(240deg); }
+  .sk-circle .sk-circle10 {
+    -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+            transform: rotate(270deg); }
+  .sk-circle .sk-circle11 {
+    -webkit-transform: rotate(300deg);
+        -ms-transform: rotate(300deg);
+            transform: rotate(300deg); }
+  .sk-circle .sk-circle12 {
+    -webkit-transform: rotate(330deg);
+        -ms-transform: rotate(330deg);
+            transform: rotate(330deg); }
+  .sk-circle .sk-circle2:before {
+    -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s; }
+  .sk-circle .sk-circle3:before {
+    -webkit-animation-delay: -1s;
+            animation-delay: -1s; }
+  .sk-circle .sk-circle4:before {
+    -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s; }
+  .sk-circle .sk-circle5:before {
+    -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s; }
+  .sk-circle .sk-circle6:before {
+    -webkit-animation-delay: -0.7s;
+            animation-delay: -0.7s; }
+  .sk-circle .sk-circle7:before {
+    -webkit-animation-delay: -0.6s;
+            animation-delay: -0.6s; }
+  .sk-circle .sk-circle8:before {
+    -webkit-animation-delay: -0.5s;
+            animation-delay: -0.5s; }
+  .sk-circle .sk-circle9:before {
+    -webkit-animation-delay: -0.4s;
+            animation-delay: -0.4s; }
+  .sk-circle .sk-circle10:before {
+    -webkit-animation-delay: -0.3s;
+            animation-delay: -0.3s; }
+  .sk-circle .sk-circle11:before {
+    -webkit-animation-delay: -0.2s;
+            animation-delay: -0.2s; }
+  .sk-circle .sk-circle12:before {
+    -webkit-animation-delay: -0.1s;
+            animation-delay: -0.1s; }
+
+@-webkit-keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+            
+/*用户管理*/           
+#usermanger .myForm .form-control {
+	max-width: 100%;
+}
+
+#usermanger .updateForm .form-control {
+	max-width: 100%;
+}
+
+/*客户信息*/
+#Customer .myForm .customerTag,#Customer .myForm .flex-start{
+	width:100%;
+}
+#Customer .myForm .customerTag .text-right,#Customer .myForm .flex-start .text-right{
+	flex:0.31;
+}
+#Customer .myForm .customerTag .form-control,#Customer .myForm .flex-start .form-control{
+	max-width:inherit;
+}
+#Customer .myForm .customerTag .downBtn{
+	line-height:15px;
+	margin-left:-15px;
+}
+
+.border-PI ul{
+	width: 43%;
+}
+#excel{
+	right: 30px;
+}
+
+/*施工单位*/
+#Construction .modal-search{
+	display: inline-block;
+}
+/*销售合同*/
+#SalesContract .modal-search{
+	display: inline-block;
+}
+#myTabContent{
+    position: relative;
+    height: 100%;
+}
+/* 2017-07-17 dongyunlong  生产模块 start */
+.switcharr1,.switcharr2,.switcharr3{
+	text-align:center;
+}
+.line-h-45{
+	line-height: 45px;
+}
+
+#switcharr {
+	width: 200px;
+    text-align: center;
+}
+.switch1{
+	position: absolute;
+	top: 37.5%;
+	left: 0px;
+}
+.switch2{
+	position: absolute;
+	top: 37.5%;
+	left: 206px;
+}
+.switch3{
+	position: absolute;
+	top: 37.5%;
+	left: 411px;
+}
+.switch4{
+	position: absolute;
+	top: 37.5%;
+	left: 618px;
+}
+.switch5{
+	position: absolute;
+	top: 37.5%;
+	left: 825px;
+}
+.switch6{
+	position: absolute;
+	top: 83.5%;
+	left: 0px;
+}
+.switch7{
+	position: absolute;
+	top: 83.5%;
+	left: 206px;
+}
+.switch8{
+	position: absolute;
+	top: 83.5%;
+	left: 411px;
+}
+.switch9{
+	position: absolute;
+	top: 83.5%;
+	left: 618px;
+}
+.switch10{
+	position: absolute;
+	top: 83.5%;
+	left: 825px;
+}
+/* 2017-07-17 dongyunlong  生产模块 end */
+/*机组2*/
+#unit2box {
+    position: relative;
+}
+/*机组3*/
+#unit3box {
+    position: relative;
+}
+/*销售合同*/
+.border-PI {
+	border: 1px solid #b4cef8;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+/*#SalesContract .modal-sm{
+	width: 500px;
+}*/
+/*#SalesContract .deleteInfo .modal-sm{
+	width:300px;
+}*/
+#SalesContract .modal-sm .modal-title{
+	text-align: center;
+}
+.border-PI ul.w-100{
+	display: inline-block;
+	width: 100%;
+}
+.border-PI ul.w-100 li{
+	float: left;
+	line-height: 30px;
+}
+
+.border-PI ul.w-100 .w100-title{
+	width: 170px;
+	/*当上方属性flex改变时需要改变*/
+}
+.border-PI ul.w-100 .w100-input{
+	width: 485px;
+	max-width: none;
+}
+.border-PI .btn.btn-blue{
+	width: 60px;
+}
+.border-PI ul.w-100 .redstar{
+	width: 34px;
+	text-align: center;
+}
+.border-PI ul.w-100 .redstar .error{
+	margin-top: 1px;
+	line-height: 17px;
+}
+
+.border-PI ul.w-100 .w100-remark{
+	width: 545px;
+	max-width: none;
+}
+.w-98{
+	width: 98%;
+}
+.mar-top-bottom-10{
+	margin: 10px 0;
+}
+.max-wid-none{
+	max-width: none;
+}
+.btn.btn-blue.max-wid-none-100{
+	width: 100%;
+	max-width: none;
+}
+
+#SalesContract .modal-sm .top{
+	height: 36px;
+}
+#ConstructionModal .modal-form ul{
+	width: 100%;
+}
+.w-60{
+	float: left;
+	width: 60%;
+}
+.w-60 ul{
+	display: flex;
+}
+.w-60 ul li{
+	line-height: 36px;
+}
+.w-60 ul li.text-right{
+	margin-left: 10px;
+}
+.w-39{
+	float: left;
+	width: 39%;
+}
+#SalesContract .modal-sm.wid-600{
+	width: 600px;
+}
+
+
+
+/*客户信息*/
+.top-30{
+	top: -30px;
+}
+.top-20{
+	top: -20px;
+}
+.modal-open .modal.ovy{
+	overflow-y: hidden;
+}
+/*施工单位*/
+.btn.btn-blue.max-wid-110{
+	max-width: 110px;
+}
+/*块检项目*/
+#checkItemType .model-linetitle {
+	top: -10px;
+    left: -3px;
+}
+
+#checkItemType .form-control {
+	max-width: 80%;
+}
+/*快检项目why*/
+#checkItemType .form-control.max-wid-none-100{
+	width: 100%;
+	max-width: none;
+}
+#checkItemType .border-PI ul {
+	width: 100%;
+}
+
+#checkItemType ul li {
+	line-height: 2;
+}
+
+#checkItemType .redstar {
+	flex: 1;
+}
+/*why*/
+#checkItemType .redstar span {
+	margin-left: 5px;
+}
+#checkItemType .error{
+	line-height: 18px;
+}
+
+#checkItemType .table-one tr td {
+	width: 25%;
+}
+
+#checkItemType .txt-astrict {
+	width:8em;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	text-indent: 3em;
+}
+
+#checkItemType .a-btn-select {
+	height: 30px;
+    line-height: 1;
+    margin-bottom: 2px;
+    border-radius: 0 4px 4px 0;
+    max-width: 105px;
+}
+
+#checkItemType .input-border-ra {
+	border-radius: 4px 0 0 4px;
+}
+
+
+#checkItemType .modal {
+	top: 5%;
+}
+/*排产规则首页*/
+#Scheduling .border-PI ul {
+	width: 100%;
+}
+
+/*SchedulingInfo==排产规则==*/
+
+#SchedulingInfo .ul {
+	display: flex;
+	padding: 3px 10px;
+}
+
+#SchedulingInfo #tet-c {
+	text-align: center;
+}
+
+#SchedulingInfo .text-c {
+	text-align: center;
+}
+
+#SchedulingInfo .tab-left {
+	flex: 1.7;
+	height: 30px;
+	line-height: 30px;
+	text-align: right;
+}
+
+#SchedulingInfo .tab-center {
+	flex: 3;
+	height: 30px;
+	/* 20170807  排产规则 dongyunlong start */
+	line-height: 26px;
+	/* 20170807  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo input {
+	padding-left: 2px;
+	/* 20170807  排产规则 dongyunlong start */
+	display:inline-block;
+	/* 20170807  排产规则 dongyunlong end */
+    /* width: 200px; */ 
+    width: 42%;
+    text-indent: 5px;
+}
+
+#SchedulingInfo .tab-right {
+	flex: 0.5;
+	height: 30px;
+	line-height: 30px;
+	/* 20170807  排产规则 dongyunlong start */
+	color: red;
+	/* 20170807  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo .form-control {
+	display: inline-block;
+}
+
+#SchedulingInfo .star {
+	font-size: 19px;
+	cursor: pointer;
+	font-weight: 100;
+	/* 20170811  排产规则 dongyunlong start */
+	color: #ccc;
+	/* 20170811  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo .newRule-content-btn {
+	/* 20170807  排产规则 dongyunlong start */
+	font-size: 13px;
+    padding: 4px 0px;
+    width: 80%;
+	/* margin-top: 6px; */
+    margin-left: 12px;
+	/* font-size: 18px; */
+	/* 20170807  排产规则 dongyunlong end */
+	font-weight: normal;
+	text-align: center;
+}
+
+#SchedulingInfo {
+	/* 20170807  排产规则 dongyunlong start */
+	width: 100%;
+	min-height: 435px;
+	/* 20170807  排产规则 dongyunlong end */
+	margin: 5px;
+	border: 1px solid #b4cef8;
+	padding: 15px 0;
+	position: relative;
+}
+
+#SchedulingInfo .label-div {
+	background: #fff;
+	/*20170626 需求变更-48 wanghy start*/
+	/*color: #3f9fd9;*/
+	color: #4472C4;
+	/*20170626 需求变更-48 wanghy end*/
+	position: absolute;
+	/* 20170807  排产规则 dongyunlong start */
+	top: -30px;
+	left: 12px;
+	/* 20170807  排产规则 dongyunlong end */
+	padding: 0 5px;
+	font-size: 13px;
+}
+
+#SchedulingInfo .btn {
+	border-color: #FFFFFF;
+	font-size: 14px;
+}
+
+#SchedulingInfo .btn-default {
+	border: 1px solid #CCCCCC;
+}
+
+/*.modal-header {
+	padding: 10px;
+	border-bottom: 0px;
+}*/
+/*.modal-title {
+	margin-top: 10px;
+}*/
+
+
+#SchedulingInfo .border-PI {
+	padding: 12px 0px;
+}
+
+#SchedulingInfo .myForm3 .modal-body {
+	padding: 0px;
+}
+
+#SchedulingInfo .modal-footer {
+	padding: 12px 0 0 0;
+	margin-bottom: 15px
+}
+
+#SchedulingInfo .modal {
+	top: 0%;
+}
+
+#nav-case {
+	cursor: pointer;
+}
+
+
+/*轮播左右箭头*/
+
+#SchedulingInfo>div.content-rule>div.al {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 170px;
+	left: -30px;
+}
+
+#SchedulingInfo>div.content-rule>div.al>div.arrowsLeft {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #000000;
+	opacity: 0.4;
+	cursor: pointer;
+	text-align: right;
+	display: none;
+}
+
+#SchedulingInfo>div.content-rule>div.al>div.arrowsLeft>span.glyphicon {
+	font-size: 24px;
+	padding-right: 5px;
+	line-height: 60px;
+	color: #FFFFFF;
+}
+
+#SchedulingInfo>div.content-rule>div.al>div.arrowsLeft {
+	display: block;
+}
+
+#SchedulingInfo>div.content-rule>div.ar {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 170px;
+	right: -30px;
+}
+
+#SchedulingInfo>div.content-rule>div.ar>div.arrowsRight {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #000000;
+	opacity: 0.4;
+	cursor: pointer;
+	text-align: left;
+	display: none;
+}
+
+#SchedulingInfo>div.content-rule>div.ar>div.arrowsRight>span.glyphicon {
+	font-size: 23px;
+	padding-left: 5px;
+	line-height: 60px;
+	color: #FFFFFF;
+}
+
+#SchedulingInfo>div.content-rule>div.ar>div.arrowsRight {
+	display: block;
+}
+
+
+/*-----------------vue过度效果----------------*/
+
+.expand-transition {
+	transition: all 1s ease;
+	overflow: hidden;
+}
+
+
+/*---- .expand-enter 定义进入的开始状态----.expand-leave 定义离开的结束状态 -----*/
+
+.expand-enter,
+.expand-leave {
+	height: 0;
+	opacity: 0;
+}
+
+
+/*----------------添加规则导航栏---------------*/
+/* 20170807  排产规则 dongyunlong start */
+#SchedulingInfo div.nav-rule {
+	display: inline-block;
+	margin-top: -10px;
+    max-width: 93.4%;
+}
+
+#SchedulingInfo div.nav-rule>div.nav-rule-lagle {
+	margin-right: 12px;
+/* 20170807  排产规则 dongyunlong end */
+	border: 1px solid #4472c4;
+	/*position: relative;*/
+	/* 20170807  排产规则 dongyunlong start */
+	/*padding: 8px 20px;*/
+	margin-top:10px;
+	border-radius: 4px;
+	/* 20170807  排产规则 dongyunlong end */
+    height: 30px;
+    font-size: 14px;
+    background: #4472c4;
+    padding: 3px 5px 4px 30px;
+    color: #fff;
+    display: inline-block;
+	height:100%;
+}
+/* 20170807  排产规则 dongyunlong start */
+#SchedulingInfo div.nav-rule>div>span {
+/* 20170807  排产规则 dongyunlong end */
+	font-size: 14px;
+	/*position: absolute;*/
+	right: 1px;
+	top: 1px;
+	cursor: pointer;
+	/*color: #b4cef8;*/
+}
+
+
+/*添加规则具体内容*/
+
+#SchedulingInfo>div.content-rule {
+	width: 100%;
+	/* 20170807  排产规则 dongyunlong start */
+	/* margin-top: 10px; */
+	/* 20170807  排产规则 dongyunlong end */
+	/*border: 1px solid #b4cef8;*/
+    margin-bottom: 48px;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex {
+	display: flex;
+	/* 20170807  排产规则 dongyunlong start */
+	max-height: 450px;
+	/* 20170807  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.existing-div {
+	display: flex;
+	transition: all 0.5s ease-in-out;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule {
+	/* width: 242px; */
+	/* 20170807  排产规则 dongyunlong start */
+	margin: 5px 0 15px 10px;
+	/*margin-right: 0px;*/
+	/*border: 1px solid #b4cef8;*/
+	text-align: center;
+	/* padding: 5px; */
+	/* width: 1033px; */
+    max-height: 412px;
+    /* 20170807  排产规则 dongyunlong end */
+	/*animation: initRule 1s ease-in-out;*/
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>a.addRule-btn {
+	margin: 25px;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>h3 {
+	color: red;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.newRule-content-new>div.scheduling-scroll>div.newRule-content-min {
+	width: 95%;
+	margin: 15px 6px;
+	border: 1px solid #b4cef8;
+	padding: 5px 0px;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.newRule-content-min>ul>li>input.alias {
+	width: 100%;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div>div>div.newScope {
+	width: 95%;
+	margin: 10px 6px;
+	border: 1px solid #b4cef8;
+}
+#SchedulingInfo div.scheduling-scroll{
+	max-height: 298px;
+	overflow-y: auto;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.scheduling-scroll>div.newRule-content-min>ul>li>input {
+	width: 44%;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.scheduling-scroll>div.newRule-content-min>div.addRule-btn-min>a {
+	border: 0px;
+	margin-bottom: 10px;
+	/* 20170807  排产规则 dongyunlong start */
+	width: 35%;
+	/* 20170807  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.saveRule-btn {
+	/*margin-bottom: 10px;*/
+	display: inline-block;
+	width: 100%;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.saveRule-btn>a {
+	font-size: 14px;
+	border: 0px;
+	width: 100%;
+	max-width: none;
+}
+
+
+/*保存规则范围*/
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.scheduling-scroll>div.save-scope-div>div.newScope {
+	position: relative;
+	/* 20170807  排产规则 dongyunlong start */
+	margin-top: 15px;
+	/* 20170807  排产规则 dongyunlong end */
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.save-scope-div>div.newScope>span.glyphicon-remove {
+	font-size: 12px;
+	position: absolute;
+	right: 3px;
+	top: 12px;
+	cursor: pointer;
+	display: none;
+	color: #b4cef8;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.initBtnRule-div>div.initBtnRule>div.newRule-content>div.save-scope-div>div.newScope:hover>span.glyphicon-remove {
+	display: block;
+	color: #b4cef8;
+}
+
+#addRule-error {
+	width: 100%;
+	margin: 10px 0px 0px;
+	position: relative;
+	height: 12px;
+}
+
+#addRule-error>div.error {
+	margin-left: 30%;
+	
+}
+
+#addRule-error-scope {
+	width: 100%;
+	margin: 10px 0px;
+	position: relative;
+	height: 12px;
+}
+
+#addRule-error-scope>div.error {
+	margin-left: 30%;
+}
+
+/*现存规则*/
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.existing-div>div.existing-rule {
+	/* 20170807  排产规则 dongyunlong start */
+	width: 261px;
+	margin: 5px 10px 15px 10px;
+	/* 20170807  排产规则 dongyunlong end */
+	margin-right: 0px;
+	text-align: center;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.existing-div>div.existing-rule>div.existing-hegiht {
+	border: 1px solid #b4cef8;
+	padding: 1px;
+	/* 20170807  排产规则 dongyunlong start */
+	margin-right: 15px;
+	/* 20170807  排产规则 dongyunlong end */
+	height:370px;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.existing-div>div.existing-rule>div.existing-hegiht>div.existing-rule-min {
+	width: 100%;
+	/*margin-top: 10px;*/
+    height: 33px;
+    line-height: 30px;
+    text-align: left;
+}
+
+#SchedulingInfo>div.content-rule>div.content-flex>div.existing-div>div.existing-rule>div.existing-hegiht>div.existing-rule-min>ul>li.tab-left {
+	text-align: center;
+}
+
+
+/*保存/取消按钮*/
+
+#SchedulingInfo>div.save-rule {
+	/*width: 100%;*/
+	/*text-align: center;*/
+	/*margin-top: 20px;*/
+}
+
+#SchedulingInfo>div.save-rule>a {
+	border: 0px;
+	/*margin-right: 20px;*/
+}
+
+#SchedulingInfo>div.save-rule>a.sa-ru-btn {
+	width: 100px;
+	border: 1px solid #CCCCCC;
+}
+
+
+/*模态框*/
+
+/* #modal {
+	width: 600px;
+} */
+
+#table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.table>tbody>tr>td {
+	/*cursor: pointer;*/
+	/*font-size: 16px;*/
+	/*width: 80px;*/
+	font-size: 12px;
+}
+
+#paging {
+	display: flex;
+	justify-content: space-between;
+}
+
+#paging>ul {
+	margin: 5px 20px;
+	height: 32px;
+	line-height: 32px;
+	letter-spacing: 2px;
+}
+
+#selectSave {
+	text-align: center;
+	padding: 10px;
+}
+
+#selectSave>button {
+	width: 120px;
+	margin-right: 10px;
+}
+
+#rule-modal-txt {
+	height: 32px;
+	line-height: 32px;
+	text-align: right;
+	padding-right: 0px;
+}
+
+#modal-select-btn>button {
+	width: 100px;
+	margin-right: 20px;
+}
+
+#SchedulingInfo #myModal {
+	top: 25%;
+	left: 15%;
+}
+
+#SchedulingInfo #myModal .modal-dialog .modal-content {
+	width: 350px;
+	height: 120px;
+}
+
+#SchedulingInfo #myModal .modal-content .modal-header {
+	padding: 5px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#SchedulingInfo #myModal .modal-content .modal-header .modal-title {
+	text-align: left;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	font-size: 1.4em;
+}
+
+#SchedulingInfo #myModal .modal-content .modal-header #select-modal-body .select-modal-txt {
+	line-height: 50px;
+	font-weight: bold;
+	text-align: left;
+	letter-spacing: 5px;
+	font-size: 1.4em;
+	padding-left: 10px;
+}
+
+
+/*模态框删除*/
+
+#SchedulingInfo #del-modal #del-modal-btn {
+	top: 25%;
+}
+
+#SchedulingInfo .del-modal-content .modal-header {
+	padding: 5px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#SchedulingInfo .del-modal-content .modal-title {
+	text-align: left;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	font-size: 1.4em;
+}
+
+#SchedulingInfo #del-modal .del-modal-content .modal-header .modal-title .close {
+	margin-top: -6px;
+	margin-right: 20px;
+}
+
+#SchedulingInfo #del-modal .del-modal-content .modal-body {
+	padding: 10px 0;
+	text-align: center;
+	letter-spacing: 5px;
+	font-size: 1.4em;
+}
+
+#SchedulingInfo #del-modal #del-modal-content #modal-footer {
+	text-align: right;
+}
+
+#SchedulingInfo #del-modal .del-modal-content .modal-footer .wid-100 {
+	margin-right: 15px;
+	margin-top: 15px;
+}
+
+#SchedulingInfo #del-modal #del-modal-content {
+	width: 400px;
+}
+
+
+/*移动标签动画*/
+
+@keyframes buzz-out {
+	0% {
+		transform: translateX(2px) rotate(-5deg);
+	}
+	20% {
+		transform: translateX(1px) rotate(5deg);
+	}
+	40% {
+		transform: translateX(0.5px) rotate(-5deg);
+	}
+	60% {
+		transform: translateX(0px) rotate(5deg);
+	}
+	80% {
+		transform: translateX(-0.5px) rotate(-5deg);
+	}
+	100% {
+		transform: translateX(-2px) rotate(0deg);
+	}
+}
+
+@-webkit-keyframes buzz-out {
+	0% {
+		-webkit-transform: translateX(2px) rotate(-5deg);
+	}
+	20% {
+		-webkit-transform: translateX(1px) rotate(5deg);
+	}
+	40% {
+		-webkit-transform: translateX(0.5px) rotate(-5deg);
+	}
+	60% {
+		-webkit-transform: translateX(0px) rotate(5deg);
+	}
+	80% {
+		-webkit-transform: translateX(-1px) rotate(-5deg);
+	}
+	100% {
+		-webkit-transform: translateX(-2px) rotate(0deg);
+	}
+}
+
+/*模态框自己设计*/
+.modal-div-nx {
+	position: fixed;
+	top: 0;bottom: 0;
+	left: 0;right: 0;
+	background-color: #000000;
+	opacity: 0.3;
+}
+
+.modal-content-nx {
+	width: 400px;
+	position: fixed;
+	top: 25%;left: 35%;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	animation: modal-appear-up-down 0.5s ease-in-out;
+	
+}
+
+.modal-title-nx {
+	border-bottom: 0.5px solid #CCCCCC;
+	padding: 10px;
+	position: relative;
+}
+
+.modal-title-close-nx {
+	position: absolute;
+	top: 10px;right: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	color: #CCCCCC;
+}
+
+.modal-title-close-nx:hover span.close-nx {
+	color: #000000;
+}
+
+.modal-body-nx {
+	padding: 10px;
+	text-align: center;
+}
+
+.modal-footer-nx {
+	border-top: 0.5px solid #CCCCCC;
+	text-align: right;
+	padding: 10px;
+}
+
+.modal-footer-nx .modal-footer-btn-confirm-nx {
+	background-color: #337ab7;
+	border: 0.5px solid #2e6da4;
+	border-radius: 3px;
+	width: 80px;
+	color: #FFFFFF;
+	margin-right: 10px;
+}
+
+.modal-footer-nx .modal-footer-btn-confirm-nx:hover {
+	background-color: #286090;
+	border: 0.5px solid #204d74;
+	width: 90px;
+}
+
+.modal-footer-nx .modal-footer-btn-close-nx {
+	background-color: #FFFFFF;
+	border: 0.5px solid #CCCCCC;
+	border-radius: 3px;
+	width: 80px;
+	color: #000000;
+}
+
+.modal-footer-nx .modal-footer-btn-close-nx:hover {
+	background-color: #CCCCCC;
+	border: 0.5px solid #204d74;
+	width: 90px;
+}
+
+/*生产委托*/
+.w-43{
+	width: 43%;
+}
+/*工地联系人modal*/
+#ContactsModal .modal-sm{
+	width: 550px;
+}
+#SpecialsModal .modal-sm{
+	width: 500px;
+}
+/*#SpecialsModal .modal-sm .div-scroll{
+	max-height: 151px;
+}*/
+#NamesModal .pull-left ul{
+	width:33%;
+}
+#NamesModal .pull-right{
+	width:22%;
+}
+
+.height-30{
+	height: 30px;
+}
+.input-addon{
+	height: 30px;
+	padding:6px 12px;
+	font-size:14px;
+	font-weight:400;
+	line-height:1;
+	color:#555;
+	text-align:center;
+	background-color:#eee;
+	border:1px solid #ccc;
+	border-radius:4px;
+	display:inline-block;
+}
+.max-scoll-244{
+	max-height: 244px;
+}
+.max-scoll-172{
+	max-height: 172px;
+}
+.max-scoll-148{
+	max-height: 148px;
+}
+.t-30{
+	top: 30%;
+}
+/*原材块捡-why*/
+.imgDiv {
+	display:inline-block;
+	width:155px;
+	margin-right: 40px;
+	height: 80px;
+	border: 1px solid #CCCCCC;
+	text-align: center;	
+}
+.imgDiv:last-child{
+	margin-right: 0px;
+}
+.imgDiv .glyphicon-plus {
+	line-height: 76px;
+	font-size: 25px;
+	cursor: pointer;
+	color: #388186;
+}
+.mar-bottom-12{
+	margin-bottom: 12px;
+}
+/*原材看板-why*/
+#scanMaterial{
+	position: relative;
+}
+/*时间标识*/
+#timeTop{
+	position: absolute;
+	right: 70px;
+	top: 15px;
+	display: inline-block;
+	font-size: 15px;
+}
+/*时间标识*/
+#titleTop{
+	position: absolute;
+	left: 55px;
+	top: 15px;
+	display: inline-block;
+	font-size: 15px;
+}
+#titleTop span{
+	margin-right: 80px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.login-error{
+	color:red;
+}
+.max-scoll-131{
+	max-height: 131px;
+}
+#newAnKou .wid-100,#mingKou .wid-100{
+	width: 100px;
+}
+#material .wid-20p{
+	width:20%;
+}
+#newAnKou .ankou-btn,#mingKou .ankou-btn{
+	padding-left:14em;
+}
+#carManagement .mini-btn{
+	padding: 4px 10px;
+    border-color: #ccc;
+    margin-bottom: 0;
+}
+/*20170920 wanghy 样式修改 start*/
+/*#carManagement .modal{
+	top: 0;
+}*/
+/*20170920 wanghy 样式修改 end*/
+.max-hei-337{
+	max-height: 337px;
+}
+.carManagement .table{
+	margin-bottom: 0;
+}
+.mar-top-2{
+	margin-top: 2px;
+}
+#carManagement .form-control.wid-514{
+	width: 514px;
+}
+#divVenderSub .form-control,#divDriverNameSub .form-control,#divDriverTypeSub .form-control,#divDriverTimeNameSub .form-control,#divVenderIdSub .form-control{
+	max-width: 514px;
+}
+
+
+/*.imgBorder {
+	margin: 0 14px;
+	position: relative;
+	width: 78px;
+	height: 78px;
+	display: inline-block;
+}
+#material .imgBorder{
+	margin: 0;
+	position: relative;
+	width: 155px;
+	height: 78px;
+	margin-right: 40px;
+	display: inline-block;
+}
+#material .imgBorder:last-child{
+	margin-right: 0px;
+}*/
+.uploadBox {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.uploadBox:before {
+	width: 5px;
+	height: 35px;
+	color: lavender;
+}
+
+.uploadBox:after {
+	width: 35px;
+	height: 5px;
+	color: lavender;
+}
+
+.uploadBox:after,
+.uploadBox:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	/*position+transform 实现块元素百分比下居中*/
+	/* 20180109 dongyunlong 1.0优化-104 start */
+	background-color: #388186;
+	/* 20180109 dongyunlong 1.0优化-104 end */
+}
+
+#uploaderInput{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+}
+#updateloaderInput{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+}
+.pic-container{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #CCCCCC;
+	position: relative;
+	margin-right: 9px;
+}
+.pic-container img{
+	width: 100%;
+	height: 100%;
+}
+.pic-container label{
+	width: 100%;
+	height: 100%;
+	
+}
+.delete-btn{
+	position: absolute;
+	background: crimson;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	transform: rotate(45deg);
+	top: -10px;
+	right: -10px;
+	z-index: 1;
+}
+.delete-btn:before{
+	width: 2px;
+	height: 15px;
+}
+.delete-btn:after{
+	width: 15px;
+	height: 2px;
+}
+.delete-btn:before,.delete-btn:after{
+	content: " ";
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: white;
+	position: absolute;
+}
+.upReplacePic{
+	opacity: 0;
+}
+.replacePic{
+	opacity: 0;
+}
+
+/*
+
+.imgBorder a.delImg{
+	position: absolute;
+	background: crimson;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	transform: rotate(45deg);
+	top: -10px;
+	right: -10px;
+	z-index: 1;
+	cursor: pointer;
+	display: none;
+}
+.delImg:before{
+	width: 2px;
+	height: 15px;
+}
+.delImg:after{
+	width: 15px;
+	height: 2px;
+}
+.delImg:before,.delImg:after{
+	content: " ";
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: white;
+	position: absolute;
+}
+.imgBorder img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.imgBorder span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #388186;
+	text-align: center;
+	font-size: 25px;
+	line-height: 78px;
+}
+
+.imgBorder input {
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.getImg {
+	width: 100%;
+	height: 78px;
+}*/
+#showDriverNameModal .pull-left ul{
+	width:33%;
+}
+#showDriverNameModal .pull-right{
+	width:22%;
+}
+#updateshowDriverNameModal .pull-left ul{
+    width:33%;
+}
+#updateshowDriverNameModal .pull-right{
+    width:22%;
+}
+/*input file 隐藏*/
+#carManagement .replacePic{
+	display: none;
+}
+#driverManagement .replacePic{
+	display: none;
+}
+/*img图片大小*/
+.imgGroup{
+	width: 100px;
+	height: 100px;
+}
+.addimgGroup{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #388186;
+	text-align: center;
+	font-size: 65px;
+	line-height: 100px;
+	top: 0;
+	left: 0;
+}
+/*表格中带查看页鼠标变手 start*/
+/*采购合同*/
+.purchasecontract .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*过磅记录*/
+.ponderation .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*原材快检*/
+#material .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*客户信息*/
+#Customer .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*施工单位*/
+#Construction .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*销售合同*/
+#SalesContract .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*生产委托*/
+#ProductionCommission .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*生产计划*/
+#ProductionDesign .table>tbody>tr>td{
+	cursor: pointer;
+}
+/*车辆*/
+/*#carManagement .table>tbody>tr>td{
+	cursor: pointer;
+}*/
+/*司机*/
+/*#driverManagement .table>tbody>tr>td{
+	cursor: pointer;
+}*/
+/*表格中带查看页鼠标变手 end*/
+
+/*组织机构样式变更*/
+.organization .pad-30-10{
+	padding: 30px 10px;
+}
+.organization .pad-30-10 h3{
+	line-height: 1.5;
+}
+/*密码框直接删除密码按钮*/
+.reset-btn{
+ position: absolute;
+ top: 4px;
+ right: 0px;
+ width: 22px;
+ cursor: pointer;
+}
+.reset-btn span{
+ font-size: 16px;
+}
+/**/
+#powermanger .user-list .item.tree-ui{
+	padding: 0;
+	position: relative;
+}
+#ponderation #executeResultMessageForm{
+	top: 30%;
+}
+/*模糊查询车牌号码 bug299 wanghy 20170612 -start*/
+.search-group{
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+.search-group ul#resultBox{
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 100%;
+	max-height:165px;
+	overflow-y: auto;
+	margin-top: 0px;
+	display: inline-block;
+}
+.search-group ul#resultBox2{
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 100%;
+	max-height:165px;
+	overflow-y: auto;
+	margin-top: 0px;
+	display: inline-block;
+}
+
+/* 20170715 yuyue 需求变更64 start */
+.search-group ul#resultBox3{
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 100%;
+	max-height:165px;
+	overflow-y: auto;
+	margin-top: 0px;
+	display: inline-block;
+}
+/* 20170715 yuyue 需求变更64 end */
+
+.search-group .search-list{
+	background-color: white;
+	width: 100%;
+	text-align: left;
+	padding: 6px 12px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid lavender;
+    border-top: none;
+    cursor: pointer;
+}
+
+.search-group .search-list.highlight{
+	background: lightgray;
+}
+/*2017-07-14 yanghong start */
+.productionCommission-urgent{
+	display: flex;
+	flex-direction: column;
+}
+ul.productionCommission-urgent ul{
+	flex:1;
+	-ms-flex:1;
+	display:block;
+}
+ul.productionCommission-urgent ul:last-child{
+    margin-left: 65px;
+    margin-top: 12px;
+}
+ul.productionCommission-urgent ul:first-child{
+    margin-left: 65px;
+}
+/*2017-07-14 yanghong end */
+/*模糊查询车牌号码 bug299 wanghy 20170612 -end*/
+
+/* 20170630 需求变更-35 dongyunlong start */
+#organization label.radio-inline input[type=radio] {
+	top:7px;
+	margin-left: -15px;
+}
+/* 20170630 需求变更-35 dongyunlong end */
+
+/* 20170712 yuyue 需求变更64 start*/
+#ponderation .myForm5 .otherReason{
+	width: 100%;
+    align-items: flex-start;
+    display: initial;
+    margin-left: 13.5%;
+}
+#ponderation .myForm5 .otherReason .write{
+	width: 77%;
+	margin-right: 1rem;
+}
+#ponderation .myForm5 .otherReason textarea{
+	max-width: initial;
+}
+/* 20170712 yuyue 需求变更64 end*/
+/*20170710 wanghongyu 名称变更对应 start*/
+.border-PI ul li.checkli{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/*20170710 wanghongyu 名称变更对应 end*/
+
+/*20170717 wanghy bug-416 start*/
+/*单据量单据号输入框样式修改*/
+#ponderation .btn.wid-100.btn-choose.mar-right-10{
+	margin-right: 10px;
+}
+/*处理方式模态内容样式修改*/
+#ponderation h3.fontsize-24{
+	font-size: 24px;
+}
+/*处理方式模态大小样式修改*/
+#ponderation .modal-sm.wid-450{
+	width: 450px;
+}
+/*20170717 wanghy bug-416 end*/
+
+/* 20170630 需求变更-35 dongyunlong start */
+#organization label.radio-inline input[type=radio] {
+	top:7px;
+	margin-left: -15px;
+}
+/* 20170630 需求变更-35 dongyunlong end */
+
+#carManagement #carManagementTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#carManagement #carManagementTable.table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+.overflow-modal-status{
+	overflow:hidden;
+}
+/*2017-08-01 杨红  start*/
+.line-title-scheduling{
+	background: #fff;
+    color: #4472C4;
+    position: absolute;
+    top: 12px;
+    left: 30px;
+    padding: 0 5px;
+    font-size: 13px;
+}
+.line-title-scheduling-show{
+    color: #4472C4;
+    position: absolute;
+    top: 85px;
+    left: 30px;
+    background: #fff;
+    padding: 0 5px;
+    font-size: 13px;
+    z-index:999;
+}
+.scheduling-show-tag{
+	margin-top: 8px;
+	margin-left: 25px;
+	/* 20170807  排产规则 dongyunlong start */
+    font-size: 14px;
+    /* 20170807  排产规则 dongyunlong end */
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+	background: #fafafa;
+	padding: 8px 10px;
+    color: #000;
+    font-weight: 500;
+    line-height: 0;
+}
+#Scheduling div.save-rule{
+    width: 223px;
+    height: 32px;
+}
+#Scheduling .pull-left{
+	margin-left: 7px;
+}
+#Scheduling div.content-all div.schedling-content-item{
+	max-height: 355px;
+    overflow: auto;
+    height: 355px;
+    border: 1px solid #b4cef8
+}
+#Scheduling .scheduling-show-tag input.rulestime{
+    height: 24px;
+    margin: -7px 0;
+}
+#Scheduling .schedling-content-item .table tr>td{
+    height: 30px;
+    border:none;
+}
+#Scheduling .schedling-content-item .table tr>td .tab-form-label{
+    height: 22px;
+    width: 85px;
+    padding:2px 12px;
+}
+#Scheduling .schedling-content-item .table tr>td.tab-title{
+    padding:10px 0;
+    font-size: 14px;
+}
+#Scheduling .schedling-content-item .table-striped>tbody>tr:nth-of-type(even){
+    background:#f7fbff;
+}
+#Scheduling .schedling-content-item .table-striped>tbody>tr:nth-of-type(odd){
+    background:#fff;
+}
+.scheduling-show-tag span{
+	/* 20170807  排产规则 dongyunlong start */
+	/*padding-right: 12px;*/
+	/* 20170807  排产规则 dongyunlong end */
+}
+.line-title-scheduling-update{
+	background: #fff;
+    color: #4472C4;
+    position: absolute;
+    /* 20170807  排产规则 dongyunlong start */
+    top: -9px;
+    left: 55px;
+    /* 20170807  排产规则 dongyunlong end */
+    padding: 0 5px;
+    font-size: 13px;
+}   
+.scheduling-edit{
+	display: flex;
+	flex-direction: column;
+}
+.scheduling-edit-name{
+	flex: 1;
+	/* 20170823  排产规则 dongyunlong start */
+	display: flex;
+	/* 20170823  排产规则 dongyunlong end */
+	text-align: left;
+	margin-left: 10px;
+}
+.scheduling-edit-date{
+	flex: 1;
+	text-align: left;
+	margin-left: 10px;
+}
+.scheduling-edit-dimension{
+	flex: 1;
+	text-align: left;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	/* 20170807  排产规则 dongyunlong start */
+	margin-top: 5px;
+	/* 20170807  排产规则 dongyunlong end */
+}
+/* 20170823  排产规则 dongyunlong start */
+.scheduling-edit ul,.scheduling-edit li{
+	display: inline-block;
+}
+.scheduling-edit .scheduling-edit-name ul,.scheduling-edit li{
+	display: inline-flex;
+    min-width: 60px;
+    margin-right: 5px;
+    line-height: 28px;
+    vertical-align: top;
+}
+/* 20170823  排产规则 dongyunlong end */
+.scheduling-name-operation{
+	display:none;
+}
+.scheduling-name-operation li{
+	display: inline-block;
+}
+.scheduling-name-operation ul>li.first{
+	font-size: 18px;
+}
+.scheduling-name-result{
+	display:none;
+    margin-top: 20px;
+}
+.scheduling-content{
+    width: 23%;
+    padding: 1% 2%;
+    border: 1px solid #b4cef8;
+    display:none;
+}
+.scheduling-name-result span{
+	font-size:16px;
+}
+.scheduling-WD-modal li{
+	display: inline-block;
+	font-size:16px;
+}
+.scheduling-WD-modal-name p{
+	font-size:16px;
+}
+.scheduling-WD-modal-name{
+    border: 1px solid #b4cef8;
+    width: 30%;
+    margin: 1% auto;
+    margin-left: 38%;
+    padding: 1% 0px;
+}
+
+.scheduling-WD-modal input{
+    width: 265px;
+	max-width: 270px;
+}
+.borderSolid{
+	border: 1px solid #b4cef8;
+}
+.padding-2{
+	padding:2%;
+}
+.padding-6{
+	margin-left: 6%;
+}
+.borderSolid div.line-title-scheduling{
+	background: #fff;
+    color: #4472C4;
+    position: absolute;
+    top: -10px;
+    left: 13px;
+    padding: 0 5px;
+    font-size: 13px;
+}
+
+/*2017-08-01 杨红  end*/
+/*20170801 wanghy 发货监控页面新增 start*/
+.btn-right-none{
+	padding: 4px 10px;
+}
+.wid-548{
+	width: 548px;
+	max-width: none;
+}
+.form-control.white{
+	background-color: #FFFFFF;
+}
+.pad-7-10{
+	padding: 7px 10px;
+}
+.wid-90{
+	width: 90px;
+}
+.wid-70{
+	width: 70px;
+}
+.pad-sp{
+	padding: 12px 53px;
+}
+#deliveryMonitorTable thead td{
+	white-space:nowrap;
+}
+#returnRecordTable thead td{
+	white-space:nowrap;
+}
+#returnRecordTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#returnRecordTable.table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+#returnRecordTable.table>tbody>tr>td.checkModal{
+	cursor: pointer;
+}
+.line-height-30{
+	line-height: 30px;
+}
+.wid-140{
+	width: 140px;	
+}
+/*20170920 wanghy 修改label通用样式 start*/
+.form-control-inputLeft{
+	float: left;
+	height: 30px;
+	padding: 6px 12px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	display: inline-block;
+	width: 170px;
+	line-height: 18px;
+}
+/*20170920 wanghy 修改label通用样式 end*/
+.form-control-inputLeft.wid-548{
+	width: 548px;
+}
+label.form-control-inputLeft{
+	margin-bottom: 0;
+}
+	
+/*20170801 wanghy 发货监控页面新增 end*/
+/*20170802 wanghy 表格样式表头调整bug-447 start*/
+table thead td{
+	white-space:nowrap;
+}
+/*20170802 wanghy 表格样式表头调整bug-447 end*/
+
+
+/*生产计划样式调整 start*/
+/*20170919 wanghy bug-266 start*/
+.hintinfo{
+	display: inline-block;
+    /*float: right;*/
+    margin-top: 1%;
+    color: #4472C4;
+    font-size:14px;
+    position: absolute;
+    right: 30px;
+}
+/*20170919 wanghy bug-266 end*/
+
+.disflex_center{
+	display: flex;
+    align-items: center;
+}
+
+/*生产计划样式调整 end*/
+
+/*20170808 wanghy 外协出料统计 start*/
+.totalviews{
+	position: relative;
+	float: left;
+	min-width: 20%;
+	border: 1px solid palevioletred;
+	padding: 4px 6px;
+	border: 1px solid lightgrey;
+	box-shadow: 1px 1px 1px lightgrey;
+	white-space:nowrap;
+}
+.totalviews:before {
+    content: ' ';
+    display: inline-block;
+    height: 100%;
+    width: 1%;
+    vertical-align: middle;
+}
+.totalviews ul{
+	vertical-align: middle;
+	display: inline-block;
+}
+.mar-left-50{
+	margin-left: 50px;
+}
+.fl-r .wid-110{
+	width: 110px;
+	max-width: none;
+}
+.wid-220{
+	width: 220px;
+}
+/*20170808 wanghy 外协出料统计 end*/
+/*20170809 wanghy 客户信息，施工单位，销售合同，生产委托，生产计划，退货记录，发货监控，车辆管理，司机管理 错误验证时没有边框 start*/
+#Customer .error,#Construction .error,#SalesContract .error,#ProductionCommission .error,#ProductionDesign .error,#deliveryMonitor .error,#returnRecord .error,#carManagement .error,#driverManagement .error{
+	border: none;
+}
+.specialTextarea{
+	width: 208px;
+	max-width: none;
+	margin-top: 6px;
+}
+.pad-tb-10 {
+	padding: 10px 0;
+}
+/*20170809 wanghy 客户信息，施工单位，销售合同，生产委托，生产计划，退货记录，发货监控，车辆管理，司机管理 错误验证时没有边框 end*/
+/*20170809 生产委托 dongyunlong start*/
+#ProductionCommission .productionCommission-urgent .productionCommission-urgent-status{
+	margin-left: 32px;
+}
+/*20170809 生产委托 dongyunlong end*/
+/* 20170807  排产规则 dongyunlong start */
+#SchedulingInfo div#save-rule{
+	/* 20170823  排产规则 dongyunlong start */
+	position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: left;
+    padding: 10px 20px;
+    border-top: 1px solid #e5e5e5;
+}
+#SchedulingInfo div#save-rule>a.btn{
+	width: 35%;
+    margin-left: 5px;
+    max-width: 100px;
+    /* 20170823  排产规则 dongyunlong end */
+}
+#SchedulingInfo .border-all{
+	position: absolute;
+    border: 1px solid #b4cef8;
+    height: 94%;
+    width: 96%;
+    top: 3%;
+    left: 2%;
+    padding: 15px;
+}
+#SchedulingInfo #newRule-content{
+	width: 245px;
+	/* border: 1px solid #b4cef8; */
+	/*margin-top: 5px;*/
+	min-height: 222px;
+    padding: 1px;
+    height: 100%;
+}
+.SchedulingInfo-wrap{
+	width: 100%;
+	border: 1px solid #b4cef8;
+    padding: 15px;
+    margin-bottom: 10px;
+    min-height: 470px;
+}
+#SchedulingInfo #addRule-error{
+	height: 25px;
+}
+#SchedulingInfo #addRule-error>div.error{
+	margin-left: 22%;
+	margin-top: -8px;
+}
+#addRule-error-scope>div#addRuleError{
+	margin-top: -4%;
+	margin-left: 21%;
+}
+#Scheduling .border-PI .content-left{
+	margin-right: 30px;
+    flex: 1;
+    /*20170912 wanghy 字体过大导致换行 start*/
+    font-size: 14px;
+    /*20170912 wanghy 字体过大导致换行 end*/
+    line-height: 25px;
+}
+#Scheduling .border-PI .content-right-start{
+    flex: 1.4;
+    font-size: 20px;
+}
+
+#SchedulingInfo div.nav-rule>div.active{
+	margin-left: 0px;	
+}
+#SchedulingInfo a.addRule-btn {
+	padding: 5px 29px;
+	margin-top: -1px;
+	/*margin-left: -3px;*/
+}
+#SchedulingInfo .newRule-content .newRule-content-title{
+	flex: 2.1;
+    line-height: 32px;
+}
+#SchedulingInfo .newRule-content .newRule-content-msg{
+	flex: 1.1;
+    line-height: 40px;
+}
+#SchedulingInfo .scheduling-type-content{
+	padding: 10px 50px;
+	text-align: left;
+}
+#SchedulingInfo .newRule-content-min-btn{
+	padding: 3px 5px;
+    /*margin-top: -4px;*/
+}
+#Scheduling .schedling-content-item{
+    margin-top: 10px;
+    margin-left: 25px;
+	width: 246px;
+    padding: 1px;
+}
+ .xdsoft_datetimepicker  .xdsoft_timepicker{
+	width: 70px;
+}
+.xdsoft_datetimepicker  .xdsoft_timepicker .xdsoft_prev, .xdsoft_datetimepicker  .xdsoft_timepicker .xdsoft_next{
+	margin-left: 20px;
+}
+#ProductionCommission .productionCommission-urgent .productionCommission-urgent-status{
+	margin-left: 32px;
+}
+#Scheduling .scheduling-show-tag input{
+	width: 88px;
+    text-align: center;
+}
+#Scheduling .scheduling-show-tag div.timeerror{
+	display: inline-block;
+    margin-left: 15px;
+    color: red;
+    vertical-align: middle;
+}
+#Scheduling .scheduling-show-tag #save-rule{
+	float: right;
+	width: 22%;
+	display:flex;
+}
+#Scheduling .scheduling-show-tag #save-rule a.btn{
+	width: 50%;
+	max-width: 100px;
+}
+/* 20170807  排产规则 dongyunlong end */
+
+/* 新增规则 页面优化 start */
+#SchedulingInfo .rules-name{
+    width: 201px;
+    max-width: unset;
+}
+#SchedulingInfo .rules-time{
+    width: 88px;
+    text-align: center;
+    padding-right: 26px;
+}
+#SchedulingInfo div.nav-rule .nav-rule-lagle:hover {
+    background: #ececec;
+    border: 1px solid #4472c4;
+    color: #4472c4;
+}
+#SchedulingInfo div.nav-rule .nav-rule-lagle:hover img{
+    display: inline-block;
+}
+#SchedulingInfo div.nav-rule .nav-rule-lagle>div.img-wrap{
+    width: 21px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+#SchedulingInfo .newRule-content-title-div {
+    font-size: 14px;
+    padding: 7px 0px;
+    width: 100%;
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    background: #4472c4;
+    position: relative;
+}
+#SchedulingInfo .newRule-content-title-div img.newRule-content-title-del{
+    position: absolute;
+    right: 8px;
+    top: 9px;
+}
+#SchedulingInfo .newRule-content-title-div:hover {
+    background: #ececec;
+    color: #000;
+}
+#SchedulingInfo .newRule-content-title-div:hover img{
+    display: inline-block;
+}
+#SchedulingInfo>div.content-rule div.existing-div div.existing-rule-min:nth-of-type(even){
+    background:#fff;
+}
+#SchedulingInfo>div.content-rule div.existing-div div.existing-rule-min:nth-of-type(odd){
+    background:#f7fbff;
+}
+#SchedulingInfo>div.content-rule div.existing-div div.existing-rule-min .tab-form-label{
+    height: 22px;
+    width: 85px;
+    padding: 8px 12px;
+}
+#SchedulingInfo #triangle-down {
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 7px solid #898a8a;
+}
+#SchedulingInfo .rules-time-addon{
+    position: absolute;
+    right: 7px;
+    top: 1px;
+    background: #fff;
+    border-left: 1px solid #d9d9d9;
+}
+#SchedulingInfo .tab-center-border{
+    text-align: right;
+    border-radius: 5px;
+}
+
+#SchedulingInfo .tab-center-border .tab-center-border-span{
+    width: 69px;
+    padding: 6px 0 6px 5px;
+    text-align: left;
+}
+#SchedulingInfo .newScope img.newRule-content-title-del{
+    position: absolute;
+    right: 8px;
+    top: 9px;
+}
+#SchedulingInfo ul.item-hover:hover {
+    background: #ececec;
+}
+#SchedulingInfo ul.item-hover:hover img{
+    display: inline-block;
+}
+#SchedulingInfo .redstar span{
+    line-height: 35px;
+}
+#SchedulingInfo div.nav-rule>div.nav-rule-btn {
+    height: 30px;
+    vertical-align: top;
+    /*margin-top: 10px;*/
+    display: inline-block;
+}
+/* 新增规则 页面优化 end */
+
+/*20170810 wanghy 生产委托加急字体 start*/
+.font-size-16{
+	font-size: 16px;
+}
+
+div.mar-top-12.clearfix{
+	line-height: 30px;
+}
+/*20170810 wanghy 生产委托加急字体 end*/
+#SchedulingInfo span.glyphicon-col-star{
+	color:#fba605;
+}
+#Scheduling .glyphicon-col-star{
+	color:#fba605;
+}
+#Scheduling span.glyphicon-col-star-empty{
+	color:#ccc;
+}
+/*20170814 wanghy 上传图片 start*/
+.border-img{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 0;
+}
+
+.title-img{
+	margin-left: 90px;
+	color: gray;
+}
+#driverManagement .title-img{
+	margin-left: 37px;
+	margin-top: 10px;
+}
+/*20170814 wanghy 上传图片 end*/
+/*20170814 yanghong 合同信息 start*/
+.salesContractLabelParent{
+	overflow: hidden;
+	textOverflow: ellipsis;
+	white-space: nowrap;
+}
+/*20170814 yanghong 合同信息 end*/
+
+/*20170815 yanghong 生产计划 start*/
+ul.productionCommission-urgent>ul.productionDesign-flag{
+	margin-left:130px;
+}
+/*20170815 yanghong 生产计划 end*/
+
+/* 2017/08/16 yanghong  合同信息 备注的显示 start */
+.form-control-inputLeft-show{
+	width: 548px;
+	float: left;
+    padding: 6px 12px;
+    overflow: inherit;
+    text-overflow: inherit;
+    display: inline-block;
+    line-height: 18px;
+    margin-bottom: 0;
+    word-wrap: break-word;
+}
+/* 2017/08/16 yanghong  合同信息 备注的显示 end */
+/* 20170816 wanghy 增加字体图片加急 start */
+.iconfont.icon-ji1{
+	color: red;
+	font-size: 25px;
+}
+.iconfont.icon-ji1:hover{
+	color: red;
+	cursor: default;
+}
+/* 20170816 wanghy 增加字体图片加急 end */
+
+.table{
+	margin-bottom: 0;
+}
+/* 20170817 yanghong 生产委托 start */
+.masterAndSlave{
+	display:flex;
+}
+.masterAndSlave ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+}
+/* 20170817 yanghong 生产委托 end */
+/* 20170821 yanghong 生产委托和生产计划 信息查看 start */
+.form-control-inputLeft-product-commission{
+    margin-bottom: 0;
+    word-wrap: break-word;
+    float: left;
+    height: 30px;
+    padding: 6px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    /*20170920 wanghy 修改label通用样式 start*/
+    width: 170px;
+    /*20170920 wanghy 修改label通用样式 end*/
+    line-height: 18px;
+}
+/* 20170821 yanghong 生产委托和生产计划 信息查看 end */
+
+/*排产规则首页的左右箭头*/
+#Scheduling>div.base-line.relative {
+    overflow: hidden;
+    padding: 12px 12px 12px 0;
+}
+#Scheduling>div.base-line>div.al {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 200px;
+	left: -30px;
+	z-index: 999;
+}
+
+#Scheduling>div.base-line>div.al>div.arrowsLeft {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #000000;
+	opacity: 0.4;
+	cursor: pointer;
+	text-align: right;
+	display: none;
+}
+
+#Scheduling>div.base-line>div.al>div.arrowsLeft>span.glyphicon {
+	font-size: 23px;
+    padding-right: 5px;
+	line-height: 55px;
+	color: #FFFFFF;
+}
+
+#Scheduling>div.base-line>div.al>div.arrowsLeft {
+	display: block;
+}
+
+#Scheduling>div.base-line>div.ar {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 200px;
+	right: -30px;
+	z-index: 999;
+}
+
+#Scheduling>div.base-line>div.ar>div.arrowsRight {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #000000;
+	opacity: 0.4;
+	cursor: pointer;
+	text-align: left;
+	display: none;
+}
+
+#Scheduling>div.base-line>div.ar>div.arrowsRight>span.glyphicon {
+	font-size: 23px;
+    padding-left: 5px;
+	line-height: 55px;
+	color: #FFFFFF;
+}
+
+#Scheduling>div.base-line>div.ar>div.arrowsRight {
+	display: block;
+}
+/*20170829 wanghy 上方提示气泡 start*/
+#topTipNavBorder{
+	width: 18%;
+    height:110px;
+    position: absolute;
+    z-index: 1000;
+    top: 40px;
+    right: 5px;
+    display: none;
+}
+#topTipNav{
+	border-radius:5px;
+    width: 100%;
+    height:100%;
+    overflow-y:auto;
+    padding:20px;
+    margin-top:-3px;
+    opacity:.9;
+    background-color: #f6fafc;
+    border: 1px solid #ccc;
+}
+#topTipNav::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+	margin-top: -30px;
+}
+
+#topTipNav::-webkit-scrollbar-button {
+	background-color: #000;
+}
+
+#topTipNav::-webkit-scrollbar-track {
+	background: #000;
+}
+
+#topTipNav::-webkit-scrollbar-thumb {
+	background: #b4bbbf;
+	border-radius: 4px;
+}
+#topTipNav .arrowtop{
+	position:absolute;
+	width: 0;
+	height: 0;
+	border-color:transparent;
+	border-style: solid;
+	top:-7px;
+	left: 52%;
+	margin-left:-5px;
+	border-width:0 5px 5px;
+	border-bottom-color:#000;
+}
+#topTipNav span{
+	color:black;
+}
+#topTipNav .closeTipNav{
+	position: absolute;
+	top: 1px;
+	right: 4px;
+	font-size: 12px;
+	cursor:pointer;
+}
+/*20170829 wanghy 上方提示气泡 end*/
+/*20170829 wanghy 编辑规则气泡塌陷 start*/
+#SchedulingInfo .error{
+	line-height: 18px;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+/*20170829 wanghy 编辑规则气泡塌陷 end*/
+.showTitleCss{
+	margin-left: 5px;
+    color: gray;
+}
+
+/*调度看板之地图   abbr0170901   nx   start*/
+
+.amap-logo {
+    right: 0 !important;
+    left: auto !important;
+    display: none;
+}
+    
+.amap-copyright {
+    right: 70px !important;
+    left: auto !important;
+}  
+
+.map_border_ccc {
+	border: 3px solid #CCCCCC;
+}
+
+.map_t_l_r_b {
+	top: 0; left: 0;
+	bottom: 0; right: 0;
+}
+
+.map_model_back {
+	background-color: #000000;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+.map_new_path_jia {
+	top: 8px;
+    right: 4px;
+    color: white;
+}
+
+.map_new_path_jia.iconfont {
+	font-size: 12px;
+}
+
+.map_abs_top_left {
+	top: 20px;
+	left: 20px;
+}
+
+.map_border {
+	border: 3px solid #CFCFCF;
+	border-radius: 5px;
+	height: 38px;
+}
+
+.map_border_left {
+	border-left: 3px solid #CFCFCF;
+}
+
+.map_fadajing {
+	color: #4472c4;
+	text-align: center;
+	font-weight: bolder;
+}
+
+#schedulingBoardMap {
+	color: #333333;
+}
+
+#schedulingBoardMap::-webkit-input-placeholder { 
+　　color: #d0d0d0;
+}
+
+.map_outline {
+	outline: none;
+}
+
+#schedulingBoardMap .input-group-addon {
+	color: #333333;
+}
+
+#schedulingBoardMap #map_search_frame .input-group-addon {
+	background-color: #FFFFFF;
+}
+
+#schedulingBoardMap #map_search_frame .form-control {
+	max-width: 500px;
+	height: 100%;
+}
+
+#map_search_frame {
+    height: 39px;
+}
+
+#map_search_type > li:hover {
+	background-color: #a6e3ff;
+}
+
+.map_fadajing:hover {
+	cursor: pointer;
+}
+
+.map_query {
+	width: 248px;
+	height: 35px;
+	padding-left: 5px;
+	background-color: rgba(255, 255, 255, 0);
+	font-size:16px;
+}
+
+.map_fadajing.iconfont {
+	font-size: 22px;
+}
+.border_no {
+	border: 0;
+}
+
+.map_line_path {
+	background-color: #4472c4;
+	width: 36px;
+	height: 36px;
+	color: #FFFFFF;
+	text-align: center;
+	border: 1px solid #4472c4;
+	border-radius: 5px;
+}
+
+.map_line_path:hover {
+	cursor: pointer;
+}
+
+.map_line_path.iconfont {
+	font-size: 25px;
+}
+
+.map_query_path {
+	background-color: #4472c4;
+	border: 1px solid #4472c4;
+	border-radius: 5px;
+	padding: 5px 8px;
+	width: 100px;
+}
+
+.map_query_path_top_left {
+	top: 0;
+	left: 346px;
+}
+
+.map_query_close {
+	color: #FFFF00;
+	font-size: 22px;
+	text-align: right;
+}
+
+.map_query_close:hover {
+	cursor: pointer;
+}
+
+.map_query_btn {
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	padding: 8px 3px 3px;
+	margin-bottom: 8px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.map_query_btn:hover {
+	cursor: pointer;
+}
+
+.map_change_size_top_right {
+	top: 2.5%;
+	right: 2%;
+}
+
+.map_function_top_right {
+	top: 2.5%;
+	right: 5%;
+	opacity: 0.9;
+}
+
+.map_line_hei {
+	line-height: 40px;
+}
+
+.map_function_tooltip_top_left {
+	top: -95%;
+    left: -172%;
+}
+
+#map_function_wendu:hover .map_function_wendu_show {
+	display: block;
+}
+
+#map_function_pm25 .iconfont {
+	font-size: 22px;
+}
+
+.map_change_size {
+	background-color: #4472c4;
+	border-radius: 5px;
+	padding: 6px 8px 3px;
+	width: 38px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.map_change_size > .iconfont {
+	font-size: 18px;
+}
+
+.map_change_size:hover {
+	cursor: pointer;
+}
+
+.cur_poi {
+	cursor: pointer;
+}
+
+#map_tram_plan_input .form-control {
+	max-width: 300px;
+	width: 220px;
+}
+
+#map_tram_plan_start {
+	background: url(../img/map_start_min.png) no-repeat;
+	background-position: 5px 3px;
+	background-color: white;
+	padding-left: 25px;
+}
+
+#map_tram_plan_end {
+	background: url(../img/map_end_min.png) no-repeat;
+	background-position: 5px 3px;
+	background-color: white;
+	padding-left: 25px;
+}
+
+#planPathBtn a {
+	width: 86px;
+}
+
+.map_box_shadow {
+	box-shadow: 3px 3px 5px #CFCFCF;
+}
+
+.map_tra {
+	transition:all 0.35s ease-in-out 0s;
+}
+
+.new_path_content > li > span > input {
+	width: 180px;
+	height: 30px;
+}
+
+#map_search_result > li:hover {
+	background-color: #a6e3ff;
+}
+
+.map_max_hei_212 {
+	max-height: 212px;
+}
+
+#map_search_type {
+	top: 40px;
+	left: 0;
+}
+
+#map_search_project_name:hover .map_search_type_show {
+	display: block;
+}
+
+#map_path_tooltip .iconfont {
+	font-size: 38px;
+}
+
+#map_edit_path_btn > .iconfont {
+	font-size: 27px;
+}
+
+#map_edit_path_btn.btn {
+	padding: 0px 8px;
+}
+
+#map_edit_path_btn:hover .map_path_tooltip {
+	display: block;
+}
+
+#map_path_tooltip {
+	color: #000000;
+}
+
+#map_rail_tooltip .iconfont {
+	font-size: 38px;
+}
+
+#map_edit_rail_btn > .iconfont {
+	font-size: 27px;
+}
+
+#map_edit_rail_btn.btn {
+	padding: 4px 8px;
+}
+
+#map_edit_rail_btn:hover .map_rail_tooltip {
+	display: block;
+}
+
+#map_rail_tooltip {
+	color: #000000;
+}
+
+.map_path_tooltip_txt {
+	left: 5px; 
+	top: 20px;
+}
+
+.map_rail_tooltip_txt {
+	left: 5px; 
+	top: 20px;
+}
+
+/*修改滚动条  start*/
+
+#map_search_result::-webkit-scrollbar{  
+    width: 10px;  
+    height: 30px;  
+    background-color: #a0a0a0;  
+} 
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+#map_search_result::-webkit-scrollbar-track{
+    background-color: #FFFFFF;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+#map_search_result::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    background-color: #a0a0a0;  
+}  
+ 
+/*修改滚动条  end*/ 
+
+#new_path_icon .iconfont {
+	font-size: 22px;
+}
+
+.new_path_input {
+	width: 100%;
+	/*height: 32px;*/
+	padding: 6px;
+	border-radius: 5px;
+}
+
+#new_rail_btn .btn {
+	padding: 3px 12px;
+}
+
+#new_path_btn .btn {
+	padding: 3px 12px;
+}
+
+#new_rail_name {
+	height: 30px;
+    line-height: 30px;
+    padding: 3px 12px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.map_ribbon_weather .iconfont {
+	font-size: 22px;
+}
+
+.map_function_set {
+    line-height: 30px;
+}
+
+.min_virgule {
+	width: 1px;
+	height: 20px;
+	border-left: 1px solid #606d71;
+	margin: 2px 5px;
+}
+
+.map_car_quantity {
+	width: 32px;
+	height: 32px;
+	color: white;
+	background-color: #a80004;
+	font-size: 16px;
+	text-align: center;
+	line-height: 32px;
+	border-radius: 100%;
+}
+
+.map_car_quantity_c {
+	width: 38px;
+	height: 22px;
+	color: white;
+	font-size: 16px;
+	text-align: center;
+	line-height: 22px;
+	border-radius: 4px;
+}
+
+.map_car_quantity_col_red {
+	background-color: #d1141b;	
+}
+
+.map_car_quantity_col_blue {
+	background-color: #2258a7;	
+}
+
+.map_car_quantity_col_gray {
+	background-color: #57666a;	
+}
+
+.map_btn_elasticity_width {
+	max-width: 100%;
+	width: 100%;
+	min-width: 45%;
+}
+
+#new_rail_btn .iconfont {
+	font-size: 14px;
+}
+
+#mapConmpileNewPath {
+	
+}
+
+/*调度看板之地图   abbr0170901   nx   end*/
+
+/*20170818 dongyunlong 调度看板 start */
+html,body.SchedulingBoards,#index-wrap,section,.rows,.SchedulingBoard{
+	height: 100%;
+}
+body.SchedulingBoards{
+	overflow: hidden;
+}
+.container-fluid{
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 35px;
+    /*20171018 wanghy 对整体页面进行优化-增加底部栏 start*/
+    bottom: unset;
+	padding: 0px;
+    /*20171018 wanghy 对整体页面进行优化-增加底部栏 end*/
+}
+/*20171018 wanghy 对整体页面进行优化-增加底部栏 start*/
+.index-footer{
+    height: 25px;
+    /*position: fixed;*/
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+	background: #4472C4;
+}
+.span-font-center{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    color: #fff;
+}
+.index-sec{
+    padding-top: 20px;
+    overflow: auto;
+    margin-top:0;
+}
+.rows{
+	display: flex;
+}
+/*20171018 wanghy 对整体页面进行优化-增加底部栏 end*/
+.map_edit_path {
+	position: absolute;
+    top: 0;
+    right: -60px;
+}
+#SchedulingBoard{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height:550px;
+	min-width: 1000px;
+}
+/*#SchedulingBoard #board-head{*/
+	/*width: 100%;*/
+	/*height: 30px;*/
+	/*background: #fafafa;*/
+	/*box-shadow: 0px 2px 5px rgba(0,0,0,0.2);*/
+/*}*/
+/*#SchedulingBoard #board-head .board-head{*/
+	/*height: 100%;*/
+	/*padding: 0px 10px;*/
+    /*line-height: 180%;*/
+    /*text-align: right;*/
+/*}*/
+/*#SchedulingBoard #board-head .board-head .head-left{*/
+	/*width: 67%;*/
+	/*height: 100%;*/
+	/*float:left;*/
+	/*display: flex;*/
+/*}*/
+/*#SchedulingBoard #board-head .board-head .init{*/
+	/*padding-top: 5px;*/
+	/*padding-bottom: 5px;*/
+/*}*/
+/*#SchedulingBoard #board-head .board-head .head-right{
+	width: 32%;
+	height: 100%;
+	float: right;
+	padding-top: 4px;
+}*/
+
+/*.scheduling-board .board-head .head-right {*/
+	/*float: right;*/
+	/*width: 320px;*/
+	/*height: 100%;*/
+/*}*/
+
+/*.scheduling-board .board-head .head-right .head-search-ion {*/
+	/*height: 23px;*/
+	/*margin: 4px 10px 0 10px;*/
+/*}*/
+
+/*.scheduling-board .board-head .head-right .temperature {*/
+	/*height: 22px;*/
+	/*margin: 4px 10px 0 10px;*/
+/*}*/
+
+/*.scheduling-board .board-head .head-right .head-block {*/
+	/*width: 110px;*/
+	/*padding: 0 7px;*/
+/*}*/
+
+/*.scheduling-board .board-head .head-right .head-block > div {*/
+	/*width: 62px;*/
+	/*border: 1px solid #e5e5e5;*/
+	/*height: 23px;*/
+	/*text-align: center;*/
+	/*line-height: 23px;*/
+	/*margin-left: 5px;*/
+/*}*/
+
+/*.scheduling-board .board-head .head-right .head-block > img {*/
+    /*margin-bottom: 4px;*/
+/*}*/
+
+/*#SchedulingBoard .board-head .head-left .head-block{*/
+	/*width: 15%;*/
+	/*height: 100%;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-left .head-block>div.scaling{*/
+	/*width: 28px;*/
+    /*height: 21px;*/
+    /*margin: 0 5px;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-left .unshipping{*/
+	/*width: 18px;*/
+    /*height: 18px;*/
+	/*color: #fff;*/
+	/*background: #e02a2a;*/
+	/*border-radius: 50%;*/
+	/*line-height: 18px;*/
+    /*text-align: center;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-left .shipping{*/
+	/*width: 18px;*/
+    /*height: 18px;*/
+	/*color: #fff;*/
+	/*background: #4473c5;*/
+	/*border-radius: 50%;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-right .head-block{
+	width: 28%;
+	height: 80%;
+}*/
+/*#SchedulingBoard #board-head .board-head .head-search{*/
+	/*padding-top: 1px;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul {*/
+	/*flex: 1;*/
+	/*text-align: center;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul.a-btn {*/
+	/*flex: 0.7;*/
+	/*margin-right: 15px;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul li {*/
+	/*flex: 1;*/
+	/*line-height: 28px;*/
+	/*display: inline-block;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul li.pad>select {*/
+	/*margin-top: 2px;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul li>a {*/
+	/*height: 21px;*/
+    /*padding: 0 6px;*/
+    /*width: 100%;*/
+/*}*/
+/*#SchedulingBoard #board-head .head-search ul li.pad>input,*/
+/*#SchedulingBoard #board-head .head-search ul li.pad>select {*/
+	/*padding: 3px;*/
+	/*height: 23px;*/
+	/*max-width: 80px;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-right>img.line{*/
+	/*margin-right: 10px;*/
+	/*margin-left: 5px;*/
+/*}*/
+/*#SchedulingBoard .board-head .head-right .head-block>div{
+	width: 62px;
+    background-color: white;
+    margin-right: 5px;
+    border: 1px solid #e5e5e5;
+}*/
+#SchedulingBoard #board-content{
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    bottom: 30px;
+	padding: 10px;
+    overflow: hidden;
+}
+.text-over-hidden{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#SchedulingBoard #board-content .board-content{
+	height: 100%;
+	width: 100%;
+}
+#SchedulingBoard #board-center{
+	left: 130px;
+	right: 130px;
+	top: 0px;
+	bottom: 0px;
+	padding: 10px;
+	position: absolute;
+	overflow: hidden;
+}
+/*#SchedulingBoard .board-center{*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*padding: 0px 10px;*/
+	/*position: relative;*/
+    /*overflow: hidden;*/
+/*}*/
+#SchedulingBoard .board-content .board-center .content_top{
+	height:26px;
+    /*padding-bottom: 0.5%;*/
+    border-radius: 10px 10px 0 0;
+}
+/*计划的初始颜色--供应中*/
+.content_top_bg{
+	background: #4473C5;
+}
+
+/*计划的初始颜色--暂停中*/
+.prohibitionPlan{
+	background:#848484;
+}
+#SchedulingBoard .board-content .board-center .content_top>div{
+    color: #fff;
+	font-size:12px;
+	display: inline-block;
+}
+#SchedulingBoard .board-content .board-center .content_top>div:nth-of-type(2){
+	color: #FFFFFF;
+}
+.flex-1{
+	flex:1;
+	-ms-flex:1;
+}
+.flex-direction-column{
+	flex-direction: column;
+}
+
+.mar-left-25{
+	margin-left: 25%;
+}
+.wid-p-57{
+	width:57%;
+}
+.today{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #4473C5;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+.border-left-1{
+	border-left:1px solid #D3D3D4;
+}
+
+.flex-direction-column{
+	flex-direction: column;
+}
+
+.width-b-30{
+	width:30%;
+}
+.today{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #4473C5;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+.flex-direction-column{
+	flex-direction: column;
+}
+.width-b-30{
+	width:30%;
+}
+.today{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #4473C5;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.border-left-1{
+	border-left:1px solid #D3D3D4;
+}
+#SchedulingBoard .board-content .board-center .content_top>div:nth-of-type(3){
+    color: #FFFFFF;
+    margin-left: 20px;
+    /* border: 1px solid; */
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 26px;
+    line-height: 26px;
+}
+.flex-2{
+	flex:2;
+}
+.flex-direction-column{
+	flex-direction: column;
+}
+
+.width-b-25{
+	width:25%;
+}
+.dis-inline-block{
+	display: inline-block;
+}
+.today{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #4473C5;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+.but-wire{
+	width: 96%;
+    border-top: 1px solid #D3D3D4;
+    margin: 0 2%;
+}
+.display-flex{
+	display: flex;
+}
+.display-flex-wrap{
+	flex-wrap: wrap;
+}
+.display-flex-direction {
+	flex-direction: column;
+}
+.border-left-1{
+	border-left:1px solid #D3D3D4;
+}
+#SchedulingBoard .board-content .board-center .content_top>div.con_top_btn{
+	margin-left: 10px;
+	float:left;
+	line-height:0;
+}
+#SchedulingBoard .vehicle_unit {
+	min-width:120px;
+	max-width: 120px;
+	height:95px;
+}
+#SchedulingBoard .board-content .board-center .content_top>div.con_top_btn>img{
+	vertical-align: top;
+}
+#SchedulingBoard .board-content .board-center .content_top>div.con_top_num{
+	margin-left: 10px;
+}
+#SchedulingBoard .board-content .board-center .content_top>div.con_top_time{
+	margin-left: 5%;
+	border: 1px solid #fff;
+    width: 20%;
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    border-color:rgba(255,255,255,0.5);
+}
+#SchedulingBoard .board-content .board-center .content_top>div.con_top_time>div{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 24px;
+    line-height: 21px;
+    /* padding-top: 1.6%; */
+}
+@media only screen and (max-width: 1024px) {
+	#SchedulingBoard .board-content .board-center .content_top>div.con_top_time>div{
+	    height: 100%;
+	    width: 100%;
+	    margin: 0 auto;
+	    min-height: 24px;
+	    line-height: 22px;
+	    padding-top: 1.6%;
+	}
+	
+	.thisCarInfo p{
+		display: flex;
+	    margin: 1%;
+	}
+	div.thisCarInfo{
+	    position: absolute;
+	    top: 8%;
+	    left: 15%;
+	    height: 13%;
+	    background: rgba(0,0,0,0.2);
+	    color: #fff;
+	    padding: 0.5%;
+	    width: 70%;
+	    border-radius: 10px;
+	    display: none;
+	}
+}
+#SchedulingBoard .board-content .board-center .content_top div.con_top_update{
+	/* margin-left: 22%; */
+	margin-right: 6%;
+	display:inline-block;
+}
+#SchedulingBoard .board-content .board-center .content_top .con-top-img{
+    vertical-align: baseline;
+    display: inline-block;
+    height: 25.5px;
+}
+#SchedulingBoard .board-content .board-center .content_top .con-top-img-ant{
+    vertical-align: baseline;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+#SchedulingBoard .board-content .board-center .content_top div.con_top_stop{
+	margin-right: 6%;
+	display:inline-block;
+}
+#SchedulingBoard .board-content .board-center .content_top div.con_top_start{
+	margin-right: 6%;
+	display:inline-block;
+}
+#SchedulingBoard .board-content .board-center .content_top div.con_top_car{
+	margin-right: 6%;
+	display:inline-block;
+}
+#SchedulingBoard .board-content .board-center .content_top div.con_top_hide{
+	margin-left: 2%;
+	margin-right: 2%;
+	display:inline-block;
+}
+div.progress-bar-success{
+	background: #E02A2A;
+}
+div.progress-bar-info{
+	background: #0C26D1;
+}
+#SchedulingBoard .board-content .board-center div.content{
+	height: 166px;
+	box-shadow: 0px 2px 6px rgba(0,0,0,0.5);
+	font-family: -webkit-pictograph;
+	position: relative;
+	border-radius: 10px;
+}
+/* #SchedulingBoard .board-content .board-center div.content:hover div.content_top{
+	background:#5087ED;
+} */
+div.content_top_start{
+	background:#5087ED;
+}
+div.content_top_paush{
+	background:#545454;
+}
+div.content_top_ji{
+	background:#e02a2a;
+}
+#SchedulingBoard #board-center-wrap>div.first_plan{
+    margin-right: 13px;
+    margin-bottom: 15px;
+}
+
+#SchedulingBoard .board-content .board-center div.content>div.content_body{
+	height: 141px;
+	width: 100%;
+    position: relative;
+}
+.cutOffRule{
+	display:inline-block;
+	margin:0 5px 2px;
+}
+
+#SchedulingBoard .board-content div.con_body_left{
+    width: 85px;
+    height: 141px;
+    background: #f4f8ff;
+    box-shadow: 2px 0px 3px rgba(0,0,0,0.15);
+    left: 0;
+    position: absolute;
+    z-index: 1;
+	padding-top: 3px;
+	border-radius: 0px 10px 10px 10px;
+}
+.mar-bot-0{
+	margin-bottom: 0px;
+}
+#SchedulingBoard .board-content div.con_body_center{
+    /*flex: 8;*/
+    background: #f4f8ff;
+    position: absolute;
+    left: 85px;
+    right: 85px;
+    top: 0;
+    bottom: 0;
+}
+div.planCarsAndStatus{
+	width:50%;
+	text-align: right;
+}
+div.planCarsAndStatus>div{
+	display:inline-block;
+}
+#SchedulingBoard .board-content div.con_body_right{
+    width: 85px;
+    height: 141px;
+    right: 0;
+    position: absolute;
+	background: #f4f8ff;
+	box-shadow:-2px 0px 3px rgba(0,0,0,0.15);
+	padding-top: 3px;
+	border-radius: 0px 0px 10px 0px;
+}
+#SchedulingBoard .carBodyStyle{
+	background: rgba(68, 114, 196, 1);
+	display: flex;
+	flex-direction: column;
+	height: 113px;
+}
+#SchedulingBoard .board-content div.con_body_left>div.unit_car_num{
+	height: 28px;
+}
+#SchedulingBoard .board-content div.con_body_lf_one span{
+	margin: auto;
+    font-size: 15px;
+    color: #110e0e;
+}
+
+#SchedulingBoard .board-content div.con_body_left div.con_body_lf_one{
+   	padding:0 3px;
+   	height:30px;
+}
+#SchedulingBoard div.name{
+/*     display: inline-block;
+    height: 100%;
+    width: 70%;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 3%; */
+    position: absolute;
+    transform:translateY(-50%);
+    top:50%;
+}
+#SchedulingBoard div.right_name{
+    display: inline-block;
+    width: 70%;
+    text-align: center;
+    font-size: 14px;
+}
+#SchedulingBoard div.globe_right_num{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #FB6014;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    color: #fff;
+}
+#mainSite{display:none;}
+#minorSite{display:none;}
+#minorSite_i{
+    font-size: 12px;
+    font-style: normal;
+    display: inline-block;
+    width: 14px;
+    border-radius: 2px;
+    height: 14px;
+    text-align: center;
+    line-height: 12px;
+    color: #0C26D1;
+    vertical-align: middle;
+    margin: -2px 2px 1px 0px;
+    border: #0C26D1 1px solid;
+    background: #D0E2FF;
+}
+.minorSiteColor{
+	color:#0C26D1;
+}
+.mainSiteColor{
+	color:#C51A21;
+}
+#mainSite_i{
+	font-size: 12px;
+    font-style: normal;
+    display: inline-block;
+    width: 14px;
+    border-radius: 2px;
+    height: 14px;
+    text-align: center;
+    line-height: 12px;
+    color: #C51A21;
+    vertical-align: middle;
+    margin: -2px 2px 1px 3px;
+    border: #C51A1F 1px solid;
+    background: #D0E2FF;
+}
+#SchedulingBoard div.globe_num{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #FB6014;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    color: #fff;
+}
+.content_div_css{
+	flex: 1;
+	max-height: 25px;
+	margin: 6px 10px 6px;
+	background: red;
+	border-radius: 10px;
+	display: flex;
+	/*border: 1px solid #9ab3e4;*/
+}
+.con_left_ck{
+	display: inline-block;
+    margin: auto 0;
+    margin-left: 25%;
+   	font-size: 12px;
+}
+.con_left_num{
+    text-align: center;
+    margin: auto 10%;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #4473c5;
+    line-height: 18px;
+    border-radius: 50%;
+    color: #fff;
+}
+div.isGrowFlag{
+	flex:1;
+	-ms-flex:1;
+	text-align:right;
+}
+div.plan-unit-cars{
+	width: 90px;
+	height: 138px;
+	margin-top: 3px;
+	position: absolute;
+	border-left: 3px solid #fff;
+	border-radius: 0px 10px 10px 0px;
+	background: rgba(68, 114, 196, 1);
+	left: 12px;
+	display: none;
+	z-index: 1;
+	overflow: hidden;
+	box-shadow: 2px 0px 3px rgba(0,0,0,0.2);
+}
+div.plan-unit-cars-sonlist:hover {
+	background: #D2E9FF;
+}
+div.plan-unit-cars-sonlist:hover img{
+	display:inline-block;
+}
+.mainAndAssist{
+	border: 1px solid rgba(255,255,255,0.6);
+    padding: 1px 1px;
+    border-radius: 4px;
+    display:inline;
+}
+div#waitAnimate{
+	padding-right:0;
+	top:0;
+}
+div#waitAnimate>.sk-circle{
+	width:60px;
+	height:60px;
+}
+div#waitAnimate>.sk-circle .sk-child:before {
+	background: #fff;
+}
+div.isGrowFlag>img{
+	width: 15px;
+}
+div.plan-unit-cars-sonlist{
+	background: #E4EAF7;
+	height: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.349019607843137);
+}
+div.plan-unit-cars-unit-count{
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #E4EAF7;
+	border-radius: 10px;
+	margin: 10px;
+}
+div.plan-unit-cars-unit-sum{
+	flex:2;
+	text-align: center;
+}
+div.planUnitCarNumber{
+    width: 18px;
+    height: 18px;
+    background: #58676a;
+    float: right;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 6px;
+    color:#fff;
+}
+div.plan-unit-cars-unit-sum{
+    flex: 1;
+    height: 31px;
+    line-height: 31px;
+    font-size: 15px;
+    color: #58676a;
+}
+div.plan-unit-cars-unit-show{
+	flex:1;
+	-ms-flex:1;
+}	
+/*去途-回途 车辆、标识点样式 start*/
+div.goAndBackCarBgcolor{
+	background: #4473C5;
+}
+div.goPointBorderColor{
+	border-bottom-color: #4473C5;
+}
+div.backPointBorderColor{
+	border-top-color: #4473C5;
+}
+/*去途-回途 车辆、标识点样式 end*/
+div.plan-unit-cars-unit-show>img{
+	/*margin-top: 7px;*/
+    float: left;
+    margin-left: 3px;
+}
+#SchedulingBoard .schedulingConfiguration{
+	display: flex;
+	float: left;
+	height: 30px;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+#SchedulingBoard .tankCarBody {
+	position: absolute;
+	width: 85px;
+}
+#SchedulingBoard .pumpTruckBody {
+	position: absolute;
+	width: 85px;
+}
+
+#SchedulingBoard .pumpCarNumber{
+	background: #E4EAF7;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	margin: 3px 8px;
+	border-radius: 10px;
+	display: flex;
+}
+.set_num{
+    margin-left: 16%;
+    display: inline-block;
+    margin-top: 3%;
+    color:#fff;
+}
+.set_num_two{
+    margin-left: 4%;
+    display: inline-block;
+    margin-top: 3%;
+    color:#fff;
+}
+.set_btn_color{
+	background:#E4EAF7;
+}
+.con_body_right_child{
+    line-height: 24px;
+    height: 24px;
+    margin: 0 6px 3px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    text-align:center;
+}
+.line-hei-unset{
+	line-height: unset;
+}
+.con_body_right_child_one{
+    margin: 1px;
+    height: 28px;
+}
+/* 2018/3/28 yanghong start */
+div.prohibition{
+	background: #E4EAF7;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	margin: 3px 3px;
+	border-radius: 10px;
+	display: flex;
+}
+/* 2018/3/28 yanghong end */
+
+.bg-C7DAFD{
+	background: #C7DAFD;
+}
+.bg-FFFBEB{
+	background: #FFFBEB;
+}
+.bg-FFDADA{
+	background: #FFDADA;
+}
+.bg-CCF0FA{
+	background: #CCF0FA;
+}
+.child_right{
+	margin-right: 10%;
+}
+.con_body_cen_top{
+	height:75px;
+	display: flex;
+	flex-direction: column;
+}
+.con_body_cen_foot{
+	height:66px;
+	margin: 0 2%;
+	display:flex;
+}
+.con_body_foot_left_top{
+    display: flex;
+    flex: 1;
+}
+.con_body_foot_left_top>div{
+    flex: 1;
+    margin: auto;
+    font-size: 16px;
+}
+.con_body_foot_left{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.con_body_foot_center>div{
+	flex:1;
+	-ms-flex:1;
+}
+div.con_body_foot_center_cen{
+	flex:0.8;
+}
+
+.con_body_foot_right{
+	flex:1;
+	-ms-flex:1;
+	margin:auto;
+}
+.con_bct_one{
+	margin: 0 2%;
+	height:35px;
+	display:flex;
+	/* line-height:35px; */
+}
+.con_bct_one>div{
+	display:inline-block;
+	margin:auto;
+}
+
+.con_bct_three>div{
+	display:inline-block;
+	margin:auto;
+}
+.con_bct_two{
+	margin: 0 2%;
+	flex:1;
+    -ms-flex:1;
+	display:flex;
+}
+.con_bct_two>div{
+	display:inline-block;
+	margin:auto;
+}
+.con_bct_three{
+	flex:1;
+	-ms-flex:1;
+    display: flex;
+    margin: 0 2%;
+    border-bottom: 1px solid #d0d0d0;
+}
+div.mar-lf-3_7{
+	margin-left: 1.5%;
+}
+div.mar-ri-3_7{
+	margin-right: 2%;
+}
+div.mar-lf-3{
+	margin-left: 2%;
+}
+ div.mar-ri-3{
+	margin-right: 2%;
+}   
+.progress-bar{
+	float: left;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    /* background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#36abc8), to(#008ca2)); */
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+}
+div.con_press{
+	width: 13%;
+    height: 100%;
+   /*  display: flex;
+    flex-direction: column; */
+}
+div.con_press_num{
+	height: 50%;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+.disabledSele{
+	box-shadow: 0 0 0 0;
+    -webkit-appearance: none;
+    pointer-events: none;
+    border: none;
+}
+div.progress{
+    /* margin-bottom: 20%; */
+    /* margin-top: 5%; */
+    height:6px;
+    min-height:6px;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f3e9e9;
+    border-radius: 4px;
+    margin-bottom:0;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+span.zhuPlan{
+	color:#E02A2A;
+}
+span.fuPlan{
+	color:#0096B3;
+}
+.cursor{
+	cursor: pointer;
+}
+div.thisCarPoint{
+    top: 22px;
+    position: absolute;
+    width: 32px;
+    transition:left	30s linear;
+}
+   
+.mar-bottom-0{
+	margin-bottom: 0;
+}
+.mar-t-4{
+	margin-top: -4px;
+}
+.height{
+	/* height: 100%; */
+	height: 26px;
+    line-height: 26px;
+}
+div.body_center_background{
+	position: absolute;
+    height: 30px;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-right:1px solid #59676b;
+}
+div.background-antMap{
+	height: 9px;
+    width: 99.6%;
+    border-top: 1px solid #59676B;
+    border-bottom: 1px solid #99AABA;
+    border-right: 1px solid #59676b;
+    border-radius: 0 5px 15px 0;
+    margin-top: 11px;
+    position: relative;
+}
+div.left-arrows{
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 7px solid #59676B;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    left: 95%;
+    top: 40%;
+}
+div.background-ant-left-line{
+	width: 1px;
+    height: 12px;
+    position: absolute;
+}
+div.background-ant-left-line-top{
+	background: #59676B;
+}
+div.background-ant-left-line-bot{
+	background: #99AABA;
+}
+.carInfoGo{
+    margin-top: 0%;
+    display: inline-block;
+    color: #fff;
+    border-radius: 5px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    cursor: pointer;
+    position: absolute;
+    width:32px;
+    text-align: center;
+    transition:left	30s linear;
+    top:-18px;
+}
+.carInfoBack{
+    position: absolute;
+    top: 7px;
+    display: inline-block;
+    color: #fff;
+    border-radius: 5px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    cursor: pointer;
+    transition:left 30s linear;
+    text-align: center;
+    width:32px;
+}
+div.con_body_foot_center_bot{
+	position: relative;
+	overflow: hidden;
+}
+div.thisCarToBackPoint{
+    position: absolute;
+    width: 32px;
+    top:6px;
+    transition:left 30s linear;
+}
+	#SchedulingBoard .board-content .board-center .content_top>div.con_top_time{
+		margin-left: 5%;
+		border: 1px solid #fff;
+	    width: 25%;
+	    height: 100%;
+	    border-radius: 5px;
+	    text-align: center;
+	    border-color:rgba(255,255,255,0.5);
+	}
+@media only screen and (max-width: 1024px) {
+	.planDistance{
+		font-size:12px;
+		margin-left: 5px;
+	}
+	.con_body_foot_left_top>div{
+    	font-size: 14px;
+	}	
+	.con_body_foot_left{
+		flex:1;
+    	padding:10px 0 10px 5px;
+	}
+/* 	.con_body_foot_center{
+		background: url(/JCMES-web/resources/app/img/quan.svg) no-repeat;
+	    background-size: 100%;
+		background-position-y: 60%;
+	} */
+	.width-main-25{
+		width:25%;
+	}
+	div.planCarsAndStatus{
+		width:50%;
+		text-align: right;
+	}
+	.max-wid-add-48{max-width:48%;}
+}
+@media only screen and (min-width: 1025px) {
+	.planDistance{
+		font-size:16px;
+		margin-left: 10px;
+	}
+	.con_body_foot_left_top>div{
+    	font-size: 16px;
+	}
+	.con_body_foot_left{
+		flex:0.7;
+    	padding:10px 0 10px 10px;
+	}
+	div.width-main-25{
+		width:18%;
+	}
+	div.planCarsAndStatus{
+		width:60%;
+		text-align: right;
+	}
+	div.max-wid-add-48{max-width:60%;}
+	div.con_body_foot_center {
+		position:relative;
+	    display: flex;
+	    flex: 11;
+	    flex-direction: column;
+	}
+	div.thisCarInfo{
+	    position: absolute;
+	    top: 6%;
+	    left: 15%;
+	    height: 13.2%;
+	    background: rgba(0,0,0,0.2);
+	    color: #fff;
+	    padding: 0.5%;
+	    width: 70%;
+	    border-radius: 10px;
+	    display: none;
+	}
+
+	div.float_right {
+	    float: right;
+	    height: 26px;
+	    width: 25%;
+        line-height: 26px;
+	    min-width: 130px;
+	    text-align: right;
+	    margin-right: 1%;
+	}
+}
+#minorSiteLabel{
+	margin-left:10%;
+}
+.con_body_foot_center_top{
+	position: relative;
+	overflow: hidden;
+}
+#SchedulingBoard #board-left{
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 130px;
+	position: absolute;
+}
+#SchedulingBoard #board-left .board-left{
+	width: 100%;
+	height: 100%;
+	padding: 10px 0 10px 10px;
+}
+#SchedulingBoard #board-left .board-left .usable-car{
+	width: 100%;
+	height: 92%;
+}
+.mainPlanCar{
+	background: #59676b;
+}
+.assistPlanCar{
+	background: #8d9dab;
+}
+.planCarPoint{
+	position: absolute;
+    left: 50%;
+    margin-left: -5px;
+}
+.topMainPlanCarPoint{
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 6px solid #59676b;
+}
+.topAssistPlanCarPoint{
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 6px solid #8d9dab;
+}
+.botMainPlanCarPoint{
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #59676b;
+}
+.botAssistPlanCarPoint{
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #8d9dab;
+}
+#SchedulingBoard #board-left .board-left .usable-car .usable-title{
+	height: 30px;
+	position: relative;
+}
+#SchedulingBoard #board-left .board-left .car-title{
+	background-color: #f4f8ff;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard #board-left .board-left .car-title .usable-count{
+	width: 18px;
+    height: 18px;
+    padding-top: 1px;
+    color: #fff;
+    text-align: center;
+	background: #fb6014;
+    border-radius: 50%;
+}
+#SchedulingBoard #board-left .board-left .car-title .disable-count{
+	width: 18px;
+    height: 18px;
+    padding-top: 1px;
+    color: #fff;
+    text-align: center;
+	background: #59676b;
+    border-radius: 50%;
+}
+#SchedulingBoard #board-left .board-left .car-content{
+	background-color: #f4f8ff;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard #board-left .board-left .usable-car .car-content{
+	height: 93%;
+	overflow: hidden;
+}
+#SchedulingBoard #board-left .board-left .usable-car .usable-content{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+#SchedulingBoard #board-left .usable-car .usable-content .usable-car-wrap{
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+#SchedulingBoard #board-left .board-left .disable-car .disable-content{
+	height: 100%;
+	width: 100%;
+}
+#SchedulingBoard #board-left .disable-car .disable-content .disable-car-wrap{
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+#SchedulingBoard #board-left .draggable{
+   	width: 100%;
+    height: 7%;
+    padding-top: 6px;
+    text-align: left;
+    background: #f4f8ff;
+}
+#SchedulingBoard #board-left .draggable:nth-of-type(1){
+	margin-top: 5px;
+}
+#SchedulingBoard #board-left .usable-car .usable-content .usable-car-wrap .draggable img.mar-r-2{
+	margin-right: 2px;
+}
+#SchedulingBoard #board-left .car-content .draggable>div{
+	display: inline-block;
+	font-size: 1.25em;
+    margin: 0 2px;
+}
+#SchedulingBoard #board-left .board-left .disable-car .car-content{
+	height: 91.2%;
+}
+#SchedulingBoard #board-left .board-left .car-content-title{
+	width: 45%;
+	text-align: center;
+	float: left;
+	margin-top: 8px;
+}
+#SchedulingBoard #board-left .board-left .car-title .icon{
+	float: left;
+	height: 100%;
+}
+#SchedulingBoard #board-left .board-left .car-title .icon img{
+	height: 100%;
+}
+#SchedulingBoard #board-left .board-left .car-title>img.scaling{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#SchedulingBoard #board-left .board-left .disable-car{
+	width: 100%;
+    margin-top: 10px;
+    height: 8%;
+}
+#SchedulingBoard #board-left .board-left .disable-car .disable-title{
+	height: 73%;
+	min-height: 30px;
+	background-color: #f4f8ff;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+	position: relative;
+}
+#SchedulingBoard #board-right{
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 130px;
+	position: absolute;
+	overflow: hidden;
+}
+/*#SchedulingBoard .board-right{*/
+	/*width: 100%;*/
+    /*height: 100%;*/
+	/*padding: 10px 10px 10px 0;*/
+/*}*/
+#SchedulingBoard .board-right .unit-car{
+	width: 100%;
+    max-height: 32.1%;
+    background: #f4f8ff;
+    position: relative;
+	overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard .board-right .unit-car:not(:first-child){
+	margin-top: 9px;
+}
+#SchedulingBoard .board-right .unit-car .unit-title {
+    height: 17%;
+    min-height: 30px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard .board-right .unit-car .unit-title .icon {
+    height: 100%;
+    float: left;
+}
+#SchedulingBoard .board-right .unit-car .unit-title .icon img{
+    height: 100%;
+}
+#SchedulingBoard .board-right .unit-car .unit-title .car-content-title {
+    width: 35%;
+    float: left;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 6px 5px 0 8px;
+}
+#SchedulingBoard .board-right .unit-car .unit-title .unit-count {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    margin-top: 6px;
+    color: #fff;
+	padding-right: 1px;
+    text-align: center;
+    background: #fb6014;
+    border-radius: 50%;
+}
+#SchedulingBoard .board-right .unit-car .unit-title>img.scaling {
+    float: right;
+}
+#SchedulingBoard .board-right .unit-car .unit-car-content {
+    height: 82%;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard .board-right .unit-car .unit-car-content .unit-content {
+    height: 100%;
+    width: 100%;
+}
+#SchedulingBoard .board-right .unit-car .unit-car-content .unit-content .unit-car-wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#SchedulingBoard .board-right .unit-car .draggable {
+    width: 100%;
+    height: 25%;
+    padding-top: 7px;
+    text-align: left;
+    background: #f4f8ff;
+}
+#SchedulingBoard .board-right .unit-car .draggable>div {
+    display: inline-block;
+    font-size: 1.25em;
+}
+#SchedulingBoard .board-right .unit-car .draggable>div.unit-count {
+    background: #58676a;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+    padding: 1px 2px 1px 1px;
+}
+#SchedulingBoard .board-right .unit-car .unit-car-content .unit-content #unit-select {
+    position: absolute;
+    /* left: 0; */
+    top: 0;
+    display: none;
+    background: #d2e9ff;
+    padding: 1px;
+    border-radius: 6px 0 6px 0;
+    /* margin-left: -49%; */
+}
+#SchedulingBoard .board-right .unit-car .unit-car-content .unit-content #unit-select select{
+   	height: 100%;
+    border-radius: 6px;
+    border: 1px solid #f4f8ff;
+}
+#SchedulingBoard #board-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding: 0px 10px;
+	height: 30px;
+	z-index: 10;
+	background-color: #f4f8ff;
+}
+#SchedulingBoard #board-bottom .board-bottom{
+	padding: 0 0 1px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard #board-bottom .unit-content{
+	width: 66%;
+	height: 100%;
+	background-color: #f4f8ff;
+	display: inline-flex;
+}
+#SchedulingBoard #viewReport{
+	position: absolute;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+	left: 0;
+	right: 0;
+	bottom: 35px;
+	height: 59%;
+	z-index: 2;
+	overflow: hidden;
+	display: none;
+}
+#SchedulingBoard .viewReport{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	background: #fafafa;
+}
+@keyframes up{
+	from {top: 100%;}
+	to {top: 0%;}
+}
+@keyframes down{
+	from {top: 0%;}
+	to {top: 100%;}
+}
+/*20170912 wanghy 修改样式 start*/
+#SchedulingBoard #planSum {
+	margin: 0 auto;
+	width: 1023px;
+	height: 140px;
+	padding: 5px;
+}
+#SchedulingBoard #unitSum {
+	margin: 0 auto;
+	width: 1023px;
+	height: 215px;
+	padding: 5px;
+}
+/*20170912 wanghy 修改样式 end*/
+#SchedulingBoard #board-bottom .closeViewReportBtn {
+	font-size: 1.2em;
+	top: 10px;
+	right: 10px;
+	position: absolute;
+	z-index: 1000;
+}
+#SchedulingBoard #board-bottom .titlespan {
+	position: absolute;
+	color: #178FE5;
+	display: inline-block;
+	background-color: white;
+	top: -13px;
+	left: 10px;
+	padding: 2px;
+	z-index: 10000;
+}
+/*20170912 wanghy 增加标题图标 start*/
+#SchedulingBoard .titlespan-echarts{
+	position: absolute;
+	color: #000000;
+	display: inline-block;
+	bottom: 0;
+	right: 20%;
+	padding: 2px;
+	z-index: 3;
+}
+#SchedulingBoard .titlespan-planSum{
+    position: absolute;
+    left: 5%;
+    display: inline-block;
+    background-color: white;
+    padding: 1px;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard .titlespan-planSum span{
+    background-color: #4772C4;
+    color: white;
+    display: inline-block;
+    font-size: 22px;
+    padding: 2px 12px;
+    width: 70px;
+    border: 1px solid #436FC3;
+}
+#SchedulingBoard .titlespan-unitSum{
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    display: inline-block;
+    background-color: white;
+    padding: 1px;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+#SchedulingBoard .titlespan-unitSum span{
+    background-color: #4772C4;
+    color: white;
+    display: inline-block;
+    font-size: 22px;
+    padding: 2px 12px;
+    width: 70px;
+    border: 1px solid #436FC3;
+}
+/*20170912 wanghy 增加标题图标 end*/
+#SchedulingBoard #board-bottom ul {
+	flex: 1;
+	text-align: center;
+}
+#SchedulingBoard #board-bottom ul:first-child {
+	margin-left: 20px;
+}
+#SchedulingBoard #board-bottom ul li {
+	flex: 1;
+	line-height: 26px;
+	display: inline-block;
+}
+#SchedulingBoard #board-bottom .flextitle{
+	text-align: center;
+	line-height: 200%;
+	background: #4472c4;
+	color: white;
+	width: 12%;
+	display: inline-block;
+}
+#SchedulingBoard #board-bottom .flexbtn{
+	width: 20%;
+    float: right;
+    display: inline-flex;
+}
+#SchedulingBoard #board-bottom .flexbtn>div{
+	text-align: center;
+    line-height: 200%;
+    background: #5a6d72;
+    color: white;
+    margin-left: 5px;
+}
+.pointer{
+	cursor: pointer;
+}
+#SchedulingBoard #board-bottom .flexbtn>div>a{
+	color: white;
+}
+.thisCarInfo p{
+	display: flex;
+    margin: 0.5%;
+}
+.thisCarInfo p span{
+    display: inline-block;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+/*滚动条插件 开始*/
+.ps-container .ps-scrollbar-x-rail {
+    position: absolute;
+    bottom: 3px;
+    height: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -o-transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+    opacity: 0 !important
+}
+
+.ps-container .ps-scrollbar-x, .ps-container .ps-scrollbar-y-rail {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    position: absolute
+}
+
+.ps-container.hover .ps-scrollbar-x-rail, .ps-container:hover .ps-scrollbar-x-rail {
+    opacity: .6
+}
+
+.ps-container .ps-scrollbar-x-rail.hover, .ps-container .ps-scrollbar-x-rail.in-scrolling, .ps-container .ps-scrollbar-x-rail:hover {
+    background-color: #eee;
+    opacity: .9
+}
+
+.ps-container .ps-scrollbar-y-rail {
+    width: 8px;
+    border-radius: 4px;
+    opacity: 0;
+    -o-transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    -moz-transition: background-color .2s linear, opacity .2s linear;
+    transition: background-color .2s linear, opacity .2s linear;
+    right: 2px !important;
+    background-color: rgba(0, 0, 0, 0) !important
+}
+
+.ps-container.hover .ps-scrollbar-y-rail, .ps-container:hover .ps-scrollbar-y-rail {
+    opacity: .6;
+    background-color: rgba(0, 0, 0, 0) !important
+}
+
+.ps-container .ps-scrollbar-y-rail.hover, .ps-container .ps-scrollbar-y-rail:hover {
+    background-color: #eee;
+    opacity: .9;
+    background-color: rgba(0, 0, 0, 0) !important
+}
+
+.ps-container .ps-scrollbar-y-rail.in-scrolling {
+    opacity: .9
+}
+
+.ps-container .ps-scrollbar-x {
+    bottom: 0;
+    height: 8px;
+    background-color: #aaa;
+    border-radius: 4px;
+    -o-transition: background-color .2s linear;
+    -webkit-transition: background-color .2s linear;
+    -moz-transition: background-color .2s linear;
+    transition: background-color .2s linear
+}
+
+.ps-container .ps-scrollbar-x-rail.hover .ps-scrollbar-x, .ps-container .ps-scrollbar-x-rail:hover .ps-scrollbar-x {
+    background-color: #999
+}
+
+.ps-container .ps-scrollbar-y {
+    position: absolute;
+    right: 0;
+    width: 8px;
+    background-color: #b4bbbf;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -o-transition: background-color .2s linear;
+    -webkit-transition: background-color .2s linear;
+    -moz-transition: background-color .2s linear;
+    transition: background-color .2s linear
+}
+
+.ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y, .ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y {
+    background-color: #b4bbbf
+}
+
+.ps-container.ie .ps-scrollbar-x, .ps-container.ie .ps-scrollbar-y {
+    visibility: hidden
+}
+
+.ps-container.ie.hover .ps-scrollbar-x, .ps-container.ie.hover .ps-scrollbar-y, .ps-container.ie:hover .ps-scrollbar-x, .ps-container.ie:hover .ps-scrollbar-y {
+    visibility: visible
+}
+/*滚动条插件 结束*/
+
+/*@media only screen and (min-width: 1365px) {
+
+	#SchedulingBoard #board-left{
+		max-width: 150px;
+	}
+	#SchedulingBoard #board-right{
+		max-width: 150px;
+	}
+	#SchedulingBoard #board-left .board-left .car-content-title{
+		width: 50%;
+	}
+}*/
+/*20170818 dongyunlong 调度看板  end  */
+/*20170915 wanghy 修改当数据超出时样式 start*/
+.max-wid-110{
+	max-width: 115px;
+}
+/*20170915 wanghy 修改当数据超出时样式 end*/
+
+
+/*调度看板---公有样式 ----start*/
+.numberStyle{
+	width:18px;
+	height:18px;
+	text-align:center;
+	line-height: 18px;
+	display: inline-block;
+	border-radius: 50%;
+    color: #fff;
+}
+.numberBgcolor-orange{
+	background: #FB6014;
+}
+.numberBgcolor-blue{
+	background: #4473c5;
+}
+.numberBgcolor-red{
+	background: #e02a2a;
+}
+.numberBgcolor-gray{
+    background: #59676b;
+}
+.planFontSize-14{
+	font-size: 14px;
+}
+
+.head-top {
+	top: 3px;
+}
+
+.head-m-t {
+	margin-top: 3px;
+}
+
+.vertical-line {
+	width: 1px;
+	height: 20px;
+	margin-top: 4px;
+	background: #d0d3da;
+}
+.posit_center{
+	position: absolute;
+	transform:translateY(-50%);
+	top:50%;
+}
+.pos_left_75{
+	left:75%;
+}
+.text-over-eli{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*调度看板---公有样式 ----end*/
+/*调度看板-蚂蚁图  start*/
+#SchedulingBoard .board-content .board-center div.ant_content.ant{
+    height: 36px;
+    /* position: absolute; */
+    width: 100%;
+    display:none;
+    /* top: 150px; */
+    z-index: 3;
+    border: 1px solid #d2d2d2;
+    border-radius: 2px;
+    padding: 1px;
+    margin-bottom: 15px;
+}
+#SchedulingBoard .ant_left{
+    float: left;
+    width: 8%;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    padding: 1px;
+    color: #fff;
+    border-right:1px solid;
+}
+.ant_left_ji{
+	background: #FB6013;
+}
+.ant_left_pu{
+	background: #4772C4;
+}
+.ant_left_push{
+	background: #848484;
+}
+#SchedulingBoard .ant_right{
+    float: right;
+    width: 2%;
+    height: 32px;
+    background: #4772C4;
+    text-align: center;
+    line-height: 32px;
+    border-left: 1px solid #fff;
+}
+#SchedulingBoard .ant_top{
+	float: left;
+	height: 17px;
+	width: 90%;
+	background-color: #CCCCCC;
+}
+
+#SchedulingBoard .ant_detail{
+	float: left;
+	height: 15px;
+	width: 90%;
+	background-color: #F4F8FF;
+	border-top: 1px solid #d2d2d2;
+	border-left: 1px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
+}
+#SchedulingBoard .ant_detail .ant_detail_left{
+    float: left;
+    height: 15px;
+    width: 3%;
+    background-color: #fff;
+    text-align: center;
+    line-height: 15px;
+    color:#4772C4;
+    border-right: 1px solid #d2d2d2;
+}
+#SchedulingBoard .ant_detail .ant_detail_right{
+    float: right;
+    height: 15px;
+    width: 3%;
+    background-color: #fff;
+    text-align: center;
+    line-height: 15px;
+    color: #4772C4;
+    border-left: 1px solid #d2d2d2;
+}
+#SchedulingBoard .ant_detail .ant_detail_inner{
+	float: left;
+	height: 15px;
+	width: 94%;
+}
+.ant-line-left{
+	display: inline-block;
+    width: 2px;
+    height: 10px;
+    background: #778489;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.ant-line-right{
+	display: inline-block;
+    width: 2px;
+    height: 10px;
+    background: #778489;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.ant-line-center{
+	display: inline-block;
+    width: 99.7%;
+    height: 15px;
+    margin-left: 2px;
+    position: relative;
+}
+#SchedulingBoard .ant_detail .ant_detail_inner .ant_detail_inner_left{
+    float: left;
+    height: 15px;
+    width: 5%;
+    text-align: center;
+    line-height: 15px;
+}
+#SchedulingBoard .ant_detail .ant_detail_inner .ant_detail_inner_right{
+	float: right;
+    height: 15px;
+    width: 5%;
+    line-height: 15px;
+    text-align: center;
+}
+.mar-top-img{
+	margin-top: -2.5px;
+}
+.antMap-go{
+	height:7px;
+	position: relative;
+}
+.antMap-back{
+	height:7px;
+	position: relative;
+}
+.center-line{
+	height: 1.5px;
+    background: #ABB9C7;
+    position: absolute;
+    top: 7px;
+    width: 100%;
+}
+.antMapGoPoint{
+	width:5px;
+	height:5px;
+	position: absolute;
+	top:1px;
+    border-radius: 100%;
+    transition:left 30s linear;
+}
+.antMapBackPoint{
+	width:5px;
+	height:5px;
+	position: absolute;
+	top: 2px;
+	border-radius: 100%;
+	transition:left 30s linear;
+}
+#SchedulingBoard .ant_detail .ant_detail_inner .ant_detail_inner_line{
+	float: left;
+	height: 15px;
+	width: 90%;
+	position: relative;
+}
+
+#SchedulingBoard .ant_top .ant_top_body{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#SchedulingBoard .ant_top .ant_top_left{
+	background-color:#BDE1FF;
+}
+#SchedulingBoard .ant_top .ant_top_left .ant_top_left_body{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#SchedulingBoard .ant_top .ant_top_left .ant_top_left_address,#SchedulingBoard .ant_top .ant_top_left .ant_top_left_productName{
+	text-align: center;
+    line-height: 17px;
+    border-right: 1px solid #fff;
+}
+.ant_bg_address{
+	background-color:#C7DAFD;
+}
+.ant_bg_productName{
+	background-color:#BDE1FF;
+}
+
+#SchedulingBoard .ant_top .ant_top_right{
+	background-color:white;
+}
+#SchedulingBoard .ant_top .ant_top_right .ant_top_right_jiaozhu{
+	float: left;
+	width: 20%;
+	height: 100%;
+	text-align: center;
+}
+.ant_bg_jiaozhu{
+	background-color:#CCF0FA;
+}
+
+#SchedulingBoard .ant_top .ant_top_right .ant_top_right_zongliang{
+	float: left;
+	width: 24%;
+	height: 100%;
+	text-align: center;
+}
+.ant_bg_zongliang{
+	background-color:#FFFBEB;
+}
+#SchedulingBoard .ant_top .ant_top_right .ant_top_right_shijian{
+	float: left;
+	width: 32%;
+	height: 100%;
+	text-align: center;
+}
+.ant_bg_shijian{
+	background-color:#D8EEFF;
+}
+#SchedulingBoard .ant_top .ant_top_right .ant_top_right_jizu{
+	float: left;
+	width: 24%;
+	height: 100%;
+	text-align: center;
+}
+.ant_bg_jizu{
+	background-color:#FFD8D8;
+}
+
+/*调度看板-蚂蚁图  end*/
+/*调度看板-样式调整  start*/
+.head-top {
+	top: 3px;
+}
+.pad-6-0{
+    padding: 6px 0;
+}
+.head-m-t {
+	margin-top: 3px;
+}
+
+.wid-145 {
+	width: 145px;
+}
+
+.vertical-line {
+	width: 1px;
+	height: 24px;
+	margin-top: 3px;
+	background: #d0d3da;
+}
+
+.number-style {
+	width: 22px;
+	height: 22px;
+	text-align: center;
+	line-height: 22px;
+	display: inline-block;
+	border-radius: 50%;
+	color: #fff;
+}
+
+html, body, .scheduling-board {
+	height: 100%;
+}
+
+.scheduling-board {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 550px;
+	min-width: 1000px;
+	background: #fff;
+	font-family: "Microsoft YaHei", SimSun, '\5b8b\4f53', sans-serif;
+}
+@keyframes rubberBand {
+  from, 20%, 53%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.scheduling-board .board-head {
+	width: 100%;
+	height: 30px;
+	padding: 0px 10px;
+	background: #fafafa;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scheduling-board .board-content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30px;
+	bottom: 30px;
+	overflow: hidden;
+}
+
+.scheduling-board .board-content .board-left {
+	left: 0px;
+	top: 0px;
+	bottom: 10px;
+	width: 130px;
+	padding: 10px;
+	position: absolute;
+	overflow: hidden;
+}
+
+.scheduling-board .board-content .board-left .left-car {
+	width: 100%;
+	height: 93%;
+	margin-bottom: 10px;
+	background: #f4f9ff;
+	position: relative;
+	transition: height 350ms;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scheduling-board .board-content .content-title {
+	height: 30px;
+	width: 100%;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scheduling-board .board-content .content-title .icon {
+	height: 30px;
+	vertical-align: top;
+}
+
+.scheduling-board .board-content .content-title .content-title-name {
+	width: 40px;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.scheduling-board .board-content .board-left .left-car-content {
+	position: absolute;
+	top: 30px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow: hidden;
+}
+
+.scheduling-board .board-content .car-item {
+	width: 100%;
+	height: 31px;
+	/* line-height: 31px; */
+	text-align: left;
+	display: flex;
+}
+
+.scheduling-board .board-content .car-item:hover {
+	background: #d2e9ff;
+}
+.scheduling-board .board-content .car-item:hover div.item-count{
+    background: #4772c4;
+}
+.scheduling-board .board-content .car-item:hover img {
+	display: inline-block;
+}
+
+.scheduling-board .board-content .item-icon {
+	width: 14px;
+	height: 17px;
+	/*margin-left: 18px;*/
+	vertical-align: middle;
+}
+
+.scheduling-board .board-content .item-count {
+	background: #58676a;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	line-height: 16px;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.scheduling-board .board-content .item-content {
+    margin: 0 5px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.scheduling-board .board-content .content-title .title-toggle {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.scheduling-board .board-content .board-center {
+	left: 130px;
+	right: 127px;
+	top: 10px;
+	bottom: 10px;
+    padding: 0 0 0 10px;
+	position: absolute;
+    overflow: hidden;
+}
+
+.scheduling-board .board-content .board-center .board-center-pad {
+    width: 100%;
+    height: 522px;
+    padding: 0 10px;
+    position: absolute;
+    overflow: hidden;
+}
+
+.scheduling-board .board-content .board-right {
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 130px;
+	padding: 10px;
+	position: absolute;
+	overflow: hidden;
+}
+.scheduling-board #smallLoopSetUp tr.driverNameClick{
+	background: #FFFFFF;
+}
+.scheduling-board #smallLoopSetUp thead td{
+	width: 50%;
+}
+.scheduling-board .board-content .board-right .right-car {
+	width: 100%;
+	max-height: 155px;
+	margin-bottom: 10px;
+	background: #f4f9ff;
+	position: relative;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scheduling-board .board-content .board-right .right-car .right-car-content {
+	overflow: hidden;
+	position: relative;
+	transition: height 350ms;
+    max-height: 125px;
+}
+
+.scheduling-board .board-head .head-left-search {
+	float: right;
+	height: 30px;
+	min-width: 667px;
+	line-height: 30px;
+}
+
+.scheduling-board .board-head .head-left-search ul.search-ul {
+	height: 30px;
+	margin-left: 5px;
+	display: inline-block;
+	text-align: center;
+}
+.scheduling-board .board-head .head-left-search ul.search-ul:nth-last-of-type(1) {
+	margin-right: 10px;
+}
+.scheduling-board .board-head .head-left-search ul li.search-li {
+	min-width: 60px;
+	line-height: 30px;
+	display: inline-block;
+}
+.scheduling-board .board-head .head-left-search ul li.search-li a{
+	width: 48px;
+	height: 22px;
+	line-height: 19px;
+	padding: 0px;
+	margin-bottom: 3px;
+	text-align: center;
+}
+
+.scheduling-board .board-head .head-left-search ul li.search-input {
+	width: 60px;
+	line-height: 30px;
+	display: inline-block;
+}
+
+.scheduling-board .board-head .head-left-search ul li.search-input input,
+.scheduling-board .board-head .head-left-search ul li.search-input select {
+	height: 22px;
+	padding: 0px;
+    text-indent: 3px;
+}
+
+.scheduling-board .board-bottom ul li {
+	line-height: 26px;
+	display: inline-block;
+}
+
+.scheduling-board .board-head .head-right {
+	float: right;
+	width: 320px;
+	height: 100%;
+}
+
+.scheduling-board .board-head .head-right .head-search {
+	margin: 4px 10px 0 10px;
+}
+
+.scheduling-board .board-head .head-right .temperature {
+	height: 22px;
+	margin: 4px 10px 0 10px;
+}
+
+.scheduling-board .board-head .head-right .head-block {
+	width: 110px;
+	padding: 0 7px;
+}
+
+.middle_line{
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.scheduling-board .board-head .head-right .head-block > div {
+	width: 62px;
+	border: 1px solid #e5e5e5;
+	height: 23px;
+	text-align: center;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+/*.scheduling-board .board-head .head-right .head-block > img {*/
+	/*margin-top: -2px;*/
+/*}*/
+
+.scheduling-board .board-bottom {
+	position: absolute;
+	bottom: 4px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding: 0px 10px;
+	height: 26px;
+	z-index: 10;
+	background-color: #f4f8ff;
+}
+
+.scheduling-board .board-bottom-p {
+	width: 100%;
+	height: 26px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scheduling-board .board-bottom .bottom-title {
+	text-align: center;
+	background: #4472c4;
+	color: white;
+	width: 116px;
+	height: 26px;
+	border-left: 1px solid #f4f7fe;
+	border-bottom: 1px solid #f4f7fe;
+	line-height: 25px;
+	display: inline-block;
+}
+
+.scheduling-board .board-bottom .unit-content {
+	left: 126px;
+	right: 204px;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	height: 26px;
+	background-color: #f4f8ff;
+}
+
+.scheduling-board .board-bottom ul {
+	height: 26px;
+	display: inline-block;
+	text-align: center;
+}
+
+.scheduling-board .board-bottom ul:nth-of-type(1) {
+	margin-left: 10px;
+}
+
+.scheduling-board .board-bottom ul li {
+	line-height: 26px;
+	display: inline-block;
+}
+
+.scheduling-board .board-bottom ul li > label {
+	height: 26px;
+	padding: 5px 5px;
+	width: 75px;
+	line-height: 16px;
+	text-align: left;
+}
+
+.scheduling-board .board-bottom .bottom-btn {
+	/* width: 194px; */
+	width:97px;
+	height: 26px;
+	right: 10px;
+	position: absolute;
+	display: inline-flex;
+}
+
+.scheduling-board .board-bottom .bottom-btn > div {
+	text-align: center;
+	line-height: 25px;
+	background: #5a6d72;
+	color: white;
+	border: 1px solid #f2f9ff;
+}
+
+.scheduling-board .board-bottom .bottom-btn > div > a {
+	color: white;
+}
+
+.scheduling-board .board-head .head-left-base {
+	float: left;
+	width: 654px;
+	height: 100%;
+}
+
+.scheduling-board .board-head .head-left-base .head-block {
+	height: 30px;
+	line-height: 30px;
+}
+@media only screen and (min-width: 1365px) {
+
+    .scheduling-board .board-head .head-left-search ul li.search-input {
+        width: 130px;
+    }
+
+}
+/*调度看板-样式调整  end*/
+
+/*20170928 wanghy 添加对试块表格的样式添加 start*/
+
+#briquette .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#briquette .table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+/*20170928 wanghy 添加对试块表格的样式添加 end*/
+
+/*20171025 wanghy 添加对试块表格的样式添加 start*/
+.height-34{
+    height: 34px;
+}
+tbody:nth-child(even) tr.tableDiyTr{
+    background: #D9E1F2;
+}
+tbody:nth-child(odd) tr.tableDiyTr{
+    background: white;
+}
+#qualityCheckingTable.table>tbody+tbody {
+    border-top: none;
+}
+.tableDiyModal{
+    /*display: none;*/
+}
+.tableDiyModal td.tableDiyModalTD:hover{
+    background: white;
+}
+.tableDiyModal ul{
+    text-align: left;
+    width: 49%;
+    display: inline-block;
+}
+.tableDiyModal ul.w-98{
+    width: 98%;
+}
+.tableDiyModal ul.w-98 .title{
+    width: 21.499%;
+}
+.w-65{
+    width: 65%;
+}
+.tableDiyModal ul.w-98 .w-100{
+    width: 100%;
+    max-width: none;
+}
+.tableDiyModal ul li{
+    vertical-align: middle;
+    display: inline-block;
+}
+.tableDiyModal ul li .form-control-inputLeft{
+    line-height: 19px;
+}
+.tableDiyModal ul li.title{
+    width: 43%;
+}
+.tableDiyModal .wid-100{
+    width: 100px;
+    max-width: none;
+}
+#thresholdModal ul{
+    text-align: left;
+    width: 100%;
+    display: inline-block;
+}
+#thresholdModal ul li.title{
+    width: 33%;
+}
+#thresholdModal ul li{
+    vertical-align: middle;
+    display: inline-block;
+}
+.wid-170{
+    width: 170px;
+}
+
+#qualityCheckingTable .tableDiyTr .form-control-inputLeft{
+    padding: 0;
+    height: unset;
+    width: 200px;
+}
+.wid-200{
+    width: 200px;
+}
+.grayIcon{
+    cursor: default;
+    color: #C0C0C0;
+}
+.btn.btn-blue.icon-add-btn{
+    padding: 3px 12px;
+}
+.icon-add-style{
+   display: inline-block;
+   line-height: unset; 
+}
+
+#processModeModal .table-striped>tbody>tr:nth-of-type(odd) {
+    background: white;
+}
+#processModeModal .table-striped>tbody>tr:nth-of-type(even) {
+    background: white;
+}
+#thresholdModal .table-striped>tbody>tr:nth-of-type(odd) {
+    background: white;
+}
+#thresholdModal .table-striped>tbody>tr:nth-of-type(even) {
+    background: white;
+}
+.wid-24{
+	width:24px;
+}
+.max-scoll-257{
+    max-height: 257px;
+}
+.max-scoll-144{
+    max-height: 144px;
+}
+.max-scoll-116{
+    max-height: 116px;
+}
+/*20171025 wanghy 添加对试块表格的样式添加 end*/
+
+
+
+/*20171026 yuyue 添加对配合比模块的样式添加 start*/
+#adjustProportion #addForm .search li,#adjustProportion #updateForm .search li{
+	flex: none;
+}
+#workProportion #addForm .modal-body .jobOrder ul,#workProportion #updateForm .modal-body .jobOrder ul{
+	width: 45%;
+}
+#workProportion #addForm #oneProportion li,
+#workProportion #addForm #twoProportion li,
+#workProportion #updateForm #updateOneProportion li,
+#workProportion #updateForm #updateTwoProportion li{
+    flex:none;
+}
+/*20171026 yuyue 添加对配合比模块的样式添加 end*/
+
+/*20171031 wanghy 增加对配合比模块的样式调整 start*/
+.btn.btn-blue.max-wid-130{
+    max-width: 130px;
+}
+#firstProportion .concreteMirtuneTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#firstProportion .concreteMirtuneTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#secondProportion .mortarMixRatio.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#secondProportion .mortarMixRatio.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#oneProportion .concreteMirtuneTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#oneProportion .concreteMirtuneTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#twoProportion .mortarMixRatio.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#twoProportion .mortarMixRatio.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#updateOneProportion .concreteMirtuneTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#updateOneProportion .concreteMirtuneTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#updateTwoProportion .mortarMixRatio.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#updateTwoProportion .mortarMixRatio.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#adjustProportion #addModal #addTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#adjustProportion #addModal #addTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#adjustProportion #updateModal #updateTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#adjustProportion #updateModal #updateTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#adjustProportion #addModal #addTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#adjustProportion #addModal #addTable .form-control-inputLeft{
+    width: 120px;
+}
+#adjustProportion #updateModal #updateTable .form-control-inputLeft{
+    width: 120px;
+}
+.resetItem{
+    display: none;
+}
+.resetTr:hover .resetItem {
+    display: inline-block;
+    cursor: pointer;
+    width: 38px;
+    line-height: 30px;
+}
+.wid-80{
+    width: 80px;
+}
+.animationModalInTab{
+	width:100%;
+}
+
+/*20171031 wanghy 增加对配合比模块的样式调整 end*/
+
+#workProportion #upLoadModal .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#workProportion #upLoadModal .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+#workProportion #myTabContent{
+	height: unset;
+}
+/*20171031 wanghy 增加对配合比模块的样式调整 end*/
+
+
+/*20171128 wanghy 需求变更-增加查看功能 start*/
+#adjustProportion #checkModal #checkTable.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#adjustProportion #checkModal #checkTable.table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#adjustProportion #checkModal #checkTable .form-control-inputLeft{
+    width: 120px;
+}
+#adjustProportion #checkModal #checkTable .form-control-inputLeft.wid-80{
+    width: 80px;
+}
+#adjustProportion #checkModal .pad-sp{
+    padding: 12px 40px;
+}
+/*20171128 wanghy 需求变更-增加查看功能 end*/
+#workProportion #detailModal .table-striped>tbody>tr:nth-of-type(odd) {
+   background-color: #FFFFFF;
+}
+#workProportion #detailModal .table>tbody>tr:hover {
+   background: #FFFFFF;
+}
+/* 20171204 dongyunlong bug-435 start */
+#Customer #addModal .modal-dialog{
+	width: 1000px;
+}
+#Customer #updateModal .modal-dialog{
+	width: 1000px;
+}
+#Customer .modal .modal-search ul .redstar{
+	text-align: left;
+	margin-left: 15px;
+}
+#Customer .border-PI ul.w-100 .w100-title{
+	width: 183px;
+}
+#Customer .border-PI ul.w-100 .w100-remark{
+	width: 599px;
+}
+#Customer .border-PI ul.w-100 .w100-input{
+	width: 539px;
+}
+#Construction #addModal .modal-dialog{
+	width: 1000px;
+}
+#Construction #updateModal .modal-dialog{
+	width: 1000px;
+}
+#Construction .modal .modal-search ul .redstar{
+	text-align: left;
+	margin-left: 15px;
+}
+#Construction .border-PI ul.w-100 .w100-title{
+	width: 183px;
+}
+#Construction .border-PI ul.w-100 .w100-input{
+	width: 539px;
+}
+#SalesContract #contractAddModal .modal-dialog{
+	width: 1000px;
+}
+#SalesContract #updateModal .modal-dialog{
+	width: 1000px;
+}
+#SalesContract .wid-110{
+    width: 120px;
+}
+#SalesContract .border-PI ul.w-100 .w100-title{
+	width: 183px;
+}
+#SalesContract .border-PI ul.w-100 .w100-input{
+	width: 539px;
+}
+#SalesContract .modal .modal-search ul .redstar{
+	text-align: left;
+	margin-left: 15px;
+}
+#unitManagement .modal .modal-search ul {
+	width: 43%;
+}
+#materialInfo .modal .modal-search ul {
+	width: 43%;
+}
+/* 20171204 dongyunlong bug-435 end   */
+
+/* 20171204 dongyunlong bug-454 start   */
+#checkItemType .outSide .base-line .redstar {
+	flex: 1.3;
+}
+#purchaseplan .modal-search ul{
+	margin-right: 40px;
+}
+/* 20171204 dongyunlong bug-454 end   */
+
+/* 20171212 dongyunlong bug-476 start   */
+#Customer #checkModal .border-PI ul.w-100 .w100-title{
+	width: 160px;
+}
+#SalesContract #checkModal .border-PI ul.w-100 .w100-title{
+	width: 158px;
+}
+/* 20171212 dongyunlong bug-476 end   */
+
+/* 20171213 wanghy 灰色字体 start */
+.color-gray{
+    color: gray;
+}
+/* 20171213 wanghy 灰色字体 end */
+
+/* 20171220 hufeng 排产 start */
+.scheduling{
+    padding-left: 2px;
+    display: inline-block;
+    /* width: 200px; */
+    width: 42%;
+    text-indent: 5px;
+}
+/* 20171220 hufeng 排产 start */
+
+/* 原材快检规则  start*/
+
+.w-130-gz{
+    width: 130px;
+}
+
+.w-184-gz{
+    width: 184px;
+}
+
+.w720-gz{
+    width: 720px;
+    max-width: none;
+}
+.title-img-gz{
+	margin-left: 20px;
+	color: gray;
+}
+
+/* 原材快检规则  end*/
+
+
+
+
+
+/*泵车使用计划 ------杨红    start*/
+#pumpCarUsePlan{
+	min-width: 1028px;
+}
+/*泵车使用计划*/
+#pumpCarUsePlan .pumpCarPlanTitle{
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+/*计划编号*/
+#pumpCarUsePlan .pumpCarTitleName{
+	padding-left: 20px;
+	color: #222;
+}
+#pumpCarUsePlan .clear{
+	clear: both;
+}
+#pumpCarUsePlan .axisTime{
+	width: 25px;
+	border-right: 2px solid #262626;
+	border-top: 1.5px solid #262626;
+	height: 6px;
+	display: inline-block;
+	box-sizing: border-box;
+	float: left;
+}
+/*时间刻度*/
+#pumpCarUsePlan .axisNumberOne{
+	/*margin-left: 110px;*/
+}
+/*时间数字父级*/
+#pumpCarUsePlan .axisTimeString{
+	/*margin-left: 110px;*/
+	margin-top: 10px;
+}
+/*时间数字*/
+#pumpCarUsePlan .axisNumber{
+	color: #262626;
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+	-moz-transform: skew(30deg,-30deg);
+	-webkit-transform: skew(30deg,-30deg);
+	-o-transform: skew(30deg,-30deg);
+	-ms-transform: skew(30deg,-30deg);
+}
+/*信息显示区域*/
+#pumpCarUsePlan .statisticsMsgs{
+	margin-right: 200px;
+	display: flex;
+	float: right;
+	height: 30px;
+	border: 1px solid #999999;
+	line-height: 30px;
+	box-shadow: 5px 5px 5px #999;
+	border-radius: 4px;
+	width: 590px;
+}
+#pumpCarUsePlan .statisticsMsg{
+	flex: 1;
+	text-align: center;
+}
+#pumpCarUsePlan .carPlanMsgTable{
+	margin-top: 70px;
+}
+#pumpCarUsePlan .triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 10px solid rgba(68, 114, 196, 1);
+	border-bottom: 5px solid transparent;
+}
+
+/*计划详情部分*/
+#pumpCarUsePlan .axisAndPlan{
+	min-height: 500px;
+	display: flex;
+}
+#pumpCarUsePlan .planRelevant{
+	flex:3;
+	margin-right: 30px;
+	display: flex;
+	flex-direction: column;
+}
+/*右侧泵车泵送方量 + 饼图的统计 区域*/
+#pumpCarUsePlan .planStatistics{
+	position: relative;
+	background: #D9E1F2;
+	flex: 1.2;
+	padding-top: 10px;
+	border-radius: 10px;
+}
+/*统计饼图的父级*/
+#pumpCarUsePlan .pumpCarSquareStatistics{
+	/*background: #e0995e;*/
+	width: 325px;
+	height: 300px;
+	display: none;
+}
+/*各个泵车泵送方量的统计区域-----父级*/
+#pumpCarUsePlan .pumpSquare{
+	width: 250px;
+	margin: auto;
+	border-radius: 10px;
+	position: absolute;
+	top: 280px;
+	left: 0;
+	right: 0;
+}
+/*各个泵车泵送方量的统计区域-----编号--左侧*/
+#pumpCarUsePlan .pumpPlanNumber{
+	text-align: center;
+	flex: 1;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: 600;
+	border-right: 1px solid #DEDEDE;
+	border-top: 1px solid #DEDEDE;
+}
+/*各个泵车泵送方量的统计区域-----方量--右侧*/
+#pumpCarUsePlan .pumpPlanVolume{
+	text-align: center;
+	flex: 1;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: 600;
+	border-left: 1px solid #DEDEDE;
+	border-top: 1px solid #DEDEDE;
+}
+/*泵车泵送区域的头部标题区域---父级*/
+#pumpCarUsePlan .pumpTitleHead{
+	border-radius: 10px 10px 0px 0px;
+	background: #93A2C0;
+	height: 35px;
+	display: flex;
+}
+/*泵车泵送区域的头部标题区域--内部左侧*/
+#pumpCarUsePlan .pumpTitleLeft{
+	flex: 1;
+	color: #fff;
+	text-align: center;
+	line-height: 35px;
+	font-size: 16px;
+	font-weight: 600;
+	border-right: 1px solid #DEDEDE;
+}
+/*泵车泵送区域的头部标题区域--内部右侧*/
+#pumpCarUsePlan .pumpTitleRight{
+	flex: 1;
+	color: #fff;
+	text-align: center;
+	line-height: 35px;
+	font-size: 16px;
+	font-weight: 600;
+	border-left: 1px solid #DEDEDE;
+}
+/*泵车泵送区域的底部统计区域*/
+#pumpCarUsePlan .pumpSquareBody{
+	height: 30px;
+	background: #ffffff;
+	display: flex;
+}
+
+
+/*刻度+时间部分*/
+#pumpCarUsePlan .planTimeAndScale{
+	padding-left: 110px;
+}
+/*饼图中心今日泵送方量的显示区域*/
+#pumpCarUsePlan .planStatisticsCircular{
+	position: absolute;
+	width: 121px;
+	height: 121px;
+	border-radius: 121px;
+	background: #576580;
+	z-index: 99999;
+	margin: auto;
+	left: 0px;
+	right: 0px;
+	top: 85px;
+	display: none;
+}
+/*饼图中心内容*/
+#pumpCarUsePlan .todayVolume{
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	margin-top: 30px;
+}
+/*饼图中心内容*/
+#pumpCarUsePlan .todayVolumeName{
+	text-align: center;
+	font-size: 28px;
+	color: #FFC72B;
+	font-weight: 500;
+}
+#pumpCarUsePlan .planDetails{
+	flex:1;
+	/*background: #9999dd;*/
+	display: flex;
+}
+/*计划编号部分*/
+#pumpCarUsePlan .planNumber{
+	font-size: 16px;
+	width: 100px;
+	text-align: center;
+	/*background: #440;*/
+	color: #333;
+}
+/*计划刻度部分父级*/
+#pumpCarUsePlan .planNumberScale{
+	width: 10px;
+	/*background: #004;*/
+	border-right: 1.5px solid #333;
+}
+/*计划刻度*/
+#pumpCarUsePlan .planScale{
+	height: 2px;
+	background: #333;
+}
+/*计划浇筑时间和箭头父级*/
+#pumpCarUsePlan .planEstimatedTime{
+	display: flex;
+}
+/*计划浇筑时间初始条*/
+#pumpCarUsePlan .estimatedTime{
+	width: 25px;
+	height: 10px;
+	background: #4472C4;
+}
+/*计划浇筑时间箭头*/
+#pumpCarUsePlan .timeArrow{
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 5px solid #4472C4;
+	border-bottom: 5px solid transparent;
+}
+/*泵车需求*/
+#pumpCarUsePlan .planDemand{
+	width: 50px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border: 1.5px solid #BCC3D1;
+	border-radius: 2px;
+	font-size: 14px;
+	display: inline-block;
+	margin-right: 5px;
+}
+/*申请方量*/
+#pumpCarUsePlan .planVolume{
+	font-size: 14px;
+	font-weight: 600;
+	text-align: center;
+	/*width: 50px;*/
+	color: #334B5C;
+}
+/*申请方量和泵车需求父级*/
+#pumpCarUsePlan .planVolumeDemand{
+	padding-left: 10px;
+	position: relative;
+}
+/*预计结束时间--父级*/
+#pumpCarUsePlan .planExpectedEndTime{
+	display: none;
+}
+/*单个预计结束时间条的样式*/
+#pumpCarUsePlan .expectedEndTime{
+	border-right:1px solid #ffffff;
+	background: #4472C4;
+	height: 10px;
+}
+#pumpCarUsePlan .expectedEndTimeWidth{
+	background: #4472C4;
+	height: 10px;
+}
+/*泵车调度后详细信息的父级*/
+#pumpCarUsePlan .endPumpCarDemandResult{
+	display: none;
+	padding-left: 10px;
+}
+/*调度结束后的泵车需求和编号--父级*/
+#pumpCarUsePlan .endResult{
+	display: inline-block;
+	border: 1.5px solid #BCC3D1;
+	border-radius: 2px;
+	height: 25px;
+	/* line-height: 25px; */
+	padding: 0px 2px 0px 5px;
+	font-size: 14px;
+	margin-right: 5px;
+}
+/*调度结束后的泵车需求*/
+#pumpCarUsePlan .pumpCarDemandResult{
+	margin-right: 10px;
+	display: inline-block;
+}
+/*调度结束后的泵车编号*/
+#pumpCarUsePlan .pumpCarNumberResult{
+	/* margin-left: 10px; */
+	background: #D9E1F2;
+	padding: 0px 5px;
+	margin: 1px 0px 2px 10px;
+	display: inline-block;
+}
+/*右侧块内标题*/
+#pumpCarUsePlan .planStatistics h3{
+	color: #333;
+	margin-left: 15px;
+}
+/*调度前---echarts父级*/
+#pumpCarUsePlan .planStatisticsCircularParent{
+	width: 160px;
+	height: 160px;
+	border-radius: 160px;
+	background: #ccc;
+	margin: 40px auto;
+	position: relative;
+}
+/*调度前---echarts子级*/
+#pumpCarUsePlan .planStatisticsCircularChildren{
+	width: 126px;
+	height: 126px;
+	border-radius: 126px;
+	background: #576580;
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+/*单泵车统计最后条圆角显示类*/
+#pumpCarUsePlan .pumpSquareLastBorderRadius{
+	border-radius: 0px 0px 10px 10px;
+}
+/*调度成功后的显示块动画类*/
+#pumpCarUsePlan .add_transform{
+	transform:rotateX(360deg);
+	transition: all 350s ease-in-out;
+}
+/*泵车使用计划   end*/
+
+
+
+
+
+
+body{
+	scrollbar-arrow-color: red; /*上下按钮上三角箭头的颜色*/
+	scrollbar-face-color: #CBCBCB; /*滚动条凸出部分的颜色*/
+	scrollbar-3dlight-color: blue; /*滚动条亮边的颜色*/
+	scrollbar-highlight-color: #333; /*滚动条空白部分的颜色*/
+	scrollbar-shadow-color: yellow; /*滚动条阴影的颜色*/
+	scrollbar-darkshadow-color: green; /*滚动条强阴影的颜色*/
+	scrollbar-track-color: #eee; /*滚动条背景颜色*/
+
+	scrollbar-base-color: black; /*滚动条的基本颜色*/
+	/*以上2项适用与：body、div、textarea、iframe*/
+}
+
+::-webkit-scrollbar {  /* 滚动条整体部分 */
+	width:10px;
+	margin-right:2px
+}
+/*::-webkit-scrollbar-button { !* 滚动条两端的按钮 *!*/
+	/*width:10px;*/
+	/*background-color: yellow;*/
+/*}*/
+::-webkit-scrollbar:horizontal {
+	height:10px;
+	margin-bottom:2px
+}
+::-webkit-scrollbar-track {  /* 外层轨道 */
+	border: 1px #d3d3d3 solid;
+	box-shadow: 0px 0px 3px #dfdfdf inset;
+	border-radius: 10px;
+	background: #eee;
+}
+::-webkit-scrollbar-track-piece {  /*内层轨道，滚动条中间部分 */
+	background-color: #DDDDDD;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {  /* 滑块 */
+	border: 1px #808080 solid;
+	border-radius: 10px;
+	background: #999;
+}
+::-webkit-scrollbar-corner { /* 边角 */
+	width: 10px;
+	/*background-color: red;*/
+}
+::-webkit-scrollbar-thumb:hover { /* 鼠标移入滑块 */
+	background: #909090;
+}
+/*调度看板   小循环部分   start*/
+#SchedulingBoard img.pumpCar{
+	width: 18px;
+}
+#SchedulingBoard .con_body_right-body{
+	height: 113px;
+}
+#SchedulingBoard .vehicleCycle{
+    height: 113px;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    background: rgba(68, 114, 196, 1);
+}
+#SchedulingBoard .unitVehicleLineUp{
+    height: 113px;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    background: rgba(68, 114, 196, 1);
+}
+#SchedulingBoard #smallLoopSetUp .border-PI{
+	border: none;
+}
+#SchedulingBoard .vehicleCycleBody{
+	flex: 5;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#SchedulingBoard .singlePlanCar{
+	position: relative;
+	width: 70px;
+	color: #4472c4;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-height: 20px;
+	min-height: 20px ;
+	margin-top: 5px;
+	border-radius: 10px;
+	background: rgba(228, 234, 247, 1);
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);
+}
+#SchedulingBoard .smallLoopDel{
+	position: absolute;
+	left: 50px;
+	display: none;
+	cursor: pointer;
+}
+
+#SchedulingBoard .singlePlanCar:hover>.smallLoopDel{
+	display: inline-block;
+}
+#SchedulingBoard .vehicleCycleFoot{
+	flex: 1;
+	display: flex;
+}
+#SchedulingBoard .vehicleCycleFootLeft{
+	 flex: 1;
+	text-align: center;
+	cursor: pointer;
+ }
+#SchedulingBoard .vehicleCycleFootRight{
+	flex: 1;
+	text-align: center;
+	cursor: pointer;
+}
+#SchedulingBoard .vehicleCycleFootLeft .push{
+	/*display: none;*/
+}
+#SchedulingBoard .border-left-radius{
+	border: 1px solid rgba(68, 114, 196, 1);
+	border-radius: 0px 0px 0px 10px;
+}
+#SchedulingBoard div.planStatusBgStyle {
+    border: 1px solid #848484;
+    border-radius: 0px 0px 0px 10px;
+    background:#848484;
+}
+#SchedulingBoard .border-right-radius{
+	border: 1px solid rgba(68, 114, 196, 1);
+	border-radius: 0px 0px 10px 0px;
+}
+#SchedulingBoard .tankCar{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#SchedulingBoard .pumpTruck{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#SchedulingBoard .con_body_right-head{
+	height: 25px;
+	display: flex;
+}
+#SchedulingBoard .carStyleText{
+	cursor: pointer;
+}
+#SchedulingBoard .carStyle{
+	background: rgba(68, 114, 196, 1);
+	color: #ffffff;
+	border-radius: 5px 5px 0px 0px;
+}
+#SchedulingBoard .carStyleStatus {
+    background: #848484;
+    color: #ffffff;
+    border-radius: 5px 5px 0px 0px;
+}
+/*调度看板   小循环部分    end*/
+#sandTestRecord #addModalTest .table-striped>tbody>tr:nth-of-type(odd) {
+	 background-color: #FFFFFF;
+ }
+#sandTestRecord #addModalTest .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestSuiShi .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestSuiShi .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestFenMeiHui .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestFenMeiHui .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestKuangFen .table-striped>tbody>tr:nth-of-type(odd) {
+	 background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestKuangFen .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestShuiNi .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestShuiNi .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestJianShuiJi1 .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestJianShuiJi1 .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestJianShuiJi2 .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestJianShuiJi2 .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord #addModalTestSuiShiJiLu .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord #addModalTestSuiShiJiLu .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+#sandTestRecord #jiSuanPeiHeBi .table-striped>tbody>tr:nth-of-type(odd) {
+	 background-color: #FFFFFF;
+ }
+#sandTestRecord #jiSuanPeiHeBi .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+#sandTestRecord1 #strengthReview .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+#sandTestRecord1 #strengthReview .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+#sandTestRecord1 #strengthReview table tr td{
+	width:4.5%;
+}
+#sandTestRecord1 #strengthReview table tr td input{
+	width: 100%;
+	border: none;
+	text-align: center;
+}
+
+
+
+/* 消耗统计  start*/
+.totalviewfeed {
+	width: 20%;
+	position: absolute;
+	border: 1px solid palevioletred;
+	/*right: 22%;*/
+	right: 20%;
+	margin-top: -2px;
+	padding: 4px 6px;
+	border: 1px solid lightgrey;
+	box-shadow: 1px 1px 1px lightgrey;
+}
+
+.specialLitoRadio.active{
+	border: 1px solid #ddd;
+    border-bottom-color: transparent
+}
+
+.nav>li.specialLitoRadio.active>a{
+   border: none;
+}
+.nav>li.specialLitoRadio:focus, .nav>li.specialLitoRadio:hover{
+   border-color: #eee #eee #ddd;
+   background-color: #eee;
+}
+
+.nav>li.specialLitoRadio.active:focus, .nav>li.specialLitoRadio.active:hover{
+   border-color: #eee #eee #ddd;
+   background-color: #FFFFFF;
+}
+
+#feedConsumption .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+#feedConsumption .table>tbody>tr:hover {
+	background: #FFFFFF;
+}
+
+.span-font-size{
+	vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 220px;
+}
+/* 消耗统计  end*/
+
+#adapterRecordsVue #adapterRecords .table>tbody>tr:hover {
+    background: #FFFFFF;
+}
+#adapterRecordsVue #adapterRecords .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+#adapterRecordsVue #adapterRecords .table>tbody>tr{
+    height:35px;
+}
+#adapterRecordsVue #adapterRecords table tr td{
+    width:5.2%;
+}
+#adapterRecordsVue #adapterRecords table tr td input{
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+
+.tableINinput{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+}
+/*input框去除最大宽*/
+.cleanWidth{
+    max-width: unset;
+}
+
+.form-control.cleanWidth{
+    max-width: unset;
+}
+/*试验规则样式*/
+#testRegulation #remarkOne{
+	width:100%;
+	height:100%;
+}
+
+#testRegulation #remarkTwo{
+	height:100%;
+}
+
+#testRegulation #remarkOne ul,
+#testRegulation #remarkTwo ul{
+	width:100%;
+	display: inherit;
+}
+
+#testRegulation .testNumberInput{
+	width:unset;
+}
+
+#testRegulation .addForm input,
+#testRegulation .addForm select{
+	width:280px;
+}
+
+
+
+/*试验标准样式*/
+#testStandard #app #testItemDetails ul{
+    width:100%;
+    justify-content:flex-start;
+    margin-left:5%;
+}
+#testStandard #app #testItemDetails ul li{
+    flex:initial;
+}
+#testStandard #app #addModal {
+    overflow-y:auto;
+}
+.fl-none{
+    flex:none;
+}
+.wid-46p{
+    width:46%;
+}
+.marle-10p{
+    margin-left:10%;
+}
+#testStandard #tree{
+    width:31%;
+    border: 1px #b4cef8 solid;
+    margin-left: 2%;
+    overflow-y: auto;
+}
+#testStandard #tree .hintItem{
+    font-size: 24px;
+    color: #b4cef8;
+    padding: 27px 45px;
+    display: inline-block;
+}
+#testStandard #tree .treeDiv{
+    height: 20vh;
+}
+#testStandard #tree .itemList span{
+    display: inline-block;
+    border: 1px #b4cef8 solid;
+    border-radius: 5px;
+    width: 15rem;
+    line-height: 45px;
+}
+#testStandard #tree .itemList{
+    text-align: center;
+    margin-top:5%;
+}
+#testStandard #tree div:first-child div span:hover{
+    cursor:default;
+}
+
+#cementTestRecord #addModalTestShuiNi #addTableShuiNi tr{
+	background-color: #FFF;
+}
+
+/*20180118 wanghy 原材采购计划 start*/
+#rawMaterialPurchasePlan #purchasePlanFormGiveTable.table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+
+#rawMaterialPurchasePlan #purchasePlanFormGiveTable.table > tbody > tr:hover {
+	background: #FFFFFF;
+}
+
+#rawMaterialPurchasePlan {
+	/*width: 1100px;*/
+	margin: 0 auto 10px;
+}
+
+/*增加盒阴影*/
+
+#rawMaterialPurchasePlan .box-shadow-sp {
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.349019607843137);
+}
+
+/*切换今日采购计划于明日采购计划的Tab栏*/
+
+#rawMaterialPurchasePlan .navTabColor {
+	background: rgba(204, 204, 204, 0.4);
+}
+
+/*字体加粗*/
+
+#rawMaterialPurchasePlan .navTabColor a {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/*点击后颜色变化*/
+
+#rawMaterialPurchasePlan .navTabColor.nav.nav-tabs .active a {
+	color: #990033;
+}
+
+/*灰色区域矩形*/
+
+#rawMaterialPurchasePlan .nowadaysFormulateFormNavBox {
+	height: 38px;
+	background: rgba(204, 204, 204, 0.4);
+	position: relative;
+}
+
+/*灰色区域矩形里面的span*/
+
+#rawMaterialPurchasePlan .nowadaysFormulateFormNavBox span {
+	font-size: 14px;
+	vertical-align: middle;
+	margin: 0 10px;
+}
+
+#rawMaterialPurchasePlan .nowadaysFormulateFormNavBox .absolute-right-btn {
+	position: absolute;
+	right: 15px;
+	top: 4px;
+}
+
+/*表格表头内边距*/
+
+#rawMaterialPurchasePlan #purchasePlanFormGiveTable thead tr td {
+	padding: 6px 4px;
+	font-size: 12px;
+}
+
+#rawMaterialPurchasePlan #purchasePlanFormLookTable thead tr td {
+	padding: 6px 4px;
+	font-size: 12px;
+}
+
+/*字体颜色暗红*/
+
+#rawMaterialPurchasePlan .color-blackRed {
+	font-size: 14px;
+	color: #990033;
+}
+
+#rawMaterialPurchasePlan .nowadaysFormulateFormNavBox .tooltipSpan {
+	font-size: 18px;
+	color: red;
+	position: absolute;
+	top: 6px;
+	right: 25%;
+}
+
+.pad-4-12 {
+	padding: 4px 12px;
+}
+
+/*可视化区域*/
+
+#rawMaterialPurchasePlan .color-white {
+	color: white;
+}
+
+#rawMaterialPurchasePlan #visualForm .pad-10-30 {
+	padding: 10px 30px;
+}
+
+#rawMaterialPurchasePlan #visualForm .badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox {
+	height: 38px;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox span {
+	font-size: 14px;
+	vertical-align: middle;
+	margin: 0 4px;
+	/*-*/
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox .mar-left-15 {
+	margin-left: 15px;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox .visualFormNavBox-right {
+	float: right;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox .mar-right-15 {
+	margin-right: 15px;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox span.mar-0 {
+	margin: 0;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox span.mar-right-60 {
+	margin-right: 60px;
+}
+
+#rawMaterialPurchasePlan .visualFormNavBox span.mar-left-10 {
+	margin-left: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+	#rawMaterialPurchasePlan .visualFormNavBox span {
+		font-size: 12px;
+	}
+
+	#rawMaterialPurchasePlan .visualFormNavBox span.mar-left-20b {
+		margin-left: 10%;
+	}
+}
+
+#rawMaterialPurchasePlan .boll {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+}
+
+#rawMaterialPurchasePlan .boldfont {
+	font-weight: bold;
+}
+
+/*可视化区域沙漏区*/
+
+#rawMaterialPurchasePlan .visualFormShow {
+	padding: 10px;
+	display: flex;
+	max-width: 100%;
+	overflow: hidden;
+	width: 3000px;
+	height: 280px;
+}
+
+#rawMaterialPurchasePlan .visualFormShow:hover {
+	overflow: auto;
+}
+
+/*---滚动条默认显示样式--*/
+
+#rawMaterialPurchasePlan .visualFormShow::-webkit-scrollbar-thumb {
+	background-color: #CCCCCC;
+	height: 10px;
+	outline-offset: -2px;
+	outline: 2px solid #fff;
+	-webkit-border-radius: 4px;
+	border: 2px solid #fff;
+}
+
+/*---滚动条大小--*/
+
+#rawMaterialPurchasePlan .visualFormShow::-webkit-scrollbar {
+	width: 8px;
+	height: 10px;
+}
+
+#rawMaterialPurchasePlan .position {
+	flex: 1;
+	width: 150px;
+	min-width: 150px;
+	max-width: 150px;
+	text-align: center;
+}
+
+#rawMaterialPurchasePlan .positionName {
+	padding: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#rawMaterialPurchasePlan .positionBody {
+	height: 200px;
+	padding: 0px 30px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+#rawMaterialPurchasePlan .bodyImage {
+	width: 90px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 30px;
+}
+
+#rawMaterialPurchasePlan .positionBody > div {
+	width: 100%;
+}
+
+#rawMaterialPurchasePlan .topPosition {
+	height: 63px;
+}
+
+#rawMaterialPurchasePlan .middlePosition {
+	height: 78px;
+	position: relative;
+}
+
+#rawMaterialPurchasePlan .bottomPosition {
+	height: 59px;
+	position: relative;
+}
+
+#rawMaterialPurchasePlan .bg-red {
+	background: #D12938;
+}
+
+#rawMaterialPurchasePlan .bg-blue {
+	background: #155480;
+}
+
+#rawMaterialPurchasePlan .bg-yellow {
+	background: #FF9900;
+}
+
+#rawMaterialPurchasePlan .border-left-dashed {
+	border-left: 1px dashed #CCCCCC;
+}
+
+#rawMaterialPurchasePlan .w-80 {
+	width: 80%;
+	display: flex;
+	float: left;
+}
+
+#rawMaterialPurchasePlan .w-80 ul {
+	flex: 1;
+	max-width: 33%;
+	display: flex;
+}
+
+#rawMaterialPurchasePlan .w-80 ul li {
+	flex: 2;
+	max-width: 55%;
+	display: inline-block;
+	line-height: 30px;
+}
+
+#rawMaterialPurchasePlan .w-80 ul li.text-right {
+	flex: 1.5;
+	max-width: 45%;
+}
+
+#rawMaterialPurchasePlan .w-20 {
+	width: 20%;
+	float: left;
+}
+
+#rawMaterialPurchasePlan .btn.btn-blue.mar-left-8 {
+	margin-left: 8px;
+}
+
+#rawMaterialPurchasePlan .btn.btn-blue.pad-4-12 {
+	padding: 4px 12px;
+	line-height: 1.5;
+}
+
+#rawMaterialPurchasePlan .table a.glyphicon.default-gray:hover {
+	color: #C0C0C0;
+}
+
+#rawMaterialPurchasePlan a.glyphicon.default-gray {
+	cursor: default;
+	color: #C0C0C0;
+}
+
+#rawMaterialPurchasePlan #pageable {
+	font-size: 12px;
+}
+
+#rawMaterialPurchasePlan .topWater {
+	position: absolute;
+	left: 41px;
+	width: 7px;
+	height: 10px;
+	border-radius: 50%;
+	background: #155480;
+	bottom: 73px;
+	z-index: 100;
+	transition: bottom 1s;
+	visibility: hidden;
+}
+
+#rawMaterialPurchasePlan .bottomWater {
+	position: absolute;
+	left: 40px;
+	width: 7px;
+	height: 10px;
+	border-radius: 50%;
+	background: #FF9900;
+	bottom: 54px;
+	z-index: 100;
+	transition: bottom 1s;
+	visibility: hidden;
+}
+
+#rawMaterialPurchasePlan .canvasDom {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+/**/
+#rawMaterialPurchasePlan .max-height-265 {
+	max-height: 265px;
+}
+
+#rawMaterialPurchasePlan #purchasePlanFormGiveTable.table > tbody > tr > td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#rawMaterialPurchasePlan #purchasePlanFormLookTable.table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: #FFFFFF;
+}
+
+#rawMaterialPurchasePlan #purchasePlanFormLookTable.table > tbody > tr:hover {
+	background: #FFFFFF;
+}
+
+#rawMaterialPurchasePlan .LoadAnimation{
+	position: absolute;left: 0;right: 0;top: 0;bottom: 0;text-align: center;background: white;z-index:2000;
+}
+
+#rawMaterialPurchasePlan .special-sk-circle{
+	display: inline-block; vertical-align: middle;margin: 0;
+}
+
+#rawMaterialPurchasePlan .border-red{
+	border-color: red;
+}
+
+/*20180307wanghy 原材采购计划 end*/
+
+/*20180321 wanghy 动态库存管理 start*/
+#dynamicInventory {
+	/*width: 1100px;*/
+	margin: 0 auto 10px;
+}
+
+#dynamicInventory .box-shadow-sp {
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.349019607843137);
+}
+
+#dynamicInventory .navTabColor {
+	background: rgba(204, 204, 204, 0.4);
+}
+
+#dynamicInventory .navTabColor a {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#dynamicInventory .navTabColor.nav.nav-tabs .active a {
+	color: #990033;
+}
+
+#dynamicInventory #visualForm .pad-10-30 {
+	padding: 10px 30px;
+}
+
+#dynamicInventory #visualForm .badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#dynamicInventory .visualFormNavBox {
+	height: 38px;
+}
+
+#dynamicInventory .visualFormNavBox span {
+	font-size: 14px;
+	vertical-align: middle;
+	margin: 0 4px;
+}
+
+#dynamicInventory .visualFormNavBox .mar-left-15 {
+	margin-left: 15px;
+}
+
+#dynamicInventory .visualFormNavBox .visualFormNavBox-right {
+	float: right;
+}
+
+#dynamicInventory .visualFormNavBox .mar-right-15 {
+	margin-right: 15px;
+}
+
+#dynamicInventory .visualFormNavBox span.mar-0 {
+	margin: 0;
+}
+
+#dynamicInventory .visualFormNavBox span.mar-right-60 {
+	margin-right: 60px;
+}
+
+#dynamicInventory .visualFormNavBox span.mar-left-10 {
+	margin-left: 10px;
+}
+
+#dynamicInventory .boll {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+}
+
+#dynamicInventory .boldfont {
+	font-weight: bold;
+}
+
+#dynamicInventory .visualFormShow {
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#dynamicInventory .position {
+	width: 20%;
+	text-align: center;
+}
+
+.wid-500 {
+	width: 500px;
+}
+
+#dynamicInventory .bg-red {
+	background: #FF0000;
+}
+
+#dynamicInventory .bg-blue {
+	background: #155480;
+}
+
+#dynamicInventory .bg-orange {
+	background: #FF8040;
+}
+
+#dynamicInventory .color-red {
+	color: #FF0000;
+}
+
+#dynamicInventory .color-orange {
+	color: #FF8040;
+}
+
+#dynamicInventory .wid-1050 {
+	width: 1050px;
+}
+
+#dynamicInventory .flex-03 {
+	flex: 0.3;
+}
+
+#dynamicInventory .flex-045 {
+	flex: 0.45;
+}
+
+#dynamicInventory .visualFormShowLocationName{
+	top: 90px;right: 0;left: 0;
+}
+
+#dynamicInventory .height-240{
+	height: 240px;
+}
+
+#dynamicInventory .visualFormShowTwinkle{
+	top: 140px;right: 0;left: 0;
+}
+
+#dynamicInventory .visualFormShowImg{
+	width: 24px;height: 24px;display: inline-block;
+}
+
+#dynamicInventory .visualFormShowBottomNav{
+	bottom: 0px;
+    right: 0;
+    left: 0;
+    font-size: 18px;
+}
+
+#dynamicInventory .special-sk-circle{
+	display: inline-block; vertical-align: middle;margin: 0;
+}
+
+#dynamicInventory .LoadAnimation{
+	position: absolute;left: 0;right: 0;top: 0;bottom: 0;text-align: center;background: white;z-index:2000;
+}
+
+#dynamicInventory .mar-0-10{
+	margin: 0 10px;
+}
+
+#dynamicInventory .min-height-280{
+	min-height: 280px;
+}
+
+#dynamicInventory .sixFontEllipsis{
+	width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#dynamicInventory .callTheUl {
+    display: flex;
+    align-items: center;
+    clear: both;
+}
+
+#dynamicInventory .btn.btn-blue.btn-gray:hover{
+    background: gray;
+    cursor: default;
+}
+
+#dynamicInventory .btn.btn-blue.btn-gray{
+    background: gray;
+    cursor: default;
+}
+
+#dynamicInventory .font-size-18{
+	font-size: 18px;
+}
+
+/*20180321 wanghy 动态库存管理 end*/
+/* 原材信息 20180328 wanghy start*/
+#materialInfo .btn.btn-blue.btn-right-radius.wid-60{
+	width: 60px;
+}
+/* 原材信息 20180328 wanghy end*/

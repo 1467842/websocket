@@ -1,0 +1,593 @@
+body{overflow: hidden;font-size: unset}
+.hei-50{
+    height: 50px;
+}
+.width-1{
+    width: 1px;
+}
+.flex5{
+    flex: 5;
+}
+.width-12{
+    width: 12px;
+}
+.width-310{
+    width: 310px;
+}
+.width-32{
+    width: 32px;
+}
+.width-340 {
+    width:340px;
+}
+.height-30{
+    height: 30px;
+}
+.height-32{
+    height: 32px;
+}
+.height-26{
+    height: 26px;
+}
+.height-35{
+    height: 35px;
+}
+.border-radius-tl-6{
+    border-radius: 6px 0px 0px 0px;
+}
+.overflow-hidden{
+    overflow: hidden;
+}
+.text-overflow-ell{
+    text-overflow: ellipsis;
+}
+.text-center{
+    text-align: center;
+}
+.align-items-center{
+    align-items: center;
+}
+.color-000{
+    color: #000;
+}
+.bgColor-797979{
+    background: #797979;
+}
+.bgColor-f2f2f2{
+    background: #F2F2F2;
+}
+.bgColor-ffffff{
+    background: #FFFFFF;
+}
+.hei-18{
+    height: 18px;
+}
+.hei-28{
+    height: 28px;
+}
+.hei-45{
+    height: 45px;
+}
+line-height-30{
+    line-height: 30px;
+}
+.padding-right-5{
+    padding-right: 5px;
+}
+.padding-left-5{
+    padding-left: 5px;
+}
+.padding-left-10{
+    padding-left: 10px;
+}
+.border-right-style-1{
+    border-right: 1px solid #797979;
+}
+.color-868686{
+    color: #868686;
+}
+.mar-bot-20{
+    margin-bottom: 20px;
+}
+.mar-bot-0{
+    margin-bottom: 0px;
+}
+.mar-top-20{
+    margin-top: 20px;
+}
+.mar-top-10{
+    margin-top: 10px;
+}
+.mar-left-20{
+    margin-left: 20px;
+}
+.mar-left-0{
+    margin-left: 0px;
+}
+.mar-left-10{
+    margin-left: 10px;
+}
+.width-1000{
+    width: 1000px;
+}
+.mar-right-5{
+    margin-right: 5px;
+}
+.bottom-absolute{
+    bottom: 0px;
+}
+.left-absolute{
+    left: 0px;
+}
+.right-absolute{
+    right: 0px;
+}
+.right-absolute--320{
+    right: -320px;
+}
+.top-absolute-50{
+    top: 50px;
+}
+.overflow-y-auto{
+    overflow-y: auto;
+}
+.max-height-450{
+    max-height:450px;
+}
+.max-height-200{
+    max-height:200px;
+}
+.mar-right-2{
+    margin-right: 2px;
+}
+.margin-right-5{
+    margin-right: 5px;
+}
+.margin-right-10{
+    margin-right: 10px;
+}
+.max-width-unset{
+    max-width: unset;
+}
+.bgColor-4472c4{
+    background: #4472c4;
+}
+.border-color-D81E06{
+    border:1px solid #D81E06;
+}
+.border-color-4472C4{
+    border:1px solid #4472C4;
+}
+.border-radius-10{
+    border-radius: 10px;
+}
+.border-radius-5{
+    border-radius: 5px;
+}
+.border-radius-6{
+    border-radius: 6px;
+}
+.border-radius-tl-lr-6{
+    border-radius: 6px 6px 0px 0px;
+}
+.border-radius-bl-br-6{
+    border-radius: 0px 0px 6px 6px;
+}
+.bg-red{
+    background: red;
+}
+.padding-right-10{
+    padding-right: 10px;
+}
+.color-white{
+    color: #FFFFFF;
+}
+.color-4472C4{
+    color: #4472C4;
+}
+.color-FF9900{
+    color: #FF9900;
+}
+.max-width-40{
+    max-width: 40px;
+}
+.max-width-100{
+    max-width: 100px;
+}
+.padding-0-10{
+    padding: 0px 10px ;
+}
+.padding-10-0{
+    padding: 10px 0px ;
+}
+.padding-bottom-5{
+    padding-bottom: 5px;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+}
+.padding-last{
+    padding:2px 10px 10px 10px;
+}
+.padding-5-0{
+    padding: 5px 0px ;
+}
+.font_size_12{
+    font-size: 12px;
+}
+.padding-2-0{
+    padding: 2px 0px ;
+}
+.padding-2-10{
+    padding: 2px 10px ;
+}
+.padding-12-0{
+    padding: 12px 0px ;
+}
+.padding-10-10{
+    padding: 10px 10px ;
+}
+.wid-28{
+    width: 28px;
+}
+.wid-18{
+    width: 18px;
+}
+.wid-25{
+    width: 25px;
+}
+.max-width-135{
+     max-width: 135px;
+ }
+.max-width-120{
+    max-width:120px;
+}
+.color-FA8B11{
+    color: #FA8B11;
+}
+.bgColor-FA8B11{
+    background: #FA8B11;
+}
+.wid-20{
+    width: 20px;
+}
+.wid-16{
+    width: 16px;
+}
+.width_400{
+    width:400px;
+}
+.border-radius-50{
+    border-radius: 50%;
+}
+.bor_bot_1_ccc {
+    border-bottom: 1px solid #C7C7C7;
+}
+.mar-auto{
+    margin: auto;
+}
+.white-space-nowrap{
+    white-space: nowrap;
+}
+.bor_top_1_ccc {
+    border-top: 1px solid #C7C7C7;
+}
+.border-color-bbb {
+    border: 1px solid #BBBBBB;
+}
+.font-weight-600{
+    font-weight: 600;
+}
+.width-25{
+    width: 25px;
+}
+.font-size-12{
+    font-size: 12px;
+}
+.font-size-14{
+    font-size: 14px;
+}
+.padding-top-5{
+    padding-top: 5px;
+}
+.box-shadow{
+    box-shadow: 4px 3px 10px #888;
+}
+#schedulingMap #container{
+    width: 100%;
+    height: 100%;
+}
+#schedulingMap .line-hei-20{
+    height: 20px;
+    width: 1px;
+    background: #333;
+}
+#schedulingMap .plansList a:hover{
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+#schedulingMap .planCars a:hover{
+    text-decoration: underline;
+    color: #000000;
+}
+#schedulingMap .messageFlag{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: red;
+    border-radius: 50%;
+    left: 36px;
+    top: 11px;
+}
+.flex-just-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flex-just-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-just-start{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.disabled { pointer-events: none;background: #CCCCCC }
+#schedulingMap .newMessage{
+    width: 370px;
+    position: absolute;
+    padding: 10px;
+    background: #fff;
+    margin: 0 auto;
+    left: 0px;
+    right: 0px;
+    top: -60px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #333;
+    box-shadow: 0 0 6px rgba(0, 0, 0,0.8);
+}
+#schedulingMap .weatherMessage{
+    position: absolute;
+    background: #fff;
+    right: 10px;
+    top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+}
+.carAvailable{
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    color: #4472C4;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 0px;
+    display: inline-block;
+    cursor: pointer;
+}
+.carDisable{
+    display: inline-block;
+    font-size: 16px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-left: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    background: #ebebeb;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+}
+.carListStatusArray{
+    padding: 2px;
+    border: 1px solid #0066CC;
+    border-radius: 5px;
+    left: 250px;
+    background: #fff;
+    top: 105px;
+}
+.carList-title{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+}
+.carListStatusArray ul>li:hover{
+    background: #0066cc;
+    color: #fff;
+    cursor: pointer;
+}
+.searchCarInput{
+    line-height: 28px;
+}
+.searchCarInput img{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.pos-absolute{
+    position: absolute;
+}
+.searchCarInput input{
+    height: 20px;
+}
+.line-height-20{
+    line-height: 20px
+}
+.controlThis:hover{
+    transform: scale(1.2);
+    box-shadow: 4px 3px 10px #452688;
+}
+.planCarBtn li:hover .planCarImg{
+    transform: scale(1.3);
+}
+
+.fencePlanning .preservation{
+    max-width: unset;
+    width: 100%;
+}
+.engineeringMessageClose{
+    right: 10px;
+}
+
+.dataStatistics_btn{
+    padding: 10px;
+    border-top: 1px solid #b4cef8;
+    border-left: 1px solid #b4cef8;
+    border-right: 1px solid #b4cef8;
+    border-bottom: 1px solid #b4cef8;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.5s;
+    margin-bottom: 10px;
+}
+.dataStatistics_btn:hover{
+    background: #4472C4;
+    color: #ffffff;
+    cursor: pointer;
+}
+.dataStatistics_btn_click{
+    background: #4472c4;
+    color: #ffffff;
+}
+.markerlnglat{
+    /*position: absolute;*/
+    /*top: -43px;*/
+    /*left: -17px;*/
+}
+.left-10{
+    left: 10px;
+}
+.marker {
+    color: #FFFFFF;
+    padding: 4px 10px;
+    border: 1px solid #fff;
+    white-space: nowrap;
+    font-size: 12px;
+    background-color: #666666;
+    position: absolute;
+    left: 0px;
+    top: -30px;
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.markerLabel{
+    color: #FFFFFF;
+    padding: 4px 10px;
+    border: 1px solid #fff;
+    white-space: nowrap;
+    font-size: 12px;
+    background-color: #666666;
+}
+/*改版*/
+.background-f2f2{
+    background: #F2F2F2;
+}
+.planListStyleForUl{
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    background: #FFFFFF;
+}
+.planListStyleForUl:hover{
+    background: #f2f2f2;
+}
+#schedulingMap .progress{
+    flex: unset;
+    height: 8px;
+    max-height: 8px;
+    width: 90px;
+    margin: auto;
+    /*margin-right: 5px;*/
+}
+#schedulingMap .progress-bar{
+    background: #7CCD7C;
+}
+.comprehensiveSearch{
+    position: absolute;
+    left: 90px;
+    top: 20px;
+    width: 350px;
+    z-index: 1001;
+}
+#schedulingMap .displayAll{
+    padding-top: 50px;
+}
+.padding-top-10{
+    padding-top: 10px;
+}
+.city-select {
+    top: 20px;
+    left:450px;
+}
+#schedulingMap .progress-speed{
+    margin: auto;
+    /*margin-right: 10px;*/
+    /*margin-left: 0px;*/
+}
+.invoiceListForContent .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 0px;
+    text-align: center;
+}
+.invoiceListForContent .table>thead {
+    background: #FFFFFF;
+    color: #000000;
+}
+.invoiceListForContent .table-striped>tbody>tr:nth-of-type(odd) {
+    background: #F2F2F2;
+}
+.retreat{
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: red;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.planFontSize-16{
+    font-size: 16px;
+}
+.engineeringTitle{
+    border-radius: 6px 6px 0px 0px;
+}
+.projectName{
+    padding: 10px 10px 0px 10px;
+}
+.engineeringPlanNumber{
+    border-radius: 6px 6px 0px 0px;
+}
+.engineeringMesTopBtn{
+    position: absolute;
+    background: #666;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    right: 0px;
+    left: 0px;
+    bottom: 5px;
+    margin: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.invoiceListForPlan{
+    bottom: -100px;
+}
+.engineeringMesTopBtn:hover{
+    background: #000;
+}
+#schedulingMap .amap-indoormap-floorbar-control{
+    right: -100px;
+}

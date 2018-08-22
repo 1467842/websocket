@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>调度地图</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/schedulingMap.css"/>
+    <link rel="stylesheet" href="css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/city-select.css">
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+
+    <script src="http://webapi.amap.com/maps?v=1.3&key=a237c265f5377c3f74d7cd7ed40cae0d&plugin=AMap.Driving,AMap.DragRoute,AMap.PolyEditor,AMap.CircleEditor,AMap.Geocoder"></script>
+    <!--<script type="text/javascript"-->
+    <!--src="http://webapi.amap.com/maps?v=1.4.4&key=5411c41055b44fc445a4082fd6952038"></script>-->
+</head>
+<body>
+<div id="schedulingMap">
+    <div id="container"></div>
+    <div class="comprehensiveSearch flex white-space-nowrap">
+        <div class="flex5">
+            <input id="select_input" type="text" autocomplete="off" @keyup.up.prevent="contentUp($event)" @keydown="contentDown($event)" @keyup.enter="contentEnter($event)" placeholder=" 请输入车辆编号" class="fontsize-16 hei_40 wid-100p border-none map_outline padding-left-10" v-model="searchFrameContent">
+            <ul id="map_search_result" class="absolute abs_l_r_0 bac_col_white bor_sol_1_cfc map_max_hei_212 ov ove_scr_auto_y map_box_shadow" v-show="isShowSearchResult==1">
+                <li v-for="(index,mpn) of searchFrameContentData" class="map_search-list pad-10 font-size-16 cur_poi" track-by="$index" v-text="mpn.number" @click="clickSearchFuzzyResults(mpn)"></li>
+            </ul>
+        </div>
+        <div class="searchBtn flex1 bgColor-4472c4 max-width-40 flex_center cursor" @click="clickZoom">
+            <img class="wid-28" src="img/search-img.svg" alt="">
+        </div>
+    </div>
+    <!--控制-->
+
+    <div class="controlAll flex1 dis-inline-block fle-dir z_index_999 mar-left-20 mar-top-20">
+        <div title="消息" @click="planMessageHideOrShow"
+             class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 cursor box-shadow relative">
+            <div class="messageFlag" v-if="newMessageFlag"></div>
+            <img class="width-25" src="img/message.svg" alt="">
+        </div>
+        <div title="任务列表" @click="informationDisplayOrHide(2)" :class="{'disabled':polygonIsShowFlag == false}"
+             class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 mar-top-10 cursor box-shadow relative">
+            <img class="width-25" src="img/planList.svg" alt="">
+        </div>
+        <div title="车辆列表" @click="informationDisplayOrHide(6)" :class="{'disabled':polygonIsShowFlag == false}"
+             class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 mar-top-10 cursor box-shadow relative">
+            <img class="width-25" src="img/pumpCar.svg" alt="">
+        </div>
+        <!--<div @click="informationDisplayOrHide(4)"-->
+        <!--class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 mar-top-10 cursor box-shadow relative">-->
+        <!--<img class="width-25" src="img/mapRoute.svg" alt="">-->
+        <!--</div>-->
+        <div title="电子围栏" @click="informationDisplayOrHide(5)" :class="{'disabled':polygonIsShowFlag == false}"
+             class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 mar-top-10 cursor box-shadow relative">
+            <img class="width-25" src="img/enclosure.svg" alt="">
+        </div>
+        <div title="数据统计" @click="informationDisplayOrHide(8)"
+             class="controlThis wid-50 hei-50 flex_center bac_col_white_1 border-radius-50 mar-top-10 cursor box-shadow relative">
+            <img class="width-25" src="img/tongji.svg" alt="">
+        </div>
+    </div>
+    <!--显示-->
+    <div class="displayAll dis-inline-block absolute z_index_999 mar-left-20 mar-top-20">
+        <!--计划列表-->
+        <div class="showListMes plansList width-340 display-none">
+            <div class="plansContent background-f2f2 carList-title engineeringTitle">
+                <div class="plansContentTop bgColor-4472c4 color-white engineeringTitle">
+                    <ul class="flex">
+                        <li class="flex1 flex-just-start height-32 white-space-nowrap">
+                            <img class="wid-28" src="img/planSymbol.svg" alt="">
+                            <span class="font-size-14 font-weight-600">任务列表</span>
+                        </li>
+                        <li class="flex1 flex-just-end height-32 padding-right-10">
+                            <img class="width-12 cursor" src="img/plansClose.svg" alt="" @click="closeThis('.plansList')">
+                        </li>
+                    </ul>
+                </div>
+                <div class="planListContent planContent background-f2f2 white-space-nowrap overflow-y-auto">
+                    <ul class="planListStyleForUl cursor" v-for="(planIndex,plan) in findAllPlanList.planList" v-if="plan.deliverySupplyQuantity !='' && plan.deliverySupplyQuantity != 0" @click="planMessageClick(plan.planNumber,planIndex)">
+                        <li class="flex">
+                            <div class="height-26 border-radius-tl-6 max-width-120 flex1 flex_center bgColor-4472c4 planFontSize-14">
+                                <a class="color-white planFontSize-16" v-text="plan.planNumber">NO.2018-01327</a>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" :style="{width:((plan.deliverySupplyQuantity/plan.applicantQuantity)*100).toFixed(0)+'%'}" >
+                                    <span class="sr-only">40% 完成</span>
+                                </div>
+                            </div>
+                            <div class="progress-speed ">
+                                <span>{{plan.deliverySupplyQuantity}}</span>/
+                                <span v-text="plan.applicantQuantity"></span>
+                            </div>
+                        </li>
+                        <li class="planFontSize-12 padding-2-10 padding-top-10 overflow-hidden text-overflow-ell">
+                            <span>工程名称：</span>
+                            <span v-text="plan.projectName" title="{{plan.projectName}}">地铁十五号线项目</span>
+                        </li>
+                        <li class="planFontSize-12 padding-2-10 overflow-hidden text-overflow-ell">
+                            <span>施工地址：</span>
+                            <span v-text="plan.contructAddress" title="{{plan.contructAddress}}">朝阳区望京站</span>
+                        </li>
+                        <li class="planFontSize-12 padding-2-10 overflow-hidden text-overflow-ell">
+                            <span>施工部位：</span>
+                            <span v-text="plan.constructionSite" title="{{plan.constructionSite}}">朝阳区望京站</span>
+                        </li>
+                        <li class="planFontSize-12 padding-2-10 overflow-hidden text-overflow-ell">
+                            <span>产品名称：</span>
+                            <span v-text="plan.productDemandName" title="{{plan.productDemandName}}">朝阳区望京站</span>
+                        </li>
+                        <li class="planFontSize-12 padding-2-10 overflow-hidden text-overflow-ell">
+                            <span>要求发货时间：</span>
+                            <span>{{plan.startTime.substring(11,16)}}</span>
+                        </li>
+                        <li class="planFontSize-12 padding-last">
+                            <ul class="flex">
+                                <li class="flex1 flex-just-start flex_center">
+                                    <span>浇筑方式：</span>
+                                    <span v-text="plan.pouringMethod" title="{{plan.pouringMethod}}">自卸</span>
+                                </li>
+                                <li class="flex1 flex-just-start flex_center">
+                                    <span>车次：</span>
+                                    <span v-text="plan.vehicle" title="{{plan.vehicle}}">2</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--消息列表-->
+        <div class="showListMes messageList wid_300 bac_col_white_1 pad-10 display-none">
+            <ul>
+                <li class="padding-5-0 border-bottom-D8D8D8 white-space-nowrap">
+                    <ul class="flex">
+                        <li class="flex flex1 align-items-center">
+                            <div class="font_size_14 flex_center padding-right-5 color-000">站内消息</div>
+                            <div class="width-1 bgColor-797979 hei-18 mar-right-5"></div>
+                            <span class="font_size_12 flex_center">发货单消息</span>
+                        </li>
+                        <li class="flex_center">
+                            <img class="wid-25" src="img/messageIsOK.svg" alt="">
+                        </li>
+                    </ul>
+                </li>
+                <li class="padding-5-0 white-space-nowrap"><span
+                        class="font_size_14 color-000">您的订单2018-00001已完成！</span></li>
+                <li class="padding-5-0 txt-r white-space-nowrap"><span class="font_size_14 color-000">2018年3月28日 13:12:19</span>
+                </li>
+            </ul>
+        </div>
+        <!--计划详情-->
+        <div class="showListMes planMessage wid_300 flex fle-dir bac_col_white_1 pad-10 display-none">
+            <ul v-for="planMessage in planDetails.list" track-by="$index">
+                <li>
+                    <ul class="bor_bot_1_ccc padding-bottom-5">
+                        <li class="fl-l flex_center hei-28">
+                            <img class="wid-28" src="img/planDetails.svg" alt="">
+                            <span class="font-size-16 font-weight-600" v-text="planMessage.planNumber">2018-01326</span>
+                        </li>
+                        <li class="fl-r flex_center hei-28 cursor padding-right-10">
+                            <img @click="closeThis('.planMessage')" src="img/plansClose.svg" alt="">
+                        </li>
+                        <li class="clearfix"></li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>工程名称：</span>
+                    <span v-text="planMessage.projectName" title="{{planMessage.projectName}}">老年公寓建设项目</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>产品名称：</span>
+                    <span v-text="planMessage.productDemandName" title="{{planMessage.productDemandName}}">C40P10冬施</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>施工部位：</span>
+                    <span v-text="planMessage.constructionSite" title="{{planMessage.constructionSite}}">珠市口站附属结构 1号风道二期</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <ul class="flex flex1">
+                        <li class="flex1">
+                            <span>浇筑方式：</span>
+                            <span v-text="planMessage.pouringMethod" title="{{planMessage.pouringMethod}}">泵送 </span>
+                        </li>
+                        <li class="flex1">
+                            <span>车次：</span>
+                            <span v-text="planMessage.vehicle" title="{{planMessage.vehicle}}">3</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 bor_bot_1_ccc white-space-nowrap">
+                    <ul class="flex flex1 padding-bottom-10">
+                        <li class="flex1">
+                            <span>计划方量：</span>
+                            <span v-text="planMessage.applicantQuantity" title="{{planMessage.applicantQuantity}}">20 m³</span>m³
+                        </li>
+                        <li class="flex1">
+                            <span>已供方量：</span>
+                            <span v-text="planMessage.deliverySupplyQuantity" title="{{planMessage.deliverySupplyQuantity}}">20 m³</span>m³
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <ul class="flex">
+                        <li class="flex1">车辆编号</li>
+                        <li class="flex1">车牌号</li>
+                        <!--<li class="flex1">编号</li>-->
+                        <!--<li class="flex1">编号</li>-->
+                    </ul>
+                    <ul class="flex" v-for="carMessage in planMessage.deliveryVehicleList" track-by="$index">
+                        <li class="flex1" v-text="carMessage.number"></li>
+                        <li class="flex1" v-text="carMessage.plateNumber"></li>
+                        <!--<li class="flex1">编号</li>-->
+                        <!--<li class="flex1">编号</li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--车辆详情-->
+        <div class="showListMes planCarMessage wid_300 flex fle-dir bac_col_white_1 pad-10 display-none">
+            <ul>
+                <li>
+                    <ul class="bor_bot_1_ccc padding-bottom-5">
+                        <li class="fl-l flex_center hei-28">
+                            <img class="wid-28" src="img/returnVehicle.svg" alt="">
+                            <span class="font-size-16 font-weight-600 mar-left-3" v-text="planDetailsByCarNumber.number">099</span>
+                        </li>
+                        <li class="fl-r flex_center hei-28 cursor padding-right-10">
+                            <img src="img/plansClose.svg" alt="">
+                        </li>
+                        <li class="clearfix"></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="flex padding-top-5">
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 4">预计到达</li>
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 0">已接单</li>
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 5">到达工地</li>
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 7">回途中</li>
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 9">未接单</li>
+                        <li class="flex1 font-size-14 bgColor-FA8B11 color-white flex_center border-radius-10" v-if="planDetailsByCarNumber.deliverVehicleStatus == 6">浇筑中</li>
+
+                        <li class="flex3 flex_center">
+                            <!--<span class="font-size-16" v-if="planDetailsByCarNumber.expectedToArriveTime" v-text="planDetailsByCarNumber.expectedToArriveTime.substring(11,16)">13：14 </span>-->
+                            <!--<span class="font-size-12 color-FA8B11 mar-left-3" v-if="estimateBig != [] && estimateBig.length != 0">-->
+                            <!--<span>(</span>-->
+                            <!--大约<span>{{estimateBig[0]}}</span>小时<span>{{estimateBig[1]}}</span>分后-->
+                            <!--<span>)</span>-->
+                            <!--</span>-->
+
+                            <span class="mar-right-2" v-if="planDetailsByCarNumber.deliverVehicleStatus == 4 || planDetailsByCarNumber.deliverVehicleStatus == 7">{{planDetailsByCarNumber.expectedToArriveTime}} 分钟后</span>
+                            <span class="mar-right-2" v-else v-text="planDetailsByCarNumber.expectedToArriveTime.substring(11,19)"></span>
+
+                            <!--<span class="font-size-12 color-FA8B11 mar-left-3" v-else>-->
+                            <!--<span>(</span>-->
+                            <!--大约<span>{{planDetailsByCarNumber.expectedToArriveTime}}</span>分后-->
+                            <!--<span>)</span>-->
+                            <!--</span>-->
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <ul class="flex flex1">
+                        <li class="flex1">
+                            <span>车载重量：</span>
+                            <span v-text="planDetailsByCarNumber.weight" title="{{planDetailsByCarNumber.weight}}">2.2 t </span>
+                        </li>
+                        <li class="flex1">
+                            <span>车次：</span>
+                            <span v-text="planDetailsByCarNumber.vehicle" title="{{planDetailsByCarNumber.vehicle}}">1</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <ul class="flex flex1">
+                        <li class="flex1">
+                            <span>司机姓名：</span>
+                            <span v-text="planDetailsByCarNumber.driverName" title="{{planDetailsByCarNumber.driverName}}">姜娰昀 </span>
+                        </li>
+                        <li class="flex1">
+                            <span>实时车速：</span>
+                            <span v-text="planDetailsByCarNumber.speed" title="{{planDetailsByCarNumber.speed}}">23</span>km/h
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 bor_bot_1_ccc white-space-nowrap">
+                    <ul class="flex flex1">
+                        <li class="flex2">
+                            <span>装载量：</span>
+                            <span>{{planDetailsByCarNumber.productionQuantity}}/{{planDetailsByCarNumber.carNorm}}</span>
+                            <span class="font-size-12">(发货量/车载量)</span>
+                        </li>
+                        <li class="flex1">
+                            <img class="wid-25" src="img/floodWarning.svg" alt="">
+                        </li>
+                    </ul>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <span>计划编号：</span>
+                    <span v-text="planDetailsByCarNumber.planNumber">2018-01326</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>工称名称：</span>
+                    <span v-text="planDetailsByCarNumber.projectName" title="{{planDetailsByCarNumber.projectName}}">北新金属</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>施工地址：</span>
+                    <span v-text="planDetailsByCarNumber.contructAddress" title="{{planDetailsByCarNumber.contructAddress}}">海淀区农大南路88号万霖大厦</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>产品名称：</span>
+                    <span v-text="planDetailsByCarNumber.productDemandName" title="{{planDetailsByCarNumber.productDemandName}}">C40P10冬施</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>施工部位：</span>
+                    <span v-text="planDetailsByCarNumber.constructionSite" title="{{planDetailsByCarNumber.constructionSite}}">珠市口站附属结构 1号风道二期第..</span>
+                </li>
+                <li class="planFontSize-14 padding-2-0 white-space-nowrap">
+                    <span>浇筑方式：</span>
+                    <span v-text="planDetailsByCarNumber.pouringMethod">泵送</span>
+                </li>
+                <li class="planFontSize-14 padding-12-0 white-space-nowrap">
+                    <ul class="flex planCarBtn">
+                        <li class="cursor mar-auto flex_center flex1 border-radius-5 border-color-D81E06 max-width-100 padding-5-0">
+                            <img class="planCarImg wid-16" src="img/Telephone.svg" alt="">
+                            <span class="mar-left-3">联系司机</span>
+                        </li>
+                        <li class="cursor mar-auto flex_center flex1 border-radius-5 border-color-4472C4 max-width-100 padding-5-0" @click="seeCarTrajectory(planDetailsByCarNumber.vehicleId)">
+                            <img class="planCarImg wid-16" src="img/walkingRoute.svg" alt="">
+                            <span class="mar-left-3">查看轨迹</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--路线规划-->
+        <!--<div class="showListMes routePlanning wid_300 bac_col_white_1 padding-bottom-10 display-none">-->
+        <!--<ul class="white-space-nowrap">-->
+        <!--<li class="mar-bot-20">-->
+        <!--<ul class="bgColor-4472c4 flex">-->
+        <!--<li class="flex1  flex-just-start hei-28">-->
+        <!--<img class="wid-18 mar_left_5 mar-right-5" src="img/engineeringRoute.svg" alt="">-->
+        <!--<span class="font-size-16 font-weight-600 color-white">工程路线</span>-->
+        <!--</li>-->
+        <!--<li class="flex1 flex-just-end hei-28 cursor padding-right-10"-->
+        <!--@click="closeThis('.routePlanning')">-->
+        <!--<img src="img/fenceLineClose.svg" alt="">-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="mar-bot-20 mar-top-20 padding-0-10">-->
+        <!--<ul class="flex">-->
+        <!--<li class="flex_center font-size-16 mar-right-5">工程名称:</li>-->
+        <!--<li class="flex1 flex_center">-->
+        <!--<input v-model="engineeringLineMessage.projectName" type="text" class="form-control input-left-radius w100-input" readonly="readonly">-->
+        <!--<a @click="showEngineeringModal()" class="btn btn-blue btn-right-radius">选择</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<ul v-if="confirmRoute" class="flex mar-top-20">-->
+        <!--<li class="flex_center font-size-16 mar-right-5">路线名称:</li>-->
+        <!--<li class="flex1 flex_center">-->
+        <!--<input v-model="engineeringLineMessage.lineName" type="text" class="form-control max-width-unset" readonly="readonly">-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="flex_center">-->
+        <!--<a v-if="!confirmRoute" class="btn btn-default wid-100 mar-auto"-->
+        <!--@click="closeThis('.routePlanning')">关闭</a>-->
+        <!--<a v-if="confirmRoute" class="btn btn-blue wid-100 mar-auto" @click="saveOrUpdatePlanLine()">保存</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--围栏规划-->
+        <div class="showListMes fencePlanning border-radius-tl-lr-6 wid_300 bac_col_white_1 padding-bottom-10 display-none carList-title">
+            <ul class="white-space-nowrap">
+                <li class="mar-bot-20">
+                    <ul class="bgColor-4472c4 flex border-radius-tl-lr-6">
+                        <li class="flex1 flex-just-start height-32">
+                            <img class="wid-28 mar_left_5 mar-right-5" src="img/engineeringFence.svg" alt="">
+                            <span class="font-size-14 font-weight-600 color-white">工程围栏</span>
+                        </li>
+                        <li class="flex1 flex-just-end height-32 padding-right-10"></li>
+                    </ul>
+                </li>
+                <li class="mar-bot-20 mar-top-20 padding-0-10">
+                    <ul class="flex">
+                        <li class="flex_center font-size-16 mar-right-5">工程名称:</li>
+                        <li class="flex1 flex_center">
+                            <input v-model="engineeringMessage.projectName" type="text"
+                                   class="form-control input-left-radius max-width-unset" readonly="readonly">
+                            <a @click="showEnclosureModal()" class="btn btn-blue btn-right-radius">选择</a>
+                        </li>
+                    </ul>
+                    <ul v-if="confirmEnclosure" class="flex mar-top-20">
+                        <li class="flex_center font-size-16 mar-right-5">施工地址:</li>
+                        <li class="flex1 flex_center">
+                            <input v-model="engineeringMessage.contructAddress" type="text" readonly="readonly"
+                                   class="form-control max-width-unset">
+                            <!--<img src="img/Location.svg" alt="" v-if="!engineeringMessage.contructAddress">-->
+                        </li>
+                    </ul>
+                    <ul v-if="confirmEnclosure" class="flex mar-top-20">
+                        <li class="flex_center font-size-16 mar-right-5">电子围栏:</li>
+                        <li class="flex1 flex_center">
+                            <a class="btn btn-blue preservation"  @click="savePlanPolygon()">保存</a>
+                            <a class="btn btn-blue preservation mar-left-8" @click="resetPlanPolygon" :class="{'disabled':isNewPlanPolygon}">重置</a>
+                        </li>
+                    </ul>
+                    <ul v-if="confirmEnclosure" class="flex mar-top-20">
+                        <li class="flex_center font-size-16 mar-right-5">围栏名称:</li>
+                        <li class="flex1 flex_center white-space-nowrap overflow-hidden">
+                            <span class="font-size-14 overflow-hidden text-overflow-ell">{{engineeringMessage.projectName}}</span>
+                        </li>
+                    </ul>
+                </li>
+                <li v-if="!confirmEnclosure" class="flex_center">
+                    <a class="btn btn-default wid-100 mar-auto" @click="closeThis('.fencePlanning')">关闭</a>
+                </li>
+            </ul>
+        </div>
+        <!--车辆列表-->
+        <div class="showListMes carList-title border-radius-tl-lr-6 carList bac_col_white_1 wid_300 display-none">
+            <ul class="white-space-nowrap flex-just-start bgColor-4472c4 height-32 mar-bot-0 border-radius-tl-lr-6">
+                <li class="flex1 flex-just-start height-32 white-space-nowrap">
+                    <img class="wid-28" src="img/carListLogo.svg" alt="">
+                    <span class="font-size-14 font-weight-600 color-white">车辆列表</span>
+                </li>
+                <li class="flex1 flex-just-end height-32 padding-right-10">
+                    <img class="width-12 cursor" src="img/plansClose.svg" alt="" @click="closeThis('.carList')">
+                </li>
+            </ul>
+            <ul class="white-space-nowrap">
+                <li>
+                    <div class="carAvailableList">
+                        <ul class="flex padding-5-0 carList-title">
+                            <li class="flex1 flex_center font_size_16 font-weight-600">车辆编号</li>
+                            <li class="flex1 flex_center font_size_16 font-weight-600">车牌号</li>
+                            <li class="flex1 flex_center font_size_16 font-weight-600">车辆规格</li>
+                            <li class="flex1 flex_center font_size_16 font-weight-600">回站时间</li>
+                        </ul>
+                        <ul class="flex height-30" v-for="(carIndex,car) in findVehicleList" :class="{'bgColor-f2f2f2' : carIndex%2 != 0 }" track-by="$index">
+                            <li class="flex1 flex_center font_size_14">
+                                <div v-if="car.signTheState == 1" class="pos-absolute left-10 dis-inline-block wid-20 hei_20 border-radius-5 bg-red text-center line-height-20 color-white">退</div>
+                                <div v-if="car.signTheState == 2" class="pos-absolute left-10 dis-inline-block wid-20 hei_20 border-radius-5 bg-red text-center line-height-20 color-white">剩</div>
+                                <span class="mar-left-3 font_size_14" v-text="car.vehicleNumber">099</span>
+                            </li>
+                            <li class="flex1 flex_center font_size_14" v-text="car.plateNumber">京A00911</li>
+                            <li class="flex1 flex_center font_size_14">{{car.carNorm}}m³</li>
+                            <li class="flex1 flex_center font_size_14">{{car.timeIn ? car.timeIn.substring(11,16) : '-'}}</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--新消息显示-->
+    <div class="newMessage z_index_999">{{oneNewMessageShow}}</div>
+    <!--天气 PM2.5 限行情况-->
+    <div class="weatherMessage z_index_999 flex_center padding-0-10 border-color-bbb">
+        <div class="flex_center">
+        <img id="map_weather_new" class="hei_22" alt="" :src="weatherPicture">
+        <span class=" mar-5">{{temperature}}℃</span>
+        <div class="line-hei-20 mar-right-5"></div>
+        </div>
+
+        <div id="map_function_pm25" class="flex_center">
+            <img class="wid-28" src="img/pm2.5.svg" alt="">
+            <span class=" mar-5" v-text="pm25"></span>
+            <div class="line-hei-20 mar-right-5"></div>
+        </div>
+        <div class="flex_center">
+            <span class="mar-right-5">今</span>
+            <span class="mar-right-5">日</span>
+            <span class="bac_col_blue col_white pad_top_bottom_3 mar-right-5" v-text="trafficRestrictionFirst" v-if="controlTitleFlag">2</span>
+            <span class="bac_col_blue col_white pad_top_bottom_3 mar-right-5" v-text="trafficRestrictionLast"v-if="controlTitleFlag">7</span>
+            <span class="mar-right-5" v-else>不</span>
+            <span class="mar-right-5">限</span>
+            <span class="">行</span>
+        </div>
+    </div>
+
+    <!--路线选择工程modal-->
+    <div class="modal div-scroll no-top fade bs-example-modal-lg" id="showEngineeringModal" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                       @click="closeDriverNameModal()">&times;</a>
+                    <h4 class="modal-title text-center" id="myModalLabel">工程名称选择</h4>
+                </div>
+                <div class="modal-body pad-12 carManagementSModal">
+                    <div class="modal-form">
+                        <div class="border-PI pad-tb-12 mar-bottom-10">
+                            <div class="pull-left search">
+                                <ul style="width: 60%;">
+                                    <li class="text-right">工程名称：</li>
+                                    <li class="flex">
+                                        <input v-model="searchPlanLine" type="text" class="form-control w100-input" style="width: 473px;">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right text-center">
+                                <a class="btn btn-blue" data-toggle="modal" @click="cacheFindAllDriver(2)">查询</a>
+                                <a class="btn btn-blue" data-toggle="modal" @click="addReset();">重置</a>
+                            </div>
+                        </div>
+                        <div class="border-PI pad-tb-12">
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <table class="table table-condensed table-striped table-bordered text-center">
+                                    <thead>
+                                    <tr>
+                                        <td>工程名称</td>
+                                        <td>施工地址</td>
+                                        <td>路线名称</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-nowrap text-center">
+                                    <tr @click="selectedProject(1,lineIndex)" class="enclosureProjectLine cursor driverNameClick" v-for="(lineIndex,planLine) in engineeringListOrLine.list" track-by="$lineIndex">
+                                        <td v-text="planLine.projectName">万达工程</td>
+                                        <td v-text="planLine.contructAddress">通州万达广场</td>
+                                        <td v-text="planLine.lineName"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <div class="mar-top-12 clearfix" v-show="engineeringListOrLine.totalPages">
+                                    当前第<span>{{mapProjectNameCurrentPage}}</span>页 / 共<span>{{mapProjectNameTotalPages}}</span>页 / 共<label>{{mapProjectNameTotalElements}}</label>条数据
+                                    <div class="pull-right pageCorlor" style="width: unset;">
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(0)">首页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(1)">上一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(2)">下一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(3)">尾页</a>  <label>当前</label>
+                                        <select class="form-control select wid-50" v-model="mapProjectNameCurrentPage">
+                                            <option v-for="nub of mapProjectNameTotalPages" track-by="$index">{{nub+1}}</option>
+                                        </select> 页
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--底部按钮-->
+                <div class="modal-footer text-center">
+                    <a href="javascript:;" class="btn btn-blue" data-dismiss="modal"
+                       @click="determineTheProject()">确定</a>
+                    <a href="javascript:;" class="btn btn-default wid-100" data-dismiss="modal">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--围栏选择工程modal-->
+    <div class="modal div-scroll no-top fade bs-example-modal-lg" id="showEnclosureModal" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="button" class="close" data-dismiss="modal" aria-hidden="true" @click="engineeringModelClose(1)">&times;</a>
+                    <h4 class="modal-title text-center">工程名称选择</h4>
+                </div>
+                <div class="modal-body pad-12 carManagementSModal">
+                    <div v-if="!loadFlagModalup">
+                        <div class="sk-circle loadUp">
+                            <div class="sk-circle1 sk-child"></div>
+                            <div class="sk-circle2 sk-child"></div>
+                            <div class="sk-circle3 sk-child"></div>
+                            <div class="sk-circle4 sk-child"></div>
+                            <div class="sk-circle5 sk-child"></div>
+                            <div class="sk-circle6 sk-child"></div>
+                            <div class="sk-circle7 sk-child"></div>
+                            <div class="sk-circle8 sk-child"></div>
+                            <div class="sk-circle9 sk-child"></div>
+                            <div class="sk-circle10 sk-child"></div>
+                            <div class="sk-circle11 sk-child"></div>
+                            <div class="sk-circle12 sk-child"></div>
+                        </div>
+                    </div>
+                    <div class="modal-form" v-show="loadFlagModalup">
+                        <div class="border-PI pad-tb-12 mar-bottom-10">
+                            <div class="pull-left search">
+                                <ul style="width: 60%;">
+                                    <li class="text-right">工程名称：</li>
+                                    <li class="flex">
+                                        <input v-model="searchPlanAll" type="text" class="form-control w100-input" style="width: 473px;">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right text-center">
+                                <a class="btn btn-blue" data-toggle="modal" @click="cacheFindAllDriver(1)">查询</a>
+                                <a class="btn btn-blue" data-toggle="modal" @click="addReset();">重置</a>
+                            </div>
+                        </div>
+                        <div class="border-PI pad-tb-12">
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <table class="table table-condensed table-striped table-bordered text-center">
+                                    <thead>
+                                    <tr>
+                                        <td>工程名称</td>
+                                        <td>施工地址</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-nowrap text-center">
+                                    <tr class="enclosureProject driverNameClick cursor" v-for="(projectIndex,project) in engineeringList.list" @click="selectedProject(2,projectIndex)">
+                                        <td>{{project.projectName}}</td>
+                                        <td>{{project.contructAddress}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <div class="mar-top-12 clearfix" v-show="engineeringList.totalPages">
+                                    当前第<span>{{mapProjectNameCurrentPage}}</span>页 / 共<span>{{mapProjectNameTotalPages}}</span>页 / 共<label>{{mapProjectNameTotalElements}}</label>条数据
+                                    <div class="pull-right pageCorlor" style="width: unset;">
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(0)">首页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(1)">上一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(2)">下一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMap(3)">尾页</a>  <label>当前</label>
+                                        <select class="form-control select wid-50" v-model="mapProjectNameCurrentPage" @change="clickPageTypeMap(4)">
+                                            <option v-for="nub of mapProjectNameTotalPages" :value="nub+1">{{nub+1}}</option>
+                                        </select> 页
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--底部按钮-->
+                <div class="modal-footer text-center">
+                    <a href="javascript:;" class="btn btn-blue" @click="enclosureTheProject()">确定</a>
+                    <a href="javascript:;" class="btn btn-default wid-100" data-dismiss="modal" @click="engineeringModelClose(1)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--发货单列表显示-触发-->
+    <div class="engineeringMesTopBtn" v-if="engineeringInformation && engineeringInformation.length !=0" @click="closeInvoiceListForPlan(true)">
+        <img class="width-25" src="img/engineeringTop.svg" alt="" >
+    </div>
+    <!--发货单详情列表-->
+    <div class="invoiceListForPlan absolute left-absolute right-absolute width-1000 mar-auto">
+        <div class="invoiceListForTitle bgColor-4472c4 color-white engineeringTitle">
+            <ul class="flex">
+                <li class="flex1 flex-just-start height-32 white-space-nowrap">
+                    <img class="wid-28" src="img/planSymbol.svg" alt="">
+                    <span class="font-size-14 font-weight-600">发货单列表</span>
+                </li>
+                <li class="flex5 flex-just-start height-32 white-space-nowrap">
+                    <span class="font-size-12 font-weight-600" v-text="planListClickPlanNumber"></span>
+                </li>
+                <li class="flex1 flex-just-end height-32 padding-right-10">
+                    <img class="width-12 cursor" src="img/plansClose.svg" alt="" @click="closeInvoiceListForPlan(false)">
+                </li>
+            </ul>
+        </div>
+        <div class="invoiceListForContent bgColor-ffffff max-height-200 overflow-y-auto" id="fhd_map_div" style="position: relative;">
+            <table class="table table-condensed table-striped table-bordered text-center" id="fhd_map_tab">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>发货方量(m³)</td>
+                    <td>司机</td>
+                    <td>电话</td>
+                    <td>车速</td>
+                    <td>运输状态</td>
+                    <td>发货时间</td>
+                    <td>出站时间</td>
+                    <td>到工地时间</td>
+                    <td>等待时长</td>
+                    <td>卸料时间</td>
+                    <td>卸料时长</td>
+                    <td>回站时间</td>
+                    <td>在线状态</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody class="text-nowrap text-center">
+                <tr class="driverNameClick" v-for="(eIndex,e) in engineeringInformation" track-by="$index" v-if="e.deliverVehicleStatus != 8 && e.deliverVehicleStatus != 20">
+                    <td>
+                        <div v-if="e.signTheState == 1" class="retreat">退</div>
+                        <div v-if="e.signTheState == 2" class="retreat">剩</div>
+                        <span v-text="e.number"></span>
+                    </td>
+                    <td>{{e.productionQuantity.slice(0,e.productionQuantity.length-1)}}</td>
+                    <td>{{e.driverName ? e.driverName : '-'}}</td>
+                    <td>{{e.driverPhone ? e.driverPhone : '-' }}</td>
+                    <td>{{e.speed ? e.speed : '-' }}</td>
+                    <td>
+                            <span v-if="e.connectStatus !== ''">
+                                <span v-if="e.deliverVehicleStatus == 0">已接单</span>
+                                <span v-if="e.deliverVehicleStatus == 1">待生产</span>
+                                <span v-if="e.deliverVehicleStatus == 2">生产中</span>
+                                <span v-if="e.deliverVehicleStatus == 3">出站中</span>
+                                <span v-if="e.deliverVehicleStatus == 4">去途中</span>
+                                <span v-if="e.deliverVehicleStatus == 5">到达工地</span>
+                                <span v-if="e.deliverVehicleStatus == 6">卸料中</span>
+                                <span v-if="e.deliverVehicleStatus == 7">回途中</span>
+                                <span v-if="e.deliverVehicleStatus == 9">未接单</span>
+                                <span v-if="e.deliverVehicleStatus == 10">卸料完成</span>
+                            </span>
+                        <span v-if="e.connectStatus === ''">-</span>
+                    </td>
+                    <td>{{e.deliveryTime ? e.deliveryTime.substring(11,16) : '-'}}</td><!--发货时间-->
+                    <td>{{e.timeOut ? e.timeOut.substring(11,16) : '-'}}</td><!--出站时间-->
+                    <td v-if="e.deliverVehicleStatus == 4">
+                        <span>预计{{e.expectedToArriveTime}}分钟</span>
+                    </td><!--去途中 显示预计时间-->
+                    <td v-if="e.deliverVehicleStatus == 5 || e.deliverVehicleStatus == 6 || e.deliverVehicleStatus == 7 || e.deliverVehicleStatus == 10 || e.deliverVehicleStatus == 0 || e.deliverVehicleStatus == 2 || e.deliverVehicleStatus == 3 || e.deliverVehicleStatus == 9">
+                        <span>{{e.constructionTimeIn ? e.constructionTimeIn.substring(11,16) : '-'}}</span>
+                    </td><!--到达工地时间-->
+                    <td>{{e.waitTimeLonger ? e.waitTimeLonger : '-'}}<span v-if="e.waitTimeLonger">分钟</span></td><!--等待时长-->
+                    <td>{{e.dischargeStartTime ? e.dischargeStartTime.substring(11,16) : '-'}}<span v-if="e.dischargeEndTime">-</span>{{e.dischargeEndTime ? e.dischargeEndTime.substring(11,16) : ''}}</td><!--卸货开始时间-->
+                    <td>{{e.unloadTimeLonger ? e.unloadTimeLonger : '-'}}<span v-if="e.unloadTimeLonger">分钟</span></td><!--卸料时长-->
+                    <td>
+                        <span v-if="e.deliverVehicleStatus == 7">预计{{e.expectedToArriveTime}}分钟</span>
+                        <span v-else>-</span>
+                    </td><!--回途中 显示预计时间-->
+                    <td>
+                        <span v-if="e.connectStatus === 0 || e.connectStatus === '0'">在线</span>
+                        <span v-if="e.connectStatus === 1 || e.connectStatus === '1'">离线</span>
+                        <span v-if="e.connectStatus === ''">-</span>
+                    </td>
+                    <td>
+                        <img v-if="e.connectStatus !== ''" class="cursor" src="img/location_car.svg" alt="" @click="setMapCenterByCarNumber(e.vehicleId)">
+                        <span v-if="e.connectStatus === ''">-</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--工程信息-->
+    <div class="engineeringTitle engineeringMessageClickMarker overflow-y-auto width-310 bgColor-f2f2f2 absolute right-absolute--320 top-absolute-50 carList-title">
+        <ul class="bgColor-ffffff carList-title">
+            <li class="height-32 flex-just-start bgColor-4472c4 engineeringTitle">
+                <img class="width-28 mar-left-10" src="img/GCmessage.svg" alt="" />
+                <span class="mar-left-10 font-size-14 color-white">工程信息</span>
+                <img class="width-12 cursor absolute engineeringMessageClose" src="img/plansClose.svg" alt="" @click="setPositionRight(-320)">
+            </li>
+            <li class="font-size-14 projectName white-space-nowrap overflow-hidden text-overflow-ell">
+                <span>工程名称:</span>
+                <span v-text="engineeringForInit.projectName" title="{{engineeringForInit.projectName}}">老年公寓建设项目</span>
+            </li>
+            <li class="font-size-14 unloadingSpeed padding-10-10">
+                <span>工地车辆数:</span>
+                <span v-text="engineeringForInit.engineeringCarSum"></span>
+            </li>
+        </ul>
+        <div v-for="pro in engineeringForInit.projectPlanList" track-by="$index" >
+            <div class="hei-28 flex-just-start mar-top-10 bgColor-4472c4 color-white padding-left-10 engineeringPlanNumber">
+                <span class="mar-right-10" v-text="pro.planNumber">201800001</span>
+                <!--<span>卸料速率:</span>-->
+                <!--<span>{{pro.unloadingSpeed.toFixed(2)}}m³/h</span>-->
+                <img class="wid-18 cursor absolute engineeringMessageClose taskDownProjectionImg" :class="[pro.planNumber + 'taskDownProjectionImg']" src="img/top-la.svg" alt="" @click="takeUpProjectMessage(pro.planNumber)">
+            </div>
+            <ul class="bgColor-ffffff carList-title taskDownProjectionMes" :class="[pro.planNumber + 'taskDownProjectionMes']"  >
+                <li class="projectName white-space-nowrap overflow-hidden text-overflow-ell">
+                    <span>施工部位:</span>
+                    <span v-text="pro.constructionSite">汽车坡道10-14轴防水保护层</span>
+                </li>
+                <li class="projectName">
+                    <span>车辆数:</span>
+                    <span>{{(pro.projectDeliveryList).length}}</span>
+                </li>
+                <li class="padding-10-0">
+                    <ul class="flex">
+                        <li class="flex1 text-center">车辆编号</li>
+                        <li class="flex1 text-center">方量(m³)</li>
+                        <li class="flex1 text-center">状态</li>
+                    </ul>
+                </li>
+                <li v-for="c in pro.projectDeliveryList" track-by="$index">
+                    <ul class="padding-5-0 flex">
+                        <li class="flex1 text-center" v-text="c.shortNumber">002</li>
+                        <li class="flex1 text-center">{{c.deliveryAllquantity.slice(0,c.deliveryAllquantity.length-1)}}</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 0">已接单</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 1">待生产</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 2">生产中</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 3">出站中</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 4">去途中</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 5">到达工地</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 6">卸料中</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 7">回途中</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 9">未接单</li>
+                        <li class="flex1 text-center" v-if="c.deliverVehicleStatus == 10">卸料完成</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--地图的定位-->
+    <div class="city-select" id="single-select-1"></div>
+    <!--提示模态框-->
+    <div class="tooltipModal modal ovy t-30 fade bs-example-modal-sm" aria-hidden="true"role="dialog" id="executeResultMessageForm">
+        <div class="tooltipInfoModal-dialog modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h3>{{executeResultMessage}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" role="dialog" aria-hidden="true" data-backdrop="static" id="waitAnimate" style="padding-right:0">
+        <div class="sk-circle" style="margin:auto;top:50%;">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+        </div>
+    </div>
+
+<!--   统计    -->
+    <div class="modal div-scroll no-top fade bs-example-modal-lg" id="showEngineeringModalStatistics" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="width: 1000px">
+                <div class="modal-header">
+                    <a type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                       @click="closeStatisticsFn()">&times;</a>
+                    <h4 class="modal-title text-center" id="">数据统计</h4>
+                </div>
+                <div class="modal-body pad-12 carManagementSModal">
+                    <div class="dis-inline-block dataStatistics_btn" :class="{'dataStatistics_btn_click':dataStatisticsHideFlag == 1}" @click="dataStatisticsFun(1)">车辆用时统计</div>
+                    <div class="dis-inline-block dataStatistics_btn" :class="{'dataStatistics_btn_click':dataStatisticsHideFlag == 2}" @click="dataStatisticsFun(2)">车辆满载率统计</div>
+                    <div class="dis-inline-block dataStatistics_btn" :class="{'dataStatistics_btn_click':dataStatisticsHideFlag == 3}" @click="dataStatisticsFun(3)">运输数据分析</div>
+                    <div class="modal-form" v-if="dataStatisticsHideFlag == 1">
+                        <div class="border-PI pad-tb-12 mar-bottom-10">
+                            <div class="pull-left search">
+                                <ul style="width: 100%;">
+                                    <!--<li class="text-right">车辆编号：</li>-->
+                                    <!--<li class="flex">-->
+                                        <!--<input v-model="statisticsVehicleNumber" type="text" class="form-control w100-input" style="width: 473px;">-->
+                                    <!--</li>-->
+                                    <li class="text-right">开始日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObj.startTime" id="statisticsStartTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                    <li class="text-right">结束日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObj.endTime" id="statisticsEndTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right text-center">
+                                <a class="btn btn-blue" data-toggle="modal" @click="findCarStatisticsFn()">查询</a>
+                                <a class="btn btn-blue" data-toggle="modal" @click="resetStatisticsFn();">重置</a>
+                            </div>
+                        </div>
+                        <div class="border-PI pad-tb-12">
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <table class="table table-condensed table-striped table-bordered text-center">
+                                    <thead>
+                                    <tr>
+                                        <td>任务编号</td>
+                                        <td>工程名称</td>
+                                        <td>运输单号</td>
+                                        <td>车辆编号</td>
+                                        <td>司机</td>
+                                        <td>运距(km)</td>
+                                        <td>方量(m³)</td>
+                                        <td>标号</td>
+                                        <td>接单时间</td>
+                                        <td>出站时间</td>
+                                        <td>生产等待时长(h)</td>
+                                        <td>到达工地时间</td>
+                                        <td>去途用时</td>
+                                        <td>开始卸料时间</td>
+                                        <td>等待时长(h)</td>
+                                        <td>卸料完成时间</td>
+                                        <td>卸料间隔时长(h)</td>
+                                        <td>开始回站时间</td>
+                                        <td>到站时间</td>
+                                        <td>回途时长(h)</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-nowrap text-center">
+                                    <tr class="enclosureProjectLine cursor driverNameClick" v-for="(lineIndex,plan) in statisticsResList">
+                                        <td>{{plan.planNumber}}</td>
+                                        <td>{{plan.projectName}}</td>
+                                        <td>{{plan.deliveryNo}}</td>
+                                        <td class="text-center">{{plan.number}}</td>
+                                        <td>{{plan.driverName}}</td>
+                                        <td>{{plan.space}}</td>
+                                        <td>{{plan.productionQuantity}}</td>
+                                        <td>{{plan.productDemandName}}</td>
+                                        <td>{{plan.ordersTime}}</td>
+                                        <td>{{plan.timeOut}}</td>
+                                        <td class="text-center">{{(plan.preTimeLonger)/3600 < 0 ? '0.0' : ((plan.preTimeLonger)/3600).toFixed(1)}}</td>
+                                        <td>{{plan.constructionTimeIn}}</td>
+                                        <td class="text-center">{{(plan.goTimeLonger)/3600 < 0 ? '0.0' : ((plan.goTimeLonger)/3600).toFixed(1)}}</td>
+                                        <td>{{plan.dischargeStartTime}}</td>
+                                        <td class="text-center">{{(plan.waitTimeLonger)/3600 < 0 ? '0.0' : ((plan.waitTimeLonger)/3600).toFixed(1)}}</td>
+                                        <td>{{plan.dischargeEndTime}}</td>
+                                        <td class="text-center">{{(plan.unloadTimeLonger)/3600 < 0 ? '0.0' : ((plan.unloadTimeLonger)/3600).toFixed(1)}}</td>
+                                        <td>{{plan.constructionTimeOut}}</td>
+                                        <td>{{plan.timeIn}}</td>
+                                        <td class="text-center">{{(plan.backTimeLonger)/3600 < 0 ? '0.0' : ((plan.backTimeLonger)/3600).toFixed(1)}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <div class="mar-top-12 clearfix">
+                                    当前第<span>{{mapProjectNameCurrentPageFn}}</span>页 / 共<span>{{mapProjectNameTotalPagesFn}}</span>页 / 共<label>{{mapProjectNameTotalElementsFn}}</label>条数据
+                                    <div class="pull-right pageCorlor" style="width: unset;">
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFn(0)">首页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFn(1)">上一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFn(2)">下一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFn(3)">尾页</a>  <label>当前</label>
+                                        <select class="form-control select wid-50" v-model="mapProjectNameCurrentPageFn" @change="clickPageTypeMapFn(4)">
+                                            <option v-for="nub of mapProjectNameTotalPagesFn" track-by="$index">{{nub+1}}</option>
+                                        </select> 页
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-form" v-if="dataStatisticsHideFlag == 2">
+                        <div class="border-PI pad-tb-12 mar-bottom-10">
+                            <div class="pull-left search">
+                                <ul style="width: 100%;">
+                                    <!--<li class="text-right">车辆编号：</li>-->
+                                    <!--<li class="flex">-->
+                                        <!--<input v-model="statisticsVehicleNumber" type="text" class="form-control w100-input" style="width: 473px;">-->
+                                    <!--</li>-->
+                                    <li class="text-right">开始日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObjLoadRate.startTime" id="loadRateStartTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                    <li class="text-right">结束日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObjLoadRate.endTime" id="loadRateEndTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right text-center">
+                                <a class="btn btn-blue" data-toggle="modal" @click="statisticsServerFnllLoadRate()">查询</a>
+                                <a class="btn btn-blue" data-toggle="modal" @click="resetStatisticsFn();">重置</a>
+                            </div>
+                        </div>
+                        <div class="border-PI pad-tb-12">
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <table class="table table-condensed table-striped table-bordered text-center">
+                                    <thead>
+                                    <tr>
+                                        <td>任务编号</td>
+                                        <td>工程名称</td>
+                                        <td>运输单号</td>
+                                        <td>车辆编号</td>
+                                        <td>司机</td>
+                                        <td>运距(km)</td>
+                                        <td>运输方量(m³)</td>
+                                        <td>标号</td>
+                                        <td>满载方量(m³)</td>
+                                        <td>满载率</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-nowrap text-center">
+                                    <tr class="enclosureProjectLine cursor driverNameClick" v-for="(lineIndex,plan) in statisticsResListLoadRate">
+                                        <td>{{plan.planNumber}}</td>
+                                        <td>{{plan.projectName}}</td>
+                                        <td>{{plan.deliveryNo}}</td>
+                                        <td class="text-center">{{plan.number}}</td>
+                                        <td>{{plan.driverName}}</td>
+                                        <td>{{plan.space}}</td>
+                                        <td>{{plan.productionQuantity}}</td>
+                                        <td>{{plan.productDemandName}}</td>
+                                        <td>{{plan.carNorm}}</td>
+                                        <td>{{((plan.productionQuantity / plan.carNorm) *100).toFixed(0)}}%</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <div class="mar-top-12 clearfix">
+                                    当前第<span>{{mapProjectNameCurrentPageFnLoadRate}}</span>页 / 共<span>{{mapProjectNameTotalPagesFnLoadRate}}</span>页 / 共<label>{{mapProjectNameTotalElementsFnLoadRate}}</label>条数据
+                                    <div class="pull-right pageCorlor" style="width: unset;">
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnLoadRate(0)">首页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnLoadRate(1)">上一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnLoadRate(2)">下一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnLoadRate(3)">尾页</a>  <label>当前</label>
+                                        <select class="form-control select wid-50" v-model="mapProjectNameCurrentPageFnLoadRate" @change="clickPageTypeMapFnLoadRate(4)">
+                                            <option v-for="nub of mapProjectNameTotalPagesFnLoadRate" track-by="$index">{{nub+1}}</option>
+                                        </select> 页
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div >
+                    <div class="modal-form" v-if="dataStatisticsHideFlag == 3">
+                        <div class="border-PI pad-tb-12 mar-bottom-10">
+                            <div class="pull-left search">
+                                <ul style="width: 100%;">
+                                    <!--<li class="text-right">车辆编号：</li>-->
+                                    <!--<li class="flex">-->
+                                        <!--<input v-model="statisticsVehicleNumber" type="text" class="form-control w100-input" style="width: 473px;">-->
+                                    <!--</li>-->
+                                    <li class="text-right">开始日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObjDataAnalysis.startTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                    <li class="text-right">结束日期：</li>
+                                    <li class="flex">
+                                        <input v-model="statisticsObjDataAnalysis.endTime" readonly type="text" class="timeReadonly Wdate form-control w100-input" style="width: 473px;">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right text-center">
+                                <a class="btn btn-blue" data-toggle="modal" @click="statisticsServerDataAnalysis()">查询</a>
+                                <a class="btn btn-blue" data-toggle="modal" @click="resetStatisticsFn();">重置</a>
+                            </div>
+                        </div>
+                        <div class="border-PI pad-tb-12">
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <table class="table table-condensed table-striped table-bordered text-center">
+                                    <thead>
+                                    <tr>
+                                        <td>车辆编号</td>
+                                        <td>司机</td>
+                                        <td>趟数</td>
+                                        <td>总里程数(km)</td>
+                                        <td>平均满载率</td>
+                                        <td>总用时(h)</td>
+                                        <td>平均用时(h)</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-nowrap text-center">
+                                    <tr class="enclosureProjectLine cursor driverNameClick" v-for="(lineIndex,plan) in statisticsResListDataAnalysis">
+                                        <td>{{plan.number}}</td>
+                                        <td>{{plan.driverName}}</td>
+                                        <td>{{plan.vehicles}}</td>
+                                        <td>{{plan.space}}</td>
+                                        <td>{{(((plan.productionQuantity / plan.carNorm))*100).toFixed(1)}}%</td>
+                                        <td>{{(plan.timeLonger/3600).toFixed(1)}}</td>
+                                        <td>{{(plan.timeLonger / plan.vehicles/3600).toFixed(1)}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="w-98 mar-auto text-nowrap div-scroll">
+                                <div class="mar-top-12 clearfix">
+                                    当前第<span>{{mapProjectNameCurrentPageFnDataAnalysis}}</span>页 / 共<span>{{mapProjectNameTotalPagesFnDataAnalysis}}</span>页 / 共<label>{{mapProjectNameTotalElementsFnDataAnalysis}}</label>条数据
+                                    <div class="pull-right pageCorlor" style="width: unset;">
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnDataAnalysis(0)">首页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnDataAnalysis(1)">上一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnDataAnalysis(2)">下一页</a>
+                                        <a href="javascript:void(0);" @click="clickPageTypeMapFnDataAnalysis(3)">尾页</a>  <label>当前</label>
+                                        <select class="form-control select wid-50" v-model="mapProjectNameCurrentPageFnDataAnalysis" @change="clickPageTypeMapFnDataAnalysis(4)">
+                                            <option v-for="nub of mapProjectNameTotalPagesFnDataAnalysis" track-by="$index">{{nub+1}}</option>
+                                        </select> 页
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--底部按钮-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/tripledes.js"></script>
+<script type="text/javascript" src="js/uuid.js"></script>
+<script type="text/javascript" src="js/mode-ecb-min.js"></script>
+<script type="text/javascript" src="js/md5.min.js"></script>
+<script type="text/javascript" src="js/base64.min.js"></script>
+<script type="text/javascript" src="js/stomp.min.js"></script>
+<script type="text/javascript" src="js/sockjs.min.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/schedulingMap.js"></script>
+<script type="text/javascript" src="js/all.js"></script>
+<script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+<!--设置城市中心点-->
+<script src="js/citydata.min.js"></script>
+<script src="js/citySelect-1.0.3.js"></script>
+
+</body>
+</html>
